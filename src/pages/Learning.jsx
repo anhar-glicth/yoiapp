@@ -167,7 +167,7 @@ const Learning = () => {
                     overflow: 'hidden'
                   }}>
                     <img
-                      src={`/isyarat/${activeTab}/${selectedLetter.id}.png`}
+                      src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`}
                       alt={`Isyarat ${selectedLetter.char}`}
                       style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                       onError={(e) => {
