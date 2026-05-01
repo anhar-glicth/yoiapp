@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: 'Tentang Kami', path: '/about' },
     { name: 'Pendidikan', path: '/learning' },
     { name: 'Tim Kami', path: '/team' },
+    { name: 'Dukungan', path: '/donation' },
   ]
 
   return (
@@ -30,14 +31,16 @@ const Navbar = () => {
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn btn-primary"
-            style={{ padding: '0.6rem 1.5rem', fontSize: '0.85rem' }}
-          >
-            Mulai
-          </motion.button>
+          <Link to="/learning" style={{ textDecoration: 'none' }}>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn btn-primary"
+              style={{ padding: '0.6rem 1.5rem', fontSize: '0.85rem', cursor: 'pointer' }}
+            >
+              Mulai
+            </motion.button>
+          </Link>
           
           <button 
             onClick={() => setIsOpen(!isOpen)}

@@ -27,9 +27,15 @@ const Home = () => {
             <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem', lineHeight: 1.8 }}>
               Yo'i menjembatani kesenjangan komunikasi melalui pendidikan bahasa isyarat tercanggih dan platform kemanusiaan yang transparan.
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <Link to="/learning" className="btn btn-primary" style={{ textDecoration: 'none' }}>Mulai Belajar</Link>
-              <Link to="/donation" className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+            <div style={{ 
+              display: 'flex', 
+              gap: '1rem', 
+              justifyContent: 'center', 
+              position: 'relative', 
+              zIndex: 20 
+            }}>
+              <Link to="/learning" className="btn btn-primary" style={{ textDecoration: 'none', cursor: 'pointer' }}>Mulai Belajar</Link>
+              <Link to="/donation" className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', cursor: 'pointer' }}>
                 Dukung Kami <ArrowUpRight size={18} />
               </Link>
             </div>
