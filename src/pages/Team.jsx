@@ -6,12 +6,12 @@ const Team = () => {
   const members = [
     {
       name: 'Muhammad Anhar Solihin',
-      role: 'Founder & Lead Tech',
+      role: 'CTO',
       desc: 'Ahli teknologi asistif dengan pengalaman 4+ tahun dalam pengembangan platform inklusif.',
       image: '/anhar.jpeg',
-      instagram: 'https://instagram.com/anharsolihin',
-      brochure: '#',
-      email: 'anhar@yoi.com'
+      instagram: 'https://www.instagram.com/anhars._/',
+      brochure: 'https://portofolio-anhar-self.vercel.app/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnoVjkzqJNDbmT0EAIOKMmbK3N-blQOwtlSMjjTrEpvPR0RteRV60JpZWp5YM_aem_FpAPGAmNn5hgyKgxm6kbNQ',
+      email: 'muhammadanharsolihin@gmail.com'
     },
     {
       name: 'Nurul Hasanah',
