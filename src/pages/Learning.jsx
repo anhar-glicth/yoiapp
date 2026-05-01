@@ -148,9 +148,21 @@ const Learning = () => {
                   alignItems: 'center', 
                   justifyContent: 'center', 
                   border: '1px solid var(--glass-border)',
-                  marginBottom: '1.5rem'
+                  marginBottom: '1.5rem',
+                  overflow: 'hidden'
                 }}>
-                  <span style={{ fontSize: '5rem', color: 'var(--primary)', opacity: 0.8 }}>{selectedLetter}</span>
+                  <img 
+                    src={`/isyarat/${activeTab}/${selectedLetter.toLowerCase()}.png`} 
+                    alt={`Isyarat ${selectedLetter}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                      e.target.nextSibling.style.display = 'block'
+                    }}
+                  />
+                  <span style={{ fontSize: '5rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
+                    {selectedLetter}
+                  </span>
                 </div>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Gerakan tangan untuk "{selectedLetter}" akan muncul di sini.</p>
               </motion.div>
