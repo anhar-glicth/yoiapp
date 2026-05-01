@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Heart, Globe, Users, BookOpen, Star } from 'lucide-react'
 
@@ -27,10 +28,10 @@ const Home = () => {
               Yo'i menjembatani kesenjangan komunikasi melalui pendidikan bahasa isyarat tercanggih dan platform kemanusiaan yang transparan.
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <button className="btn btn-primary">Mulai Belajar</button>
-              <button className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Link to="/learning" className="btn btn-primary" style={{ textDecoration: 'none' }}>Mulai Belajar</Link>
+              <Link to="/donation" className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
                 Dukung Kami <ArrowUpRight size={18} />
-              </button>
+              </Link>
             </div>
           </motion.div>
 
@@ -49,7 +50,7 @@ const Home = () => {
         <div className="container">
           <div style={{ marginBottom: '5rem' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Get a dedicated support<br/>beyond the standard</h2>
-            <button className="btn btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '0.8rem' }}>PELAJARI</button>
+            <Link to="/learning" className="btn btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '0.8rem', textDecoration: 'none' }}>PELAJARI</Link>
           </div>
 
           <div className="grid grid-3">
@@ -116,7 +117,7 @@ const Home = () => {
         <div className="container">
           <div className="glass-card" style={{ padding: '6rem 2rem', background: 'linear-gradient(180deg, var(--bg-card) 0%, #000 100%)' }}>
             <h2 style={{ fontSize: '4rem', marginBottom: '2rem' }}>Become part of the<br/><span style={{ color: 'var(--primary)' }}>design revolution</span></h2>
-            <button className="btn btn-primary" style={{ fontSize: '1.2rem', padding: '1.2rem 3rem' }}>Bergabung Sekarang</button>
+            <Link to="/learning" className="btn btn-primary" style={{ fontSize: '1.2rem', padding: '1.2rem 3rem', textDecoration: 'none' }}>Bergabung Sekarang</Link>
           </div>
         </div>
       </section>
