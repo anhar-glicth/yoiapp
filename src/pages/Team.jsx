@@ -14,7 +14,7 @@ const Team = () => {
       name: 'Nurul Hasanah',
       role: 'Head of Education',
       desc: 'Pakar Bahasa Isyarat (SIBI & BISINDO) yang berdedikasi menciptakan kurikulum ramah Tuli.',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300'
+      image: 'public/WhatsApp Image 2026-05-01 at 15.44.42.jpeg'
     },
     {
       name: 'Aira Rakmah',
