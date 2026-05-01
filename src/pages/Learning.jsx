@@ -88,86 +88,89 @@ const Learning = () => {
             </div>
           </motion.div>
 
-          {/* 2. Alphabet Grid */}
-          <div className="glass-card" style={{ background: '#080808' }}>
-            <h3 style={{ marginBottom: '2rem', fontSize: '1.4rem' }}>{activeTab === 'quran' ? 'Huruf Hijaiyah' : `Alfabet ${activeTab.toUpperCase()}`}</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(50px, 1fr))', gap: '0.6rem' }}>
-              {alphabet.map((char) => (
-                <motion.button
-                  key={char}
-                  whileHover={{ scale: 1.1, borderColor: 'var(--primary)' }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setSelectedLetter(char)}
+          {/* Wrap alphabet and preview in a container for mobile side-by-side */}
+          <div className="alphabet-container" style={{ display: 'contents' }}>
+            {/* 2. Alphabet Grid */}
+            <div className="glass-card" style={{ background: '#080808' }}>
+              <h3 style={{ marginBottom: '2rem', fontSize: '1.4rem' }}>{activeTab === 'quran' ? 'Huruf Hijaiyah' : `Alfabet ${activeTab.toUpperCase()}`}</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(50px, 1fr))', gap: '0.6rem' }}>
+                {alphabet.map((char) => (
+                  <motion.button
+                    key={char}
+                    whileHover={{ scale: 1.1, borderColor: 'var(--primary)' }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setSelectedLetter(char)}
+                    style={{ 
+                      aspectRatio: '1/1', 
+                      borderRadius: '10px', 
+                      border: '1px solid var(--glass-border)',
+                      background: selectedLetter === char ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
+                      color: selectedLetter === char ? '#000' : '#fff',
+                      fontSize: activeTab === 'quran' ? '1.4rem' : '1rem',
+                      fontWeight: 'bold',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {char}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. Preview Panel (Appears to the right or side) */}
+            <AnimatePresence>
+              {selectedLetter && (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, x: 20 }}
+                  className="glass-card preview-panel"
                   style={{ 
-                    aspectRatio: '1/1', 
-                    borderRadius: '10px', 
-                    border: '1px solid var(--glass-border)',
-                    background: selectedLetter === char ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
-                    color: selectedLetter === char ? '#000' : '#fff',
-                    fontSize: activeTab === 'quran' ? '1.4rem' : '1rem',
-                    fontWeight: 'bold',
-                    cursor: 'pointer'
+                    textAlign: 'center', 
+                    border: '1px solid var(--primary)',
+                    position: 'relative',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center'
                   }}
                 >
-                  {char}
-                </motion.button>
-              ))}
-            </div>
+                  <button 
+                    onClick={() => setSelectedLetter(null)}
+                    style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
+                  >
+                    <X size={20} />
+                  </button>
+                  <h3 style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>Pratinjau: {selectedLetter}</h3>
+                  <div className="preview-box" style={{ 
+                    width: '100%', 
+                    aspectRatio: '1/1', 
+                    background: 'rgba(0,0,0,0.3)', 
+                    borderRadius: '16px', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    border: '1px solid var(--glass-border)',
+                    marginBottom: '1.5rem',
+                    overflow: 'hidden'
+                  }}>
+                    <img 
+                      src={`/isyarat/${activeTab}/${selectedLetter.toLowerCase()}.png`} 
+                      alt={`Isyarat ${selectedLetter}`}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                        e.target.nextSibling.style.display = 'block'
+                      }}
+                    />
+                    <span style={{ fontSize: '5rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
+                      {selectedLetter}
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Gerakan tangan untuk "{selectedLetter}" akan muncul di sini.</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-
-          {/* 3. Preview Panel (Appears to the right or side) */}
-          <AnimatePresence>
-            {selectedLetter && (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9, x: 20 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.9, x: 20 }}
-                className="glass-card preview-panel"
-                style={{ 
-                  textAlign: 'center', 
-                  border: '1px solid var(--primary)',
-                  position: 'relative',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center'
-                }}
-              >
-                <button 
-                  onClick={() => setSelectedLetter(null)}
-                  style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
-                >
-                  <X size={20} />
-                </button>
-                <h3 style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>Pratinjau: {selectedLetter}</h3>
-                <div style={{ 
-                  width: '100%', 
-                  aspectRatio: '1/1', 
-                  background: 'rgba(0,0,0,0.3)', 
-                  borderRadius: '16px', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  border: '1px solid var(--glass-border)',
-                  marginBottom: '1.5rem',
-                  overflow: 'hidden'
-                }}>
-                  <img 
-                    src={`/isyarat/${activeTab}/${selectedLetter.toLowerCase()}.png`} 
-                    alt={`Isyarat ${selectedLetter}`}
-                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.nextSibling.style.display = 'block'
-                    }}
-                  />
-                  <span style={{ fontSize: '5rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
-                    {selectedLetter}
-                  </span>
-                </div>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Gerakan tangan untuk "{selectedLetter}" akan muncul di sini.</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
 
         <div style={{ textAlign: 'center' }}>
@@ -197,6 +200,37 @@ const Learning = () => {
           display: grid;
           gap: 1.5rem;
           grid-template-columns: 1fr;
+        }
+
+        /* Mobile Optimization: Side-by-Side Grid & Preview */
+        @media (max-width: 767px) {
+          .learning-layout {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          
+          /* Make alphabet and preview side-by-side if selected */
+          ${selectedLetter ? `
+            .alphabet-container {
+              display: grid !important;
+              grid-template-columns: 1.2fr 1fr;
+              gap: 1rem;
+              align-items: start;
+            }
+            .preview-panel {
+              position: sticky;
+              top: 6rem;
+              padding: 1rem !important;
+            }
+            .preview-box {
+              height: 120px !important;
+              margin-bottom: 0.5rem !important;
+            }
+            .preview-panel h3, .preview-panel p {
+              font-size: 0.7rem !important;
+              margin-bottom: 0.5rem !important;
+            }
+          ` : ''}
         }
 
         @media (min-width: 768px) {
