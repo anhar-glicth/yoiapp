@@ -25,9 +25,19 @@ const Learning = () => {
     }
   }
 
-  const alphabet = activeTab === 'quran'
-    ? ['ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي']
-    : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+  const hijaiyahData = [
+    { char: 'ا', id: 'alif' }, { char: 'ب', id: 'ba' }, { char: 'ت', id: 'ta' }, { char: 'ث', id: 'tsa' },
+    { char: 'ج', id: 'jim' }, { char: 'ح', id: 'ha' }, { char: 'خ', id: 'kho' }, { char: 'د', id: 'dal' },
+    { char: 'ذ', id: 'dzal' }, { char: 'ر', id: 'ra' }, { char: 'ز', id: 'zai' }, { char: 'س', id: 'sin' },
+    { char: 'ش', id: 'syin' }, { char: 'ص', id: 'shod' }, { char: 'ض', id: 'dhod' }, { char: 'ط', id: 'tho' },
+    { char: 'ظ', id: 'dzho' }, { char: 'ع', id: 'ain' }, { char: 'غ', id: 'ghoin' }, { char: 'ف', id: 'fa' },
+    { char: 'ق', id: 'qof' }, { char: 'ك', id: 'kaf' }, { char: 'ل', id: 'lam' }, { char: 'م', id: 'mim' },
+    { char: 'ن', id: 'nun' }, { char: 'و', id: 'wawu' }, { char: 'ه', id: 'ha_besar' }, { char: 'ي', id: 'ya' }
+  ]
+
+  const alphabet = activeTab === 'quran' 
+    ? hijaiyahData 
+    : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(char => ({ char, id: char.toLowerCase() }))
 
   return (
     <motion.div
@@ -39,7 +49,7 @@ const Learning = () => {
     >
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <motion.h1
+          <motion.h1 
             initial={{ y: -20 }}
             animate={{ y: 0 }}
             style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '1rem', color: '#fff' }}
@@ -52,7 +62,7 @@ const Learning = () => {
         {/* Tab Switcher */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem', marginBottom: '4rem', flexWrap: 'wrap' }}>
           {['sibi', 'bisindo', 'quran'].map((tab) => (
-            <button
+            <button 
               key={tab}
               className={`btn ${activeTab === tab ? 'btn-primary' : 'btn-outline'}`}
               style={{ minWidth: '140px' }}
@@ -69,7 +79,7 @@ const Learning = () => {
         {/* Main Content Area */}
         <div className="learning-layout" style={{ marginBottom: '6rem' }}>
           {/* 1. Description Card */}
-          <motion.div
+          <motion.div 
             key={activeTab}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -78,7 +88,7 @@ const Learning = () => {
           >
             <h2 style={{ color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '1.8rem' }}>{content[activeTab].title}</h2>
             <p style={{ fontSize: '1rem', marginBottom: '2.5rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>{content[activeTab].desc}</p>
-
+            
             <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
               {content[activeTab].features.map((f, i) => (
                 <span key={i} style={{ padding: '0.5rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid var(--glass-border)' }}>
@@ -94,26 +104,26 @@ const Learning = () => {
             <div className="glass-card alphabet-card" style={{ background: '#080808', height: 'fit-content' }}>
               <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>{activeTab === 'quran' ? 'Hijaiyah' : `Alfabet`}</h3>
               <div className="alphabet-grid">
-                {alphabet.map((char) => (
+                {alphabet.map((item) => (
                   <motion.button
-                    key={char}
+                    key={item.id}
                     whileHover={{ scale: 1.1, borderColor: 'var(--primary)' }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => setSelectedLetter(char)}
-                    className={`alphabet-btn ${selectedLetter === char ? 'active' : ''}`}
-                    style={{
-                      aspectRatio: '1/1',
-                      borderRadius: '8px',
+                    onClick={() => setSelectedLetter(item)}
+                    className={`alphabet-btn ${selectedLetter?.id === item.id ? 'active' : ''}`}
+                    style={{ 
+                      aspectRatio: '1/1', 
+                      borderRadius: '8px', 
                       border: '1px solid var(--glass-border)',
-                      background: selectedLetter === char ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
-                      color: selectedLetter === char ? '#000' : '#fff',
+                      background: selectedLetter?.id === item.id ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
+                      color: selectedLetter?.id === item.id ? '#000' : '#fff',
                       fontSize: activeTab === 'quran' ? '1.2rem' : '0.9rem',
                       fontWeight: 'bold',
                       cursor: 'pointer',
                       width: '100%'
                     }}
                   >
-                    {char}
+                    {item.char}
                   </motion.button>
                 ))}
               </div>
@@ -122,13 +132,13 @@ const Learning = () => {
             {/* 3. Preview Panel (Appears to the right) */}
             <AnimatePresence>
               {selectedLetter && (
-                <motion.div
+                <motion.div 
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   className="glass-card preview-panel"
-                  style={{
-                    textAlign: 'center',
+                  style={{ 
+                    textAlign: 'center', 
                     border: '1px solid var(--primary)',
                     position: 'relative',
                     display: 'flex',
@@ -137,28 +147,28 @@ const Learning = () => {
                     padding: '1rem'
                   }}
                 >
-                  <button
+                  <button 
                     onClick={() => setSelectedLetter(null)}
                     style={{ position: 'absolute', top: '0.5rem', right: '0.5rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
                   >
                     <X size={16} />
                   </button>
-                  <h3 style={{ marginBottom: '1rem', fontSize: '1rem' }}>{selectedLetter}</h3>
-                  <div className="preview-box" style={{
-                    width: '100%',
-                    aspectRatio: '1/1',
-                    background: 'rgba(0,0,0,0.3)',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                  <h3 style={{ marginBottom: '1rem', fontSize: '1rem' }}>{selectedLetter.char}</h3>
+                  <div className="preview-box" style={{ 
+                    width: '100%', 
+                    aspectRatio: '1/1', 
+                    background: 'rgba(0,0,0,0.3)', 
+                    borderRadius: '12px', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
                     border: '1px solid var(--glass-border)',
                     marginBottom: '1rem',
                     overflow: 'hidden'
                   }}>
-                    <img
-                      src={`/isyarat/${activeTab}/${selectedLetter.toLowerCase()}.png`}
-                      alt={`Isyarat ${selectedLetter}`}
+                    <img 
+                      src={`/isyarat/${activeTab}/${selectedLetter.id}.png`} 
+                      alt={`Isyarat ${selectedLetter.char}`}
                       style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                       onError={(e) => {
                         e.target.style.display = 'none'
@@ -166,10 +176,10 @@ const Learning = () => {
                       }}
                     />
                     <span style={{ fontSize: '3rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
-                      {selectedLetter}
+                      {selectedLetter.char}
                     </span>
                   </div>
-                  <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>Isyarat untuk huruf {selectedLetter}</p>
+                  <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>Isyarat untuk huruf {selectedLetter.char}</p>
                 </motion.div>
               )}
             </AnimatePresence>
