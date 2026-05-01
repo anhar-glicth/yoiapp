@@ -1,6 +1,25 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Globe, Instagram, FileText, Mail } from 'lucide-react'
+import { Globe, FileText, Mail } from 'lucide-react'
+
+// Custom Instagram Icon since Lucide removed brand icons
+const InstagramIcon = ({ size = 18 }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+)
 
 const Team = () => {
   const members = [
@@ -113,7 +132,7 @@ const Team = () => {
 
               <div style={{ display: 'flex', gap: '1.2rem' }}>
                 <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="team-icon">
-                  <Instagram size={18} />
+                  <InstagramIcon size={18} />
                 </a>
                 <a href={member.brochure} target="_blank" rel="noopener noreferrer" className="team-icon">
                   <FileText size={18} />
@@ -129,5 +148,6 @@ const Team = () => {
     </motion.div>
   )
 }
+
 
 export default Team
