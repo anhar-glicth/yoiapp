@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Globe, Briefcase, Mail } from 'lucide-react'
+import { Globe, Instagram, FileText, Mail } from 'lucide-react'
 
 const Team = () => {
   const members = [
@@ -8,37 +8,55 @@ const Team = () => {
       name: 'Muhammad Anhar Solihin',
       role: 'Founder & Lead Tech',
       desc: 'Ahli teknologi asistif dengan pengalaman 4+ tahun dalam pengembangan platform inklusif.',
-      image: '/anhar.jpeg'
+      image: '/anhar.jpeg',
+      instagram: 'https://instagram.com/anharsolihin',
+      brochure: '#',
+      email: 'anhar@yoi.com'
     },
     {
       name: 'Nurul Hasanah',
       role: 'Head of Education',
       desc: 'Pakar Bahasa Isyarat (SIBI & BISINDO) yang berdedikasi menciptakan kurikulum ramah Tuli.',
-      image: '/nurul.jpeg'
+      image: '/nurul.jpeg',
+      instagram: '#',
+      brochure: '#',
+      email: 'nurul@yoi.com'
     },
     {
       name: 'Aira Rakmah',
       role: 'Fullstack Developer',
       desc: 'Spesialis React & Node.js yang fokus pada aksesibilitas web dan performa tinggi.',
-      image: '/aira.jpeg'
+      image: '/aira.jpeg',
+      instagram: '#',
+      brochure: '#',
+      email: 'aira@yoi.com'
     },
     {
       name: 'Ghaitsa Shofa Adelya',
       role: 'Community Manager',
       desc: 'Penghubung antara teknologi Yo\'i dengan komunitas disabilitas di seluruh Indonesia.',
-      image: '/ghaitsa.jpg'
+      image: '/ghaitsa.jpg',
+      instagram: '#',
+      brochure: '#',
+      email: 'ghaitsa@yoi.com'
     },
     {
       name: 'Jabaringin Hasibuan',
       role: 'Community Manager',
       desc: 'Penghubung antara teknologi Yo\'i dengan komunitas disabilitas di seluruh Indonesia.',
-      image: '/ghaitsa.jpg'
+      image: '/ghaitsa.jpg',
+      instagram: '#',
+      brochure: '#',
+      email: 'jabar@yoi.com'
     },
     {
       name: 'Indi',
       role: 'Community Manager',
       desc: 'Penghubung antara teknologi Yo\'i dengan komunitas disabilitas di seluruh Indonesia.',
-      image: '/ghaitsa.jpg'
+      image: '/ghaitsa.jpg',
+      instagram: '#',
+      brochure: '#',
+      email: 'indi@yoi.com'
     }
 
 
@@ -93,10 +111,16 @@ const Team = () => {
               <p style={{ color: 'var(--primary)', fontWeight: '600', marginBottom: '1rem', fontSize: '0.9rem' }}>{member.role}</p>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '2rem', minHeight: '60px' }}>{member.desc}</p>
 
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <Globe size={18} className="cursor-pointer" style={{ opacity: 0.5 }} />
-                <Briefcase size={18} className="cursor-pointer" style={{ opacity: 0.5 }} />
-                <Mail size={18} className="cursor-pointer" style={{ opacity: 0.5 }} />
+              <div style={{ display: 'flex', gap: '1.2rem' }}>
+                <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="team-icon">
+                  <Instagram size={18} />
+                </a>
+                <a href={member.brochure} target="_blank" rel="noopener noreferrer" className="team-icon">
+                  <FileText size={18} />
+                </a>
+                <a href={`mailto:${member.email}`} className="team-icon">
+                  <Mail size={18} />
+                </a>
               </div>
             </motion.div>
           ))}

@@ -281,3 +281,17 @@ h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); }
   width: 320px;
   flex-shrink: 0;
 }
+.team-icon {
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.team-icon:hover {
+  color: var(--primary);
+  transform: translateY(-3px);
+  opacity: 1;
+}
