@@ -54,7 +54,7 @@ const Team = () => {
       name: 'Ghaitsa Shofa Adelya',
       role: 'Community Manager',
       desc: 'Penghubung antara teknologi Yo\'i dengan komunitas disabilitas di seluruh Indonesia.',
-      image: '/ghaitsa.jpg',
+      image: 'public/ghaitsa.jpg',
       instagram: '#',
       brochure: '#',
       email: 'ghaitsa@yoi.com'
