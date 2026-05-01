@@ -132,7 +132,7 @@ const Learning = () => {
                       borderRadius: '8px',
                       border: '1px solid var(--glass-border)',
                       background: selectedLetter?.id === item.id ? 'var(--primary)' : 'var(--glass)',
-                      color: selectedLetter?.id === item.id ? '#000' : 'var(--text-main)',
+                      color: selectedLetter?.id === item.id ? 'var(--text-on-primary)' : 'var(--text-main)',
                       fontSize: activeTab === 'quran' ? '1.2rem' : '0.9rem',
                       fontWeight: 'bold',
                       cursor: 'pointer',

@@ -74,7 +74,7 @@ const Home = () => {
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center',
-                  color: '#000',
+                  color: 'var(--text-on-primary)',
                   fontWeight: 'bold',
                   marginBottom: '2rem'
                 }}>

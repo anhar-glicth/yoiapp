@@ -29,7 +29,7 @@ const Navbar = () => {
       <nav className="navbar">
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'var(--text-main)' }}>
           <div style={{ background: 'var(--primary)', padding: '0.4rem', borderRadius: '8px' }}>
-            <Heart size={20} fill="#000" color="#000" />
+            <Heart size={20} fill="var(--text-on-primary)" color="var(--text-on-primary)" />
           </div>
           <span style={{ fontSize: '1.4rem', fontWeight: '800', fontFamily: "'Outfit', sans-serif", letterSpacing: '-1px' }}>Yo'i</span>
         </Link>
