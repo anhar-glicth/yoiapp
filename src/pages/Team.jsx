@@ -94,7 +94,7 @@ const Team = () => {
           <motion.h1
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1.5rem', color: '#fff' }}
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1.5rem', color: 'var(--text-main)' }}
           >
             Orang-orang di Balik <span style={{ color: 'var(--primary)' }} className="glow-text">Yo'i</span>
           </motion.h1>

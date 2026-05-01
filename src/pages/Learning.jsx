@@ -68,7 +68,7 @@ const Learning = () => {
           <motion.h1
             initial={{ y: -20 }}
             animate={{ y: 0 }}
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '1rem', color: '#fff' }}
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '1rem', color: 'var(--text-main)' }}
           >
             Pusat Pembelajaran Isyarat
           </motion.h1>
@@ -107,7 +107,7 @@ const Learning = () => {
 
             <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
               {content[activeTab].features.map((f, i) => (
-                <span key={i} style={{ padding: '0.5rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid var(--glass-border)' }}>
+                <span key={i} style={{ padding: '0.5rem 1rem', background: 'var(--glass)', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid var(--glass-border)' }}>
                   {f}
                 </span>
               ))}
@@ -117,7 +117,7 @@ const Learning = () => {
           {/* Wrap alphabet and preview in a container for mobile side-by-side */}
           <div className="alphabet-container">
             {/* 2. Alphabet Grid */}
-            <div className="glass-card alphabet-card" style={{ background: '#080808', height: 'fit-content' }}>
+            <div className="glass-card alphabet-card" style={{ background: 'var(--bg-dark)', height: 'fit-content' }}>
               <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>{activeTab === 'quran' ? 'Hijaiyah' : `Alfabet`}</h3>
               <div className="alphabet-grid">
                 {alphabet.map((item) => (
@@ -131,8 +131,8 @@ const Learning = () => {
                       aspectRatio: '1/1',
                       borderRadius: '8px',
                       border: '1px solid var(--glass-border)',
-                      background: selectedLetter?.id === item.id ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
-                      color: selectedLetter?.id === item.id ? '#000' : '#fff',
+                      background: selectedLetter?.id === item.id ? 'var(--primary)' : 'var(--glass)',
+                      color: selectedLetter?.id === item.id ? '#000' : 'var(--text-main)',
                       fontSize: activeTab === 'quran' ? '1.2rem' : '0.9rem',
                       fontWeight: 'bold',
                       cursor: 'pointer',
@@ -220,8 +220,8 @@ const Learning = () => {
           <div className="grid grid-4">
             {[
               { id: 'level-dasar', title: 'Level Dasar', sub: 'Huruf & Angka', color: 'var(--primary)' },
-              { id: 'level-menengah', title: 'Level Menengah', sub: 'Percakapan Sehari-hari', color: '#fff' },
-              { id: 'level-mahir', title: 'Level Mahir', sub: 'Struktur Kalimat Kompleks', color: '#fff' },
+              { id: 'level-menengah', title: 'Level Menengah', sub: 'Percakapan Sehari-hari', color: 'var(--text-main)' },
+              { id: 'level-mahir', title: 'Level Mahir', sub: 'Struktur Kalimat Kompleks', color: 'var(--text-main)' },
               { id: 'quran-isyarat', title: 'Quran Isyarat', sub: 'Hijaiyah & Surah Pendek', color: 'var(--primary)' }
             ].map((course, i) => (
               <div key={i} className="glass-card" style={{ textAlign: 'left' }}>

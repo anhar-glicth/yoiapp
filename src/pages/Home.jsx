@@ -52,7 +52,7 @@ const Home = () => {
       </section>
 
       {/* Feature Section (Process) */}
-      <section className="section" style={{ background: '#080808' }}>
+      <section className="section" style={{ background: 'var(--bg-dark)' }}>
         <div className="container">
           <div style={{ marginBottom: '5rem' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Get a dedicated support<br/>beyond the standard</h2>
@@ -121,7 +121,7 @@ const Home = () => {
       {/* CTA Bottom */}
       <section className="section" style={{ textAlign: 'center', paddingBottom: '10rem' }}>
         <div className="container">
-          <div className="glass-card" style={{ padding: '6rem 2rem', background: 'linear-gradient(180deg, var(--bg-card) 0%, #000 100%)' }}>
+          <div className="glass-card" style={{ padding: '6rem 2rem', background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)' }}>
             <h2 style={{ fontSize: '4rem', marginBottom: '2rem' }}>Become part of the<br/><span style={{ color: 'var(--primary)' }}>design revolution</span></h2>
             <Link to="/learning" className="btn btn-primary" style={{ fontSize: '1.2rem', padding: '1.2rem 3rem', textDecoration: 'none' }}>Bergabung Sekarang</Link>
           </div>

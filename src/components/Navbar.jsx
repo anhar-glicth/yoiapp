@@ -1,10 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Menu, X } from 'lucide-react'
+import { Heart, Menu, X, Moon, Sun } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
 
   const links = [
     { name: 'Beranda', path: '/' },
@@ -17,7 +27,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: '#fff' }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'var(--text-main)' }}>
           <div style={{ background: 'var(--primary)', padding: '0.4rem', borderRadius: '8px' }}>
             <Heart size={20} fill="#000" color="#000" />
           </div>
@@ -30,13 +40,32 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+          <button 
+            onClick={toggleTheme}
+            style={{ 
+              background: 'var(--glass)', 
+              border: '1px solid var(--glass-border)', 
+              color: 'var(--text-main)', 
+              cursor: 'pointer', 
+              padding: '0.5rem', 
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s'
+            }}
+            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
           <Link to="/learning" style={{ textDecoration: 'none' }}>
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn btn-primary"
-              style={{ padding: '0.6rem 1.5rem', fontSize: '0.85rem', cursor: 'pointer' }}
+              style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem', cursor: 'pointer' }}
             >
               Mulai
             </motion.button>
@@ -44,7 +73,7 @@ const Navbar = () => {
           
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+            style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             className="mobile-menu-btn"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -61,25 +90,25 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             style={{
               position: 'fixed',
-              top: '5rem',
+              top: '5.5rem',
               left: '1rem',
               right: '1rem',
-              background: 'rgba(15, 15, 15, 0.95)',
-              backdropFilter: 'blur(10px)',
+              background: 'var(--bg-card)',
+              backdropFilter: 'blur(20px)',
               borderRadius: '24px',
               padding: '2rem',
               zIndex: 999,
               border: '1px solid var(--glass-border)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
+              boxShadow: '0 20px 50px rgba(0,0,0,0.3)'
             }}
           >
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
               {links.map((link) => (
                 <li key={link.path}>
                   <Link 
                     to={link.path} 
                     onClick={() => setIsOpen(false)}
-                    style={{ color: '#fff', textDecoration: 'none', fontSize: '1.2rem', fontWeight: '600' }}
+                    style={{ color: 'var(--text-main)', textDecoration: 'none', fontSize: '1.1rem', fontWeight: '600' }}
                   >
                     {link.name}
                   </Link>
