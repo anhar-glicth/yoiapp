@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Heart, Globe, Users, BookOpen, Star } from 'lucide-react'
+import { ArrowRight, Play, ChevronLeft, ChevronRight, Heart } from 'lucide-react'
 
 const Home = () => {
   return (
@@ -11,119 +11,124 @@ const Home = () => {
       exit={{ opacity: 0 }}
     >
       {/* Hero Section */}
-      <section className="section hero" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', textAlign: 'center', paddingTop: '10rem' }}>
-        <div className="container">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span style={{ color: 'var(--primary)', fontWeight: 'bold', letterSpacing: '2px', fontSize: '0.9rem', marginBottom: '1.5rem', display: 'block' }}>
-              REVOLUSI INKLUSIVITAS DIGITAL
-            </span>
-            <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: 1.1, marginBottom: '2rem', maxWidth: '1000px', margin: '0 auto 2rem' }}>
-              Bringing Your Dream Into <span style={{ color: 'var(--primary)' }} className="glow-text">Reality</span>
-            </h1>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem', lineHeight: 1.8 }}>
-              Yo'i menjembatani kesenjangan komunikasi melalui pendidikan bahasa isyarat tercanggih dan platform kemanusiaan yang transparan.
-            </p>
-            <div style={{ 
-              display: 'flex', 
-              gap: '1rem', 
-              justifyContent: 'center', 
-              position: 'relative', 
-              zIndex: 20 
-            }}>
-              <Link to="/learning" className="btn btn-primary" style={{ textDecoration: 'none', cursor: 'pointer' }}>Mulai Belajar</Link>
-              <Link to="/donation" className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', cursor: 'pointer' }}>
-                Dukung Kami <ArrowUpRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
+      <section className="hero-wrapper">
+        <div className="hero-curve">
+          <div className="hero-pattern"></div>
+        </div>
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="grid grid-2" style={{ alignItems: 'center', minHeight: '80vh' }}>
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              style={{ color: 'white', paddingRight: '2rem' }}
+            >
+              <h1 style={{ color: 'white', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
+                Empowering Youth<br />Skills & Opportunities
+              </h1>
+              <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', marginBottom: '2.5rem', maxWidth: '500px', lineHeight: 1.6 }}>
+                We support young individuals in gaining industry-relevant skills that open doors to sustainable employment and entrepreneurship. Our programs focus on making vocational training more accessible and inclusive.
+              </p>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+                <Link to="/donation" className="btn" style={{ background: 'white', color: 'var(--primary)', padding: '1rem 2.5rem' }}>
+                  Donate Now <Heart size={18} fill="var(--primary)" style={{ marginLeft: '0.5rem' }} />
+                </Link>
+                <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'white', textDecoration: 'none', fontWeight: '600' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Play size={16} fill="white" />
+                  </div>
+                  Our process
+                </Link>
+              </div>
 
-          {/* Social Proof / Partners */}
-          <div style={{ marginTop: '6rem', opacity: 0.4, display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>SIBI.ID</span>
-            <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>BISINDO.ORG</span>
-            <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>INKLUSI+</span>
-            <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>KEMENSOS</span>
+              {/* Slider Controls */}
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '4rem' }}>
+                <button style={{ width: '50px', height: '50px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.2)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <ChevronLeft size={24} />
+                </button>
+                <button style={{ width: '50px', height: '50px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.3)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <ChevronRight size={24} />
+                </button>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              style={{ position: 'relative' }}
+            >
+              <div className="hero-image-container" style={{ borderRadius: '40px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.2)' }}>
+                <img 
+                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Empowering Youth" 
+                  style={{ width: '100%', height: 'auto', display: 'block' }} 
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Feature Section (Process) */}
+      {/* About Section */}
+      <section className="section" style={{ background: 'white' }}>
+        <div className="container">
+          <div className="grid grid-2" style={{ gap: '6rem', alignItems: 'center' }}>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <span style={{ color: 'var(--secondary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem' }}>Who We Are</span>
+                <div style={{ height: '2px', width: '60px', background: 'var(--secondary)' }}></div>
+              </div>
+              <h2 style={{ color: 'var(--text-main)', fontSize: '3rem', marginBottom: '2rem' }}>ABOUT US</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+                SkillBridge Foundation is a registered not-for-profit organization dedicated to advancing the well-being of children and promoting equality for girls and young women across communities. Through its grassroots social development efforts, SkillBridge Foundation strives to create lasting positive change in the lives of vulnerable children, their families, and their communities by adopting a gender-transformative, child-centered approach. Since its inception in 1996, SkillBridge Foundation has positively impacted the lives of millions of young people by connecting them with protective services, quality education, accessible healthcare, a healthy environment, better livelihood opportunities, and meaningful community participation.
+              </p>
+              <Link to="/about" className="btn btn-primary" style={{ padding: '1rem 2.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.8rem' }}>
+                Know More <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: '50%', padding: '0.2rem' }}><ArrowRight size={18} /></div>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="image-stack"
+            >
+              <div className="image-stack-top image-stack-item">
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800" alt="Students" />
+              </div>
+              <div className="image-stack-bottom image-stack-item">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Teamwork" />
+              </div>
+              <div className="stats-badge float-anim">
+                <h4>50 Lakh</h4>
+                <p>Lives Impacted</p>
+              </div>
+              
+              {/* Decorative Arrow */}
+              <svg style={{ position: 'absolute', bottom: '-40px', right: '120px', width: '150px', height: '150px', zIndex: 0 }} viewBox="0 0 200 200">
+                <path d="M20,180 Q100,180 150,50" fill="none" stroke="var(--accent)" strokeWidth="4" strokeDasharray="8 8" />
+                <path d="M140,60 L150,50 L160,60" fill="none" stroke="var(--accent)" strokeWidth="4" />
+              </svg>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
       <section className="section" style={{ background: 'var(--bg-dark)' }}>
         <div className="container">
-          <div style={{ marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Get a dedicated support<br/>beyond the standard</h2>
-            <Link to="/learning" className="btn btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '0.8rem', textDecoration: 'none' }}>PELAJARI</Link>
-          </div>
-
-          <div className="grid grid-3">
-            {[
-              { num: '01', title: 'Aksesibilitas Total', desc: 'Platform yang dirancang khusus untuk memenuhi standar aksesibilitas tinggi.' },
-              { num: '02', title: 'Kurikulum Modern', desc: 'Materi SIBI & BISINDO yang diperbarui secara berkala oleh para ahli.' },
-              { num: '03', title: 'Komunitas Global', desc: 'Terhubung dengan ribuan relawan dan teman disabilitas di seluruh dunia.' }
-            ].map((step, i) => (
-              <div key={i} className="glass-card" style={{ background: 'transparent', border: 'none', paddingLeft: 0 }}>
-                <div style={{ 
-                  width: '50px', 
-                  height: '50px', 
-                  background: 'var(--primary)', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  color: 'var(--text-on-primary)',
-                  fontWeight: 'bold',
-                  marginBottom: '2rem'
-                }}>
-                  {step.num}
-                </div>
-                <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>{step.title}</h3>
-                <p style={{ color: 'var(--text-muted)' }}>{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="section">
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '3.5rem' }}>Our Impact Gallery</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Momen-momen berharga dalam perjalanan inklusivitas kami.</p>
-          </div>
-          
-          <div className="grid grid-3">
-            {[
-              'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8',
-              'https://images.unsplash.com/photo-1516534775068-ba3e84529519',
-              'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4',
-              'https://images.unsplash.com/photo-1531545517296-1661c124c3a2',
-              'https://images.unsplash.com/photo-1517048676732-d65bc937f952',
-              'https://images.unsplash.com/photo-1552664730-d307ca884978'
-            ].map((img, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ scale: 0.98 }}
-                className="glass-card"
-                style={{ padding: 0, overflow: 'hidden', height: '100%' }}
-              >
-                <img src={`${img}?auto=format&fit=crop&q=80&w=400`} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} alt="gallery" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Bottom */}
-      <section className="section" style={{ textAlign: 'center', paddingBottom: '10rem' }}>
-        <div className="container">
-          <div className="glass-card" style={{ padding: '6rem 2rem', background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)' }}>
-            <h2 style={{ fontSize: '4rem', marginBottom: '2rem' }}>Become part of the<br/><span style={{ color: 'var(--primary)' }}>design revolution</span></h2>
-            <Link to="/learning" className="btn btn-primary" style={{ fontSize: '1.2rem', padding: '1.2rem 3rem', textDecoration: 'none' }}>Bergabung Sekarang</Link>
+          <div className="glass-card" style={{ textAlign: 'center', padding: '6rem 2rem', background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)', color: 'white', borderRadius: '40px' }}>
+            <h2 style={{ color: 'white', fontSize: '3.5rem', marginBottom: '2.5rem' }}>Ready to make a difference?</h2>
+            <Link to="/donation" className="btn" style={{ background: 'var(--secondary)', color: 'white', fontSize: '1.2rem', padding: '1.2rem 3.5rem' }}>Join Us Today</Link>
           </div>
         </div>
       </section>

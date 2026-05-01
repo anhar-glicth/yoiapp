@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Menu, X, Moon, Sun } from 'lucide-react'
+import { Heart, Menu, X, Moon, Sun, User, ChevronDown } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme)
@@ -17,63 +17,99 @@ const Navbar = () => {
   }
 
   const links = [
-    { name: 'Beranda', path: '/' },
-    { name: 'Tentang Kami', path: '/about' },
-    { name: 'Pendidikan', path: '/learning' },
-    { name: 'Tim Kami', path: '/team' },
-    { name: 'Dukungan', path: '/donation' },
+    { name: 'Home', path: '/' },
+    { name: 'Who We Are', path: '/about', hasDropdown: true },
+    { name: 'What We Do', path: '/learning', hasDropdown: true },
   ]
 
   return (
     <>
       <nav className="navbar">
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'var(--text-main)' }}>
-          <div style={{ background: 'var(--primary)', padding: '0.4rem', borderRadius: '8px' }}>
-            <Heart size={20} fill="var(--text-on-primary)" color="var(--text-on-primary)" />
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+          <div style={{ 
+            background: 'var(--accent)', 
+            padding: '0.4rem', 
+            borderRadius: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <Heart size={22} fill="var(--primary)" color="var(--primary)" />
           </div>
-          <span style={{ fontSize: '1.4rem', fontWeight: '800', fontFamily: "'Outfit', sans-serif", letterSpacing: '-1px' }}>Yo'i</span>
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
+            <span style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--primary)', fontFamily: "'Outfit', sans-serif" }}>Yo'i</span>
+            <span style={{ fontSize: '0.7rem', fontWeight: '700', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>Foundation</span>
+          </div>
         </Link>
         
         <ul className="nav-links">
           {links.map((link) => (
-            <li key={link.path}><Link to={link.path} className="nav-link">{link.name}</Link></li>
+            <li key={link.path} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <Link to={link.path} className="nav-link" style={{ fontSize: '0.95rem', fontWeight: '600' }}>
+                {link.name}
+              </Link>
+              {link.hasDropdown && <ChevronDown size={14} color="var(--text-muted)" />}
+            </li>
           ))}
         </ul>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <div className="nav-cta-group" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ 
+                width: '40px', 
+                height: '40px', 
+                borderRadius: '50%', 
+                background: '#f1f5f9', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                color: 'var(--text-main)'
+              }}>
+                <User size={20} />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Join Us Now</span>
+                <span style={{ fontSize: '0.85rem', fontWeight: '700' }}>Support a Child</span>
+              </div>
+            </div>
+            
+            <Link to="/donation" style={{ textDecoration: 'none' }}>
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn"
+                style={{ 
+                  background: 'var(--secondary)', 
+                  color: 'white', 
+                  padding: '0.8rem 1.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                Donate Now <Heart size={16} fill="white" />
+              </motion.button>
+            </Link>
+          </div>
+          
           <button 
             onClick={toggleTheme}
             style={{ 
-              background: 'var(--glass)', 
-              border: '1px solid var(--glass-border)', 
-              color: 'var(--text-main)', 
-              cursor: 'pointer', 
-              padding: '0.5rem', 
-              borderRadius: '50%',
+              background: 'none', 
+              border: 'none', 
+              color: 'var(--text-muted)', 
+              cursor: 'pointer',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s'
+              alignItems: 'center'
             }}
-            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
-          <Link to="/learning" style={{ textDecoration: 'none' }}>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn btn-primary"
-              style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem', cursor: 'pointer' }}
-            >
-              Mulai
-            </motion.button>
-          </Link>
-          
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+            style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer', display: 'none' }}
             className="mobile-menu-btn"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -90,16 +126,15 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             style={{
               position: 'fixed',
-              top: '5.5rem',
+              top: '5rem',
               left: '1rem',
               right: '1rem',
               background: 'var(--bg-card)',
-              backdropFilter: 'blur(20px)',
               borderRadius: '24px',
               padding: '2rem',
               zIndex: 999,
               border: '1px solid var(--glass-border)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.3)'
+              boxShadow: '0 20px 50px rgba(0,0,0,0.1)'
             }}
           >
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
@@ -114,19 +149,21 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/donation" className="btn" style={{ background: 'var(--secondary)', color: 'white', width: '100%', marginTop: '1rem' }}>
+                  Donate Now
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
-        .mobile-menu-btn {
-          display: none;
-        }
-        @media (max-width: 640px) {
-          .mobile-menu-btn {
-            display: block;
-          }
+        @media (max-width: 1024px) {
+          .nav-links { display: none; }
+          .nav-cta-group { display: none; }
+          .mobile-menu-btn { display: block !important; }
         }
       `}</style>
     </>
