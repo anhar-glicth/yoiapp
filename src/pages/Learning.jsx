@@ -40,6 +40,8 @@ const Learning = () => {
     ? hijaiyahData
     : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(char => ({ char, id: char.toLowerCase() }))
 
+  const [imageError, setImageError] = useState(false)
+
   // Preload images for current tab to reduce click delay
   useEffect(() => {
     alphabet.forEach(item => {
@@ -48,10 +50,11 @@ const Learning = () => {
     })
   }, [activeTab, alphabet])
 
-  // Reset loading state when letter changes
+  // Reset loading and error state when letter changes
   useEffect(() => {
     if (selectedLetter) {
       setIsImageLoading(true)
+      setImageError(false)
     }
   }, [selectedLetter])
 
@@ -180,35 +183,46 @@ const Learning = () => {
                     justifyContent: 'center',
                     border: '1px solid var(--glass-border)',
                     marginBottom: '1rem',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    position: 'relative'
                   }}>
-                    <img
-                      src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`}
-                      alt={`Isyarat ${selectedLetter.char}`}
-                      style={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'contain',
-                        opacity: isImageLoading ? 0 : 1,
-                        transition: 'opacity 0.3s ease'
-                      }}
-                      onLoad={() => setIsImageLoading(false)}
-                      onError={(e) => {
-                        setIsImageLoading(false)
-                        e.target.style.display = 'none'
-                        e.target.nextSibling.style.display = 'block'
-                      }}
-                    />
+                    {!imageError && (
+                      <img
+                        src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`}
+                        alt={`Isyarat ${selectedLetter.char}`}
+                        style={{ 
+                          width: '100%', 
+                          height: '100%', 
+                          objectFit: 'contain',
+                          opacity: isImageLoading ? 0 : 1,
+                          transition: 'opacity 0.3s ease'
+                        }}
+                        onLoad={() => setIsImageLoading(false)}
+                        onError={() => {
+                          setIsImageLoading(false)
+                          setImageError(true)
+                        }}
+                      />
+                    )}
+                    
                     {isImageLoading && (
                       <div style={{ position: 'absolute' }}>
                         <Loader2 className="animate-spin" size={32} color="var(--primary)" />
                       </div>
                     )}
-                    <span style={{ fontSize: '3rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
-                      {selectedLetter.char}
-                    </span>
+
+                    {imageError && (
+                      <div style={{ textAlign: 'center', padding: '1rem' }}>
+                        <span style={{ fontSize: '4rem', color: 'var(--primary)', opacity: 0.8, display: 'block', marginBottom: '0.5rem' }}>
+                          {selectedLetter.char}
+                        </span>
+                        <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Gambar belum tersedia</p>
+                      </div>
+                    )}
                   </div>
-                  <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>Isyarat untuk huruf {selectedLetter.char}</p>
+                  <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
+                    {imageError ? `Belum ada gambar untuk isyarat ${selectedLetter.char}` : `Isyarat untuk huruf ${selectedLetter.char}`}
+                  </p>
                 </motion.div>
               )}
             </AnimatePresence>
