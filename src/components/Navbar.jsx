@@ -21,7 +21,7 @@ const Navbar = () => {
     { name: 'Tentang Kami', path: '/about' },
     { name: 'Pendidikan', path: '/learning' },
     { name: 'Tim Kami', path: '/team' },
-    { name: 'Dukungan', path: '/donation' },
+    { name: 'Inovasi', path: '/inovasi' },
   ]
 
   return (

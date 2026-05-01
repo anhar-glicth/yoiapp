@@ -317,11 +317,12 @@ h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); }
   opacity: 1;
 }
 
-/* Hero Section Special Shapes */
+
+/* Hero Section */
 .hero-wrapper {
   position: relative;
   overflow: hidden;
-  background: var(--bg-dark);
+  background: #eef2f8;
 }
 
 /* hero-curve is now handled inline in JSX */

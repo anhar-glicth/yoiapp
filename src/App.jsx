@@ -7,6 +7,7 @@ import Team from './pages/Team'
 import Learning from './pages/Learning'
 import About from './pages/About'
 import Donation from './pages/Donation'
+import Inovasi from './pages/Inovasi'
 import ModuleDetail from './pages/ModuleDetail'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/learning" element={<Learning />} />
             <Route path="/learning/:moduleId" element={<ModuleDetail />} />
             <Route path="/donation" element={<Donation />} />
+            <Route path="/inovasi" element={<Inovasi />} />
           </Routes>
         </AnimatePresence>
       </main>

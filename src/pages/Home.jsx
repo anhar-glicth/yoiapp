@@ -16,16 +16,16 @@ const Home = () => {
           <div className="hero-pattern"></div>
         </div>
         
-        {/* Hero blob shape - large rounded rect covering left portion, image floats on right */}
-        <div style={{ position: 'relative', width: '100%', minHeight: '88vh', display: 'flex', alignItems: 'center' }}>
+        {/* Hero blob shape */}
+        <div style={{ position: 'relative', width: '100%', minHeight: '92vh', display: 'flex', alignItems: 'center', paddingTop: '80px' }}>
           
-          {/* THE BLUE BLOB - exactly like screenshot: covers left ~65%, big border-radius on right side */}
+          {/* THE BLUE BLOB - covers left ~65%, big border-radius on right side */}
           <div style={{
             position: 'absolute',
-            top: 0,
+            top: '-80px',
             left: 0,
             width: '65%',
-            height: '100%',
+            height: 'calc(100% + 80px)',
             background: 'var(--primary)',
             borderRadius: '0 120px 120px 0',
             zIndex: 0,
@@ -46,7 +46,7 @@ const Home = () => {
 
           {/* Content row */}
           <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', minHeight: '80vh', paddingTop: '2rem', paddingBottom: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', minHeight: '75vh', paddingTop: '1rem', paddingBottom: '3rem' }}>
               
               {/* Left: text inside the blob */}
               <motion.div
