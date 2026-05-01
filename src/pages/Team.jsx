@@ -8,7 +8,7 @@ const Team = () => {
       name: 'Muhammad Anhar Solihin',
       role: 'Founder & Lead Tech',
       desc: 'Ahli teknologi asistif dengan pengalaman 10+ tahun dalam pengembangan platform inklusif.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300'
+      image: '/anhar.jpeg'
     },
     {
       name: 'Nurul Hasanah',
