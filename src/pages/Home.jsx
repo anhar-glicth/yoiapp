@@ -16,58 +16,91 @@ const Home = () => {
           <div className="hero-pattern"></div>
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="grid grid-2" style={{ alignItems: 'center', minHeight: '80vh' }}>
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              style={{ color: 'white', paddingRight: '2rem' }}
-            >
-              <h1 style={{ color: 'white', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-                Empowering Youth<br />Skills & Opportunities
-              </h1>
-              <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', marginBottom: '2.5rem', maxWidth: '500px', lineHeight: 1.6 }}>
-                We support young individuals in gaining industry-relevant skills that open doors to sustainable employment and entrepreneurship. Our programs focus on making vocational training more accessible and inclusive.
-              </p>
+        {/* Hero blob shape - large rounded rect covering left portion, image floats on right */}
+        <div style={{ position: 'relative', width: '100%', minHeight: '88vh', display: 'flex', alignItems: 'center' }}>
+          
+          {/* THE BLUE BLOB - exactly like screenshot: covers left ~65%, big border-radius on right side */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '65%',
+            height: '100%',
+            background: 'var(--primary)',
+            borderRadius: '0 120px 120px 0',
+            zIndex: 0,
+          }} />
+
+          {/* Dotted pattern on the right */}
+          <div style={{
+            position: 'absolute',
+            right: '2%',
+            top: '10%',
+            width: '340px',
+            height: '340px',
+            backgroundImage: 'radial-gradient(circle, rgba(21,101,192,0.25) 2px, transparent 2px)',
+            backgroundSize: '28px 28px',
+            zIndex: 0,
+            borderRadius: '50%',
+          }} />
+
+          {/* Content row */}
+          <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', minHeight: '80vh', paddingTop: '2rem', paddingBottom: '2rem' }}>
               
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-                <Link to="/donation" className="btn" style={{ background: 'white', color: 'var(--primary)', padding: '1rem 2.5rem' }}>
-                  Donate Now <Heart size={18} fill="var(--primary)" style={{ marginLeft: '0.5rem' }} />
-                </Link>
-                <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'white', textDecoration: 'none', fontWeight: '600' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Play size={16} fill="white" />
-                  </div>
-                  Our process
-                </Link>
-              </div>
+              {/* Left: text inside the blob */}
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                style={{ color: 'white' }}
+              >
+                <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3.8rem)', marginBottom: '1.5rem', lineHeight: 1.15, fontWeight: '800' }}>
+                  Empowering Youth<br />Skills &amp; Opportunities
+                </h1>
+                <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1rem', marginBottom: '2.5rem', maxWidth: '460px', lineHeight: 1.7 }}>
+                  Kami mendukung individu muda dalam mendapatkan keterampilan relevan industri yang membuka pintu menuju lapangan kerja berkelanjutan dan kewirausahaan. Program kami berfokus pada pelatihan vokasional yang lebih aksesibel dan inklusif.
+                </p>
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+                  <Link to="/donation" className="btn" style={{ background: 'white', color: 'var(--primary)', padding: '0.9rem 2.2rem', fontWeight: '700', borderRadius: '100px', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                    Dukung Kami <Heart size={16} fill="var(--primary)" />
+                  </Link>
+                  <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1rem' }}>
+                    <div style={{ width: '42px', height: '42px', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Play size={16} fill="white" color="white" />
+                    </div>
+                    Proses Kami
+                  </Link>
+                </div>
 
-              {/* Slider Controls */}
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '4rem' }}>
-                <button style={{ width: '50px', height: '50px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.2)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <ChevronLeft size={24} />
-                </button>
-                <button style={{ width: '50px', height: '50px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.3)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <ChevronRight size={24} />
-                </button>
-              </div>
-            </motion.div>
+                {/* Slider Controls */}
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <button style={{ width: '48px', height: '48px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.25)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <ChevronLeft size={22} />
+                  </button>
+                  <button style={{ width: '48px', height: '48px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.4)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <ChevronRight size={22} />
+                  </button>
+                </div>
+              </motion.div>
 
-            <motion.div
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              style={{ position: 'relative' }}
-            >
-              <div className="hero-image-container" style={{ borderRadius: '40px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.2)' }}>
-                <img 
-                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=1200" 
-                  alt="Empowering Youth" 
-                  style={{ width: '100%', height: 'auto', display: 'block' }} 
-                />
-              </div>
-            </motion.div>
+              {/* Right: image floating OUTSIDE the blob */}
+              <motion.div
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
+              >
+                <div style={{ borderRadius: '30px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.18)', maxWidth: '480px', width: '100%' }}>
+                  <img 
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=900" 
+                    alt="Empowering Youth" 
+                    style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }} 
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

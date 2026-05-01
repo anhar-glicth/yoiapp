@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Menu, X, Moon, Sun, User, ChevronDown } from 'lucide-react'
+import { Heart, Menu, X, Moon, Sun, User } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,9 +17,11 @@ const Navbar = () => {
   }
 
   const links = [
-    { name: 'Home', path: '/' },
-    { name: 'Who We Are', path: '/about', hasDropdown: true },
-    { name: 'What We Do', path: '/learning', hasDropdown: true },
+    { name: 'Beranda', path: '/' },
+    { name: 'Tentang Kami', path: '/about' },
+    { name: 'Pendidikan', path: '/learning' },
+    { name: 'Tim Kami', path: '/team' },
+    { name: 'Dukungan', path: '/donation' },
   ]
 
   return (
@@ -44,11 +46,10 @@ const Navbar = () => {
         
         <ul className="nav-links">
           {links.map((link) => (
-            <li key={link.path} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+            <li key={link.path}>
               <Link to={link.path} className="nav-link" style={{ fontSize: '0.95rem', fontWeight: '600' }}>
                 {link.name}
               </Link>
-              {link.hasDropdown && <ChevronDown size={14} color="var(--text-muted)" />}
             </li>
           ))}
         </ul>
