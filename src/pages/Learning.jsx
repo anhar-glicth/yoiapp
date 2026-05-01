@@ -89,26 +89,28 @@ const Learning = () => {
           </motion.div>
 
           {/* Wrap alphabet and preview in a container for mobile side-by-side */}
-          <div className="alphabet-container" style={{ display: 'contents' }}>
+          <div className="alphabet-container">
             {/* 2. Alphabet Grid */}
-            <div className="glass-card" style={{ background: '#080808' }}>
-              <h3 style={{ marginBottom: '2rem', fontSize: '1.4rem' }}>{activeTab === 'quran' ? 'Huruf Hijaiyah' : `Alfabet ${activeTab.toUpperCase()}`}</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(50px, 1fr))', gap: '0.6rem' }}>
+            <div className="glass-card alphabet-card" style={{ background: '#080808', height: 'fit-content' }}>
+              <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>{activeTab === 'quran' ? 'Hijaiyah' : `Alfabet`}</h3>
+              <div className="alphabet-grid">
                 {alphabet.map((char) => (
                   <motion.button
                     key={char}
                     whileHover={{ scale: 1.1, borderColor: 'var(--primary)' }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setSelectedLetter(char)}
+                    className={`alphabet-btn ${selectedLetter === char ? 'active' : ''}`}
                     style={{ 
                       aspectRatio: '1/1', 
-                      borderRadius: '10px', 
+                      borderRadius: '8px', 
                       border: '1px solid var(--glass-border)',
                       background: selectedLetter === char ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
                       color: selectedLetter === char ? '#000' : '#fff',
-                      fontSize: activeTab === 'quran' ? '1.4rem' : '1rem',
+                      fontSize: activeTab === 'quran' ? '1.2rem' : '0.9rem',
                       fontWeight: 'bold',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      width: '100%'
                     }}
                   >
                     {char}
@@ -117,13 +119,13 @@ const Learning = () => {
               </div>
             </div>
 
-            {/* 3. Preview Panel (Appears to the right or side) */}
+            {/* 3. Preview Panel (Appears to the right) */}
             <AnimatePresence>
               {selectedLetter && (
                 <motion.div 
-                  initial={{ opacity: 0, scale: 0.9, x: 20 }}
-                  animate={{ opacity: 1, scale: 1, x: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, x: 20 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
                   className="glass-card preview-panel"
                   style={{ 
                     textAlign: 'center', 
@@ -131,26 +133,27 @@ const Learning = () => {
                     position: 'relative',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center'
+                    justifyContent: 'start',
+                    padding: '1rem'
                   }}
                 >
                   <button 
                     onClick={() => setSelectedLetter(null)}
-                    style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
+                    style={{ position: 'absolute', top: '0.5rem', right: '0.5rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
                   >
-                    <X size={20} />
+                    <X size={16} />
                   </button>
-                  <h3 style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>Pratinjau: {selectedLetter}</h3>
+                  <h3 style={{ marginBottom: '1rem', fontSize: '1rem' }}>{selectedLetter}</h3>
                   <div className="preview-box" style={{ 
                     width: '100%', 
                     aspectRatio: '1/1', 
                     background: 'rgba(0,0,0,0.3)', 
-                    borderRadius: '16px', 
+                    borderRadius: '12px', 
                     display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'center', 
                     border: '1px solid var(--glass-border)',
-                    marginBottom: '1.5rem',
+                    marginBottom: '1rem',
                     overflow: 'hidden'
                   }}>
                     <img 
@@ -162,11 +165,11 @@ const Learning = () => {
                         e.target.nextSibling.style.display = 'block'
                       }}
                     />
-                    <span style={{ fontSize: '5rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
+                    <span style={{ fontSize: '3rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
                       {selectedLetter}
                     </span>
                   </div>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Gerakan tangan untuk "{selectedLetter}" akan muncul di sini.</p>
+                  <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>Isyarat untuk huruf {selectedLetter}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -202,33 +205,31 @@ const Learning = () => {
           grid-template-columns: 1fr;
         }
 
-        /* Mobile Optimization: Side-by-Side Grid & Preview */
+        .alphabet-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+          gap: 0.5rem;
+        }
+
+        .alphabet-container {
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: 1fr;
+        }
+
+        /* Mobile Optimization: Strictly Side-by-Side */
         @media (max-width: 767px) {
-          .learning-layout {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-          }
-          
-          /* Make alphabet and preview side-by-side if selected */
           ${selectedLetter ? `
             .alphabet-container {
-              display: grid !important;
-              grid-template-columns: 1.2fr 1fr;
-              gap: 1rem;
-              align-items: start;
+              grid-template-columns: 1.4fr 1fr;
+            }
+            .alphabet-grid {
+              grid-template-columns: repeat(3, 1fr);
             }
             .preview-panel {
               position: sticky;
-              top: 6rem;
-              padding: 1rem !important;
-            }
-            .preview-box {
-              height: 120px !important;
-              margin-bottom: 0.5rem !important;
-            }
-            .preview-panel h3, .preview-panel p {
-              font-size: 0.7rem !important;
-              margin-bottom: 0.5rem !important;
+              top: 80px;
+              height: fit-content;
             }
           ` : ''}
         }
@@ -237,21 +238,20 @@ const Learning = () => {
           .learning-layout {
             grid-template-columns: 1fr 1fr;
           }
+          .alphabet-container {
+            grid-template-columns: 1fr;
+          }
         }
 
         @media (min-width: 1024px) {
           .learning-layout {
-            grid-template-columns: ${selectedLetter ? '1fr 1.5fr 1fr' : '1fr 2fr'};
+            grid-template-columns: ${selectedLetter ? '1fr 2.5fr' : '1fr 2fr'};
           }
-        }
-
-        .preview-panel {
-          height: fit-content;
-        }
-
-        @media (max-width: 1023px) {
-          .preview-panel {
-            grid-column: 1 / -1;
+          .alphabet-container {
+            grid-template-columns: ${selectedLetter ? '1.5fr 1fr' : '1fr'};
+          }
+          .alphabet-grid {
+            grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
           }
         }
       `}</style>
