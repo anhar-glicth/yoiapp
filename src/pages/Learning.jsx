@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Play, Book, Info, Globe, MessageSquare, Camera, Heart, X } from 'lucide-react'
+import { Play, Book, Info, Globe, MessageSquare, Camera, Heart, X, Loader2 } from 'lucide-react'
 
 const Learning = () => {
   const [activeTab, setActiveTab] = useState('sibi')
   const [selectedLetter, setSelectedLetter] = useState(null)
+  const [isImageLoading, setIsImageLoading] = useState(false)
 
   const content = {
     sibi: {
@@ -38,6 +39,21 @@ const Learning = () => {
   const alphabet = activeTab === 'quran'
     ? hijaiyahData
     : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(char => ({ char, id: char.toLowerCase() }))
+
+  // Preload images for current tab to reduce click delay
+  useEffect(() => {
+    alphabet.forEach(item => {
+      const img = new Image()
+      img.src = `/isyarat/${activeTab}/${item.id}.jpg`
+    })
+  }, [activeTab, alphabet])
+
+  // Reset loading state when letter changes
+  useEffect(() => {
+    if (selectedLetter) {
+      setIsImageLoading(true)
+    }
+  }, [selectedLetter])
 
   return (
     <motion.div
@@ -169,12 +185,25 @@ const Learning = () => {
                     <img
                       src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`}
                       alt={`Isyarat ${selectedLetter.char}`}
-                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'contain',
+                        opacity: isImageLoading ? 0 : 1,
+                        transition: 'opacity 0.3s ease'
+                      }}
+                      onLoad={() => setIsImageLoading(false)}
                       onError={(e) => {
+                        setIsImageLoading(false)
                         e.target.style.display = 'none'
                         e.target.nextSibling.style.display = 'block'
                       }}
                     />
+                    {isImageLoading && (
+                      <div style={{ position: 'absolute' }}>
+                        <Loader2 className="animate-spin" size={32} color="var(--primary)" />
+                      </div>
+                    )}
                     <span style={{ fontSize: '3rem', color: 'var(--primary)', opacity: 0.8, display: 'none' }}>
                       {selectedLetter.char}
                     </span>

@@ -295,3 +295,13 @@ h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); }
   transform: translateY(-3px);
   opacity: 1;
 }
+
+/* Animations */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
