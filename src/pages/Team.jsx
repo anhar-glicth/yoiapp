@@ -14,31 +14,31 @@ const Team = () => {
       name: 'Nurul Hasanah',
       role: 'Head of Education',
       desc: 'Pakar Bahasa Isyarat (SIBI & BISINDO) yang berdedikasi menciptakan kurikulum ramah Tuli.',
-      image: 'public/WhatsApp Image 2026-05-01 at 15.44.42.jpeg'
+      image: '/nurul.jpeg'
     },
     {
       name: 'Aira Rakmah',
       role: 'Fullstack Developer',
       desc: 'Spesialis React & Node.js yang fokus pada aksesibilitas web dan performa tinggi.',
-      image: 'public/Aira Rakmah.jpeg'
+      image: '/aira.jpeg'
     },
     {
       name: 'Ghaitsa Shofa Adelya',
       role: 'Community Manager',
       desc: 'Penghubung antara teknologi Yo\'i dengan komunitas disabilitas di seluruh Indonesia.',
-      image: 'public/Ghaitsa Shofa Adelya.JPG'
+      image: '/ghaitsa.jpg'
     },
     {
       name: 'Jabaringin Hasibuan',
       role: 'Community Manager',
       desc: 'Penghubung antara teknologi Yo\'i dengan komunitas disabilitas di seluruh Indonesia.',
-      image: 'public/Ghaitsa Shofa Adelya.JPG'
+      image: '/ghaitsa.jpg'
     },
     {
       name: 'Indi',
       role: 'Community Manager',
       desc: 'Penghubung antara teknologi Yo\'i dengan komunitas disabilitas di seluruh Indonesia.',
-      image: 'public/Ghaitsa Shofa Adelya.JPG'
+      image: '/ghaitsa.jpg'
     }
 
 
