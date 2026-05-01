@@ -20,6 +20,8 @@ const Navbar = () => {
     { name: 'Beranda', path: '/' },
     { name: 'Tentang Kami', path: '/about' },
     { name: 'Pendidikan', path: '/learning' },
+    { name: 'Pelatihan', path: '/pelatihan' },
+    { name: 'Lowongan Kerja', path: '/lowongan' },
     { name: 'Tim Kami', path: '/team' },
     { name: 'Inovasi', path: '/inovasi' },
   ]

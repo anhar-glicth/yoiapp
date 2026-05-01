@@ -8,6 +8,8 @@ import Learning from './pages/Learning'
 import About from './pages/About'
 import Donation from './pages/Donation'
 import Inovasi from './pages/Inovasi'
+import Pelatihan from './pages/Pelatihan'
+import LowonganKerja from './pages/LowonganKerja'
 import ModuleDetail from './pages/ModuleDetail'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -25,6 +27,8 @@ function App() {
             <Route path="/learning/:moduleId" element={<ModuleDetail />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/inovasi" element={<Inovasi />} />
+            <Route path="/pelatihan" element={<Pelatihan />} />
+            <Route path="/lowongan" element={<LowonganKerja />} />
           </Routes>
         </AnimatePresence>
       </main>
