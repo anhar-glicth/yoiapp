@@ -38,10 +38,10 @@ const trainings = [
 ]
 
 const stats = [
-  { icon: <BookOpen size={28} />, value: '20+', label: 'Program Pelatihan', color: '#1565C0' },
+  { icon: <BookOpen size={28} />, value: '20+', label: 'Kelas EduWork', color: '#1565C0' },
   { icon: <Users size={28} />, value: '1.200+', label: 'Peserta Aktif', color: '#FF6D00' },
   { icon: <Award size={28} />, value: '98%', label: 'Tingkat Kepuasan', color: '#2E7D32' },
-  { icon: <TrendingUp size={28} />, value: '85%', label: 'Peserta Dapat Kerja', color: '#6A1B9A' },
+  { icon: <TrendingUp size={28} />, value: '85%', label: 'Langsung Dapat Kerja', color: '#6A1B9A' },
 ]
 
 const Pelatihan = () => {
@@ -56,10 +56,10 @@ const Pelatihan = () => {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 2px, transparent 2px)', backgroundSize: '30px 30px', zIndex: 0 }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.7 }}>
-            <span style={{ display: 'inline-block', background: 'rgba(255,255,255,0.2)', color: 'white', padding: '0.4rem 1.2rem', borderRadius: '100px', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '2px', marginBottom: '1.5rem', textTransform: 'uppercase' }}>Program Pelatihan</span>
-            <h1 style={{ color: 'white', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', marginBottom: '1.2rem' }}>Tingkatkan Skill,<br />Raih Masa Depan</h1>
+            <span style={{ display: 'inline-block', background: 'rgba(255,255,255,0.2)', color: 'white', padding: '0.4rem 1.2rem', borderRadius: '100px', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '2px', marginBottom: '1.5rem', textTransform: 'uppercase' }}>⚡ EduWork — Belajar, Berkarya, Bekerja</span>
+            <h1 style={{ color: 'white', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', marginBottom: '1.2rem' }}>Pendidikan yang<br />Langsung Siap Kerja</h1>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.1rem', maxWidth: '560px', margin: '0 auto', lineHeight: 1.8 }}>
-              Program pelatihan vokasional kami dirancang untuk mempersiapkan generasi muda menghadapi tantangan dunia kerja modern.
+              EduWork menghadirkan pelatihan berbasis industri nyata — kurikulum bersama praktisi, proyek langsung, dan portofolio siap kerja setelah lulus.
             </p>
           </motion.div>
         </div>
@@ -87,7 +87,8 @@ const Pelatihan = () => {
       <section className="section" style={{ background: 'var(--bg-dark)', paddingTop: '3rem' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ color: 'var(--text-main)', marginBottom: '2rem' }}>Pilih Program Pelatihan</h2>
+            <h2 style={{ color: 'var(--text-main)', marginBottom: '0.6rem' }}>Pilih Kelas EduWork</h2>
+            <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.95rem' }}>Semua kelas dirancang bersama praktisi industri — bukan teori saja, tapi langsung praktik nyata.</p>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
               {categories.map(cat => (
                 <button key={cat} onClick={() => setActiveCategory(cat)} style={{ padding: '0.6rem 1.4rem', borderRadius: '100px', border: 'none', cursor: 'pointer', fontWeight: '600', fontSize: '0.9rem', transition: 'all 0.25s', background: activeCategory === cat ? 'var(--primary)' : 'var(--bg-card)', color: activeCategory === cat ? 'white' : 'var(--text-muted)', boxShadow: activeCategory === cat ? '0 4px 14px var(--primary-glow)' : 'none' }}>
@@ -130,11 +131,11 @@ const Pelatihan = () => {
         <div className="container">
           <div className="glass-card" style={{ padding: '5rem 2rem', textAlign: 'center', background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)', borderRadius: '40px' }}>
             <Target size={48} color="rgba(255,255,255,0.6)" style={{ marginBottom: '1.5rem' }} />
-            <h2 style={{ color: 'white', marginBottom: '1rem' }}>Siap Memulai Pelatihan?</h2>
+            <h2 style={{ color: 'white', marginBottom: '1rem' }}>Mulai Perjalanan EduWork-mu</h2>
             <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '460px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
-              Daftarkan diri Anda sekarang dan mulai perjalanan pengembangan skill bersama Yo'i Foundation.
+              Daftarkan diri sekarang dan dapatkan akses ke kelas industri, mentor berpengalaman, dan portofolio siap kerja.
             </p>
-            <a href="mailto:info@yoi.or.id" className="btn" style={{ background: 'var(--secondary)', color: 'white', padding: '1rem 3rem', fontSize: '1.05rem' }}>Hubungi Kami</a>
+            <a href="mailto:info@yoi.or.id" className="btn" style={{ background: 'var(--secondary)', color: 'white', padding: '1rem 3rem', fontSize: '1.05rem' }}>Daftar EduWork Gratis</a>
           </div>
         </div>
       </section>
