@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
 
 const FloatingWhatsApp = () => {
-  const whatsappNumber = '6281234567890' // Ganti dengan nomor asli
+  const whatsappNumber = '6287816431029' // Ganti dengan nomor asli
   const message = 'Halo Yo\'i Foundation, saya ingin bertanya tentang program Anda.'
   
   const handleClick = () => {
