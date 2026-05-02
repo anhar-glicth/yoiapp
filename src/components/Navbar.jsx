@@ -32,16 +32,16 @@ const Navbar = () => {
   // Primary links shown directly in navbar
   const primaryLinks = [
     { name: 'Beranda', path: '/' },
-    { name: 'Tentang Kami', path: '/about' },
     { name: 'Pendidikan', path: '/learning' },
     { name: 'Pelatihan', path: '/pelatihan' },
-    { name: 'Tim Kami', path: '/team' },
+    { name: 'Lowongan Kerja', path: '/lowongan' },
+    { name: 'Inovasi', path: '/inovasi' },
   ]
 
   // Secondary links inside "Lainnya" dropdown
   const moreLinks = [
-    { name: 'Lowongan Kerja', path: '/lowongan', icon: '💼' },
-    { name: 'Inovasi', path: '/inovasi', icon: '💡' },
+    { name: 'Tentang Kami', path: '/about', icon: '🏛️' },
+    { name: 'Tim Kami', path: '/team', icon: '👥' },
   ]
 
   const allLinks = [...primaryLinks, ...moreLinks]
