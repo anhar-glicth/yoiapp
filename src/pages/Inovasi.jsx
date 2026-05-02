@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Lightbulb, Rocket, Cpu, Leaf, Globe, Zap, Sparkles, ArrowRight } from 'lucide-react'
+import { Lightbulb, Rocket, Cpu, Leaf, Globe, Zap, Sparkles, ArrowRight, Code, Database, Layers, CheckCircle2, Milestone } from 'lucide-react'
 
 const innovations = [
   {
@@ -9,20 +9,23 @@ const innovations = [
     tag: 'Pendidikan',
     desc: 'Platform pembelajaran cerdas yang mengonversi video ceramah menjadi teks dan isyarat secara real-time.',
     color: '#FFD600',
+    tech: 'TensorFlow, Python'
   },
   {
     icon: <Rocket size={28} />,
     title: 'Yo\'i Connect',
     tag: 'Teknologi',
     desc: 'Alat bantu komunikasi wearable yang menerjemahkan gerakan tangan menjadi suara melalui Bluetooth.',
-    color: '#3b82f6',
+    color: 'var(--primary)',
+    tech: 'IoT, Arduino, BLE'
   },
   {
     icon: <Cpu size={28} />,
     title: 'Smart-Deaf Hub',
     tag: 'Digital',
     desc: 'Sistem manajemen rumah pintar yang terintegrasi dengan notifikasi visual untuk teman-teman Tuli.',
-    color: '#FF6D00',
+    color: 'var(--secondary)',
+    tech: 'Raspberry Pi, MQTT'
   },
   {
     icon: <Leaf size={28} />,
@@ -30,6 +33,7 @@ const innovations = [
     tag: 'Lingkungan',
     desc: 'Program pengolahan limbah ramah disabilitas yang menciptakan lapangan kerja inklusif dan berkelanjutan.',
     color: '#10b981',
+    tech: 'Green Tech, Logistics'
   },
   {
     icon: <Globe size={28} />,
@@ -37,13 +41,7 @@ const innovations = [
     tag: 'Komunitas',
     desc: 'Standardisasi isyarat internasional untuk mempermudah kolaborasi disabilitas antar negara.',
     color: '#8b5cf6',
-  },
-  {
-    icon: <Zap size={28} />,
-    title: 'Social Impact Lab',
-    tag: 'Sosial',
-    desc: 'Inkubator ide bisnis untuk wirausahawan disabilitas yang ingin menciptakan perubahan sosial.',
-    color: '#ef4444',
+    tech: 'Wiki, NLP'
   },
 ]
 
@@ -53,111 +51,87 @@ const Inovasi = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      style={{ background: 'var(--bg-dark)' }}
+      style={{ background: 'var(--bg-dark)', paddingBottom: '10rem' }}
     >
-      {/* Hero Banner Premium */}
-      <section style={{
-        position: 'relative',
-        overflow: 'hidden',
-        background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)',
-        paddingTop: '100px',
-        paddingBottom: '120px',
-        textAlign: 'center',
+      {/* Hero Innovation */}
+      <section style={{ 
+        paddingTop: '10rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden',
+        background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
       }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px)',
-          backgroundSize: '40px 40px',
-          zIndex: 0,
-        }} />
-        
-        <div style={{
-          position: 'absolute', top: '10%', left: '-5%', width: '300px', height: '300px',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
-          borderRadius: '50%', zIndex: 0
-        }} />
+        <div className="container">
+          <div className="grid grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+            <motion.div
+              initial={{ x: -30, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div style={{ 
+                display: 'inline-flex', padding: '0.6rem 1.2rem', background: 'var(--primary-glow)', 
+                borderRadius: '100px', color: 'var(--primary)', fontSize: '0.85rem',
+                fontWeight: '800', marginBottom: '2rem'
+              }}>LABORATORIUM INOVASI</div>
+              <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: '900', lineHeight: 1, marginBottom: '2rem' }}>
+                Masa Depan <br /><span style={{ color: 'var(--primary)' }}>Tanpa Batas</span>
+              </h1>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+                Kami mengembangkan teknologi asisitif tercanggih untuk meruntuhkan hambatan komunikasi dan menciptakan kesetaraan bagi semua.
+              </p>
+              <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#fff', fontWeight: '700' }}>
+                  <CheckCircle2 size={18} color="var(--primary)" /> 12+ Proyek Aktif
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#fff', fontWeight: '700' }}>
+                  <Zap size={18} color="var(--secondary)" /> Riset Berbasis AI
+                </div>
+              </div>
+            </motion.div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div style={{ 
-              display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
-              padding: '0.6rem 1.2rem', background: 'rgba(255,255,255,0.15)',
-              borderRadius: '100px', color: '#fff', fontSize: '0.8rem',
-              fontWeight: '700', marginBottom: '2rem', letterSpacing: '1px',
-              backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)'
-            }}>
-              <Sparkles size={16} /> LABORATORIUM INOVASI
-            </div>
-            <h1 style={{ color: 'white', fontSize: 'clamp(2.8rem, 7vw, 4.5rem)', marginBottom: '1.5rem', fontWeight: '800' }}>
-              Masa Depan <br /><span style={{ color: 'var(--accent)' }}>Tanpa Batas</span>
-            </h1>
-            <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.15rem', maxWidth: '650px', margin: '0 auto', lineHeight: 1.8 }}>
-              Kami mengembangkan teknologi dan solusi kreatif untuk meruntuhkan hambatan komunikasi dan menciptakan kesetaraan bagi semua.
-            </p>
-          </motion.div>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="glass-card" 
+              style={{ padding: '0.8rem', borderRadius: '48px', background: 'var(--bg-card)', position: 'relative' }}
+            >
+              <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 3, background: 'rgba(0,0,0,0.6)', padding: '0.6rem 1.2rem', borderRadius: '100px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)', fontSize: '0.75rem', fontWeight: '800', color: '#fff' }}>
+                LIVE FROM YO'I LAB 🔬
+              </div>
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" 
+                alt="Innovation" 
+                style={{ width: '100%', borderRadius: '40px', display: 'block', height: '450px', objectFit: 'cover' }} 
+              />
+            </motion.div>
+          </div>
         </div>
-
-        {/* Wave decoration */}
-        <svg viewBox="0 0 1440 100" style={{ position: 'absolute', bottom: -1, left: 0, width: '100%', height: 'auto' }} preserveAspectRatio="none">
-          <path d="M0,100 C240,0 480,100 720,50 C960,0 1200,100 1440,50 L1440,100 L0,100 Z" fill="var(--bg-dark)" />
-        </svg>
       </section>
 
-      {/* Innovation Cards Section */}
-      <section className="section" style={{ background: 'var(--bg-dark)', padding: '4rem 0 8rem' }}>
+      {/* Main Innovation Grid */}
+      <section className="section">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1rem' }}>Eksperimen & Proyek</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Eksplorasi solusi masa depan yang sedang kami inkubasi.</p>
+            <h2 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '1.5rem' }}>Eksplorasi Proyek</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Solusi masa depan yang sedang kami inkubasi di Yo'i Lab.</p>
           </div>
 
           <div className="scroll-x">
             {innovations.map((item, i) => (
               <motion.div
                 key={i}
+                whileHover={{ y: -15 }}
                 className="glass-card"
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                style={{ display: 'flex', flexDirection: 'column', padding: '2.5rem' }}
+                style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column' }}
               >
-                {/* Icon Circle */}
-                <div style={{
-                  width: '64px', height: '64px', borderRadius: '20px',
-                  background: `${item.color}15`, color: item.color,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: '1.8rem', border: `1px solid ${item.color}25`
-                }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: `${item.color}15`, color: item.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem' }}>
                   {item.icon}
                 </div>
-
                 <div style={{ marginBottom: '1rem' }}>
-                  <span style={{
-                    display: 'inline-block', background: 'var(--bg-dark)',
-                    color: item.color, padding: '0.3rem 0.9rem', borderRadius: '100px',
-                    fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase',
-                    letterSpacing: '1px', border: '1px solid var(--glass-border)'
-                  }}>
-                    {item.tag}
-                  </span>
+                  <span style={{ padding: '0.3rem 0.9rem', background: 'var(--bg-dark)', color: item.color, borderRadius: '100px', fontSize: '0.7rem', fontWeight: '900', letterSpacing: '1px' }}>{item.tag}</span>
                 </div>
-
-                <h3 style={{ fontSize: '1.6rem', marginBottom: '1rem', fontWeight: '800' }}>{item.title}</h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '0.95rem', flex: 1, marginBottom: '2rem' }}>
-                  {item.desc}
-                </p>
-
-                <div style={{ 
-                  display: 'flex', alignItems: 'center', gap: '0.8rem', 
-                  paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)'
-                }}>
+                <h3 style={{ fontSize: '1.6rem', fontWeight: '800', marginBottom: '1rem' }}>{item.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7, flex: 1, marginBottom: '2.5rem' }}>{item.desc}</p>
+                <div style={{ paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '700' }}>Stack: {item.tech}</span>
                   <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: item.color, boxShadow: `0 0 10px ${item.color}` }} />
-                  <span style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-main)' }}>Tahap Inkubasi</span>
                 </div>
               </motion.div>
             ))}
@@ -165,44 +139,44 @@ const Inovasi = () => {
         </div>
       </section>
 
-      {/* Modern Call to Action */}
-      <section className="section" style={{ paddingBottom: '10rem' }}>
+      {/* Innovation Roadmap */}
+      <section className="section">
         <div className="container">
-          <div className="glass-card" style={{
-            padding: '6rem 2rem',
-            background: 'var(--bg-card)',
-            borderRadius: '48px',
-            textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden'
-          }}>
-            {/* Decorative background shape */}
-            <div style={{ 
-              position: 'absolute', top: '-50%', left: '-10%', width: '400px', height: '400px',
-              background: 'var(--primary-glow)', borderRadius: '50%', filter: 'blur(60px)', zIndex: 0
-            }} />
-
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ 
-                width: '60px', height: '60px', background: 'var(--accent)', 
-                borderRadius: '50%', display: 'flex', alignItems: 'center', 
-                justifyContent: 'center', margin: '0 auto 2rem', color: 'var(--primary)'
-              }}>
-                <Rocket size={30} />
-              </div>
-              <h2 style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '1.5rem' }}>Kolaborasi Inovasi</h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem', lineHeight: 1.8 }}>
-                Punya ide brilian untuk memajukan komunitas disabilitas? Kami siap mendukung dan mewujudkannya bersama Anda.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="mailto:info@yoi.or.id" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-                  Kirim Proposal Ide <ArrowRight size={20} style={{ marginLeft: '0.8rem' }} />
-                </a>
-                <button className="btn btn-outline" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-                  Pelajari Kemitraan
-                </button>
-              </div>
+          <div className="glass-card" style={{ padding: '4rem', background: 'var(--bg-card)' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '4rem', fontWeight: '800' }}>Roadmap Inovasi</h2>
+            <div className="grid grid-3" style={{ gap: '3rem' }}>
+              {[
+                { phase: 'Phase 01', title: 'Data Gathering', desc: 'Pengumpulan dataset isyarat masif untuk pelatihan model AI.', status: 'Selesai', color: '#059669' },
+                { phase: 'Phase 02', title: 'Beta Testing', desc: 'Implementasi model AI ke dalam platform web dan mobile Yo\'i.', status: 'Berjalan', color: 'var(--primary)' },
+                { phase: 'Phase 03', title: 'Global Launch', desc: 'Peluncuran alat bantu komunikasi wearable Yo\'i Connect.', status: 'Mendatang', color: 'var(--secondary)' }
+              ].map((r, i) => (
+                <div key={i} style={{ position: 'relative', paddingLeft: '2rem', borderLeft: `2px solid ${r.color}30` }}>
+                  <div style={{ position: 'absolute', left: '-9px', top: '0', width: '16px', height: '16px', borderRadius: '50%', background: r.color, boxShadow: `0 0 15px ${r.color}` }} />
+                  <div style={{ fontSize: '0.75rem', fontWeight: '900', color: r.color, marginBottom: '0.5rem' }}>{r.phase}</div>
+                  <h4 style={{ fontWeight: '800', marginBottom: '1rem', fontSize: '1.2rem' }}>{r.title}</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1.5rem' }}>{r.desc}</p>
+                  <span style={{ padding: '0.3rem 0.8rem', background: `${r.color}15`, color: r.color, borderRadius: '8px', fontSize: '0.75rem', fontWeight: '800' }}>{r.status}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation CTA */}
+      <section className="section">
+        <div className="container">
+          <div className="glass-card" style={{ 
+            padding: '6rem 2rem', textAlign: 'center', 
+            background: 'var(--primary-glow)', borderRadius: '56px',
+            border: '1px dashed var(--primary)', position: 'relative', overflow: 'hidden'
+          }}>
+            <Milestone size={48} color="var(--primary)" style={{ marginBottom: '1.5rem' }} />
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '1.5rem' }}>Punya Ide Inovatif?</h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.15rem', lineHeight: 1.8 }}>
+              Bawa ide teknologi inklusif Anda ke Yo'i Lab dan mari kita wujudkan perubahan nyata bersama-sama.
+            </p>
+            <button className="btn btn-primary" style={{ padding: '1.2rem 4rem', fontSize: '1.1rem', borderRadius: '18px' }}>Kirim Proposal Inovasi</button>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { BookOpen, Clock, Users, Star, ChevronRight, Award, TrendingUp, Target, Sparkles, GraduationCap } from 'lucide-react'
+import { BookOpen, Clock, Users, Star, ChevronRight, Award, TrendingUp, Target, Sparkles, GraduationCap, ShieldCheck, Zap } from 'lucide-react'
 
 const categories = ['Semua', 'Teknologi', 'Bisnis', 'Desain', 'Bahasa', 'Keterampilan']
 
@@ -53,82 +53,78 @@ const Pelatihan = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      style={{ background: 'var(--bg-dark)' }}
+      style={{ background: 'var(--bg-dark)', paddingBottom: '10rem' }}
     >
-      {/* Hero Section */}
+      {/* Hero Training */}
       <section style={{ 
-        position: 'relative', 
-        paddingTop: '100px', 
-        paddingBottom: '80px', 
-        textAlign: 'center',
+        paddingTop: '10rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden',
         background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
       }}>
         <div className="container">
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
-            <div style={{ 
-              display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
-              padding: '0.6rem 1.2rem', background: 'var(--primary-glow)',
-              borderRadius: '100px', color: 'var(--primary)', fontSize: '0.8rem',
-              fontWeight: '800', marginBottom: '2rem', letterSpacing: '1px'
-            }}>
-              <GraduationCap size={16} /> PROGRAM SIAP KERJA
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.2rem)', fontWeight: '800', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-              Belajar, Berkarya, <br /><span style={{ color: 'var(--primary)' }}>Langsung Bekerja</span>
-            </h1>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', maxWidth: '650px', margin: '0 auto 3rem' }}>
-              Kurikulum yang dirancang bersama pakar industri untuk memastikan Anda memiliki skill yang paling dibutuhkan pasar kerja saat ini.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Impact Stats Horizontal */}
-      <section style={{ padding: '2rem 0' }}>
-        <div className="container">
-          <div className="scroll-x">
-            {stats.map((s, i) => (
-              <div key={i} className="glass-card" style={{ 
-                display: 'flex', alignItems: 'center', gap: '1.2rem', 
-                padding: '1.2rem 2rem', minWidth: '220px' 
-              }}>
-                <div style={{ 
-                  width: '48px', height: '48px', borderRadius: '12px',
-                  background: `${s.color}15`, color: s.color,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center'
-                }}>{s.icon}</div>
-                <div>
-                  <div style={{ fontWeight: '800', fontSize: '1.5rem', color: 'var(--text-main)', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700', marginTop: '0.3rem' }}>{s.label}</div>
-                </div>
+          <div className="grid grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+            <motion.div
+              initial={{ x: -30, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div style={{ 
+                display: 'inline-flex', padding: '0.6rem 1.2rem', background: 'var(--primary-glow)',
+                borderRadius: '100px', color: 'var(--primary)', fontSize: '0.85rem',
+                fontWeight: '800', marginBottom: '1.5rem'
+              }}>PROGRAM SIAP KERJA</div>
+              <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: '900', lineHeight: 1.1, marginBottom: '2rem' }}>
+                Belajar, Berkarya, <br /><span style={{ color: 'var(--primary)' }}>Langsung Bekerja</span>
+              </h1>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+                Kurikulum yang dirancang bersama pakar industri untuk memastikan Anda memiliki skill yang paling dibutuhkan pasar kerja saat ini.
+              </p>
+              <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                {stats.slice(0, 2).map((s, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div style={{ width: '40px', height: '40px', background: `${s.color}15`, color: s.color, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {s.icon}
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: '900', color: 'var(--text-main)' }}>{s.value}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{s.label}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </motion.div>
+
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="glass-card" 
+              style={{ padding: '0.8rem', borderRadius: '40px', background: 'var(--bg-card)' }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" 
+                alt="Student Training" 
+                style={{ width: '100%', borderRadius: '32px', display: 'block' }} 
+              />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Main Trainings List */}
+      {/* Main Training Grid */}
       <section className="section">
         <div className="container">
-          {/* Segmented Filter */}
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.2rem', fontWeight: '800', marginBottom: '2.5rem' }}>Eksplorasi Modul</h2>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '2rem' }}>Eksplorasi Modul</h2>
             <div className="scroll-x" style={{ justifyContent: 'center', gap: '0.5rem' }}>
               {categories.map(cat => (
                 <button 
                   key={cat} 
                   onClick={() => setActiveCategory(cat)}
                   style={{
-                    padding: '0.8rem 1.8rem',
-                    borderRadius: '16px',
-                    border: 'none',
+                    padding: '0.8rem 1.8rem', borderRadius: '16px', border: 'none',
                     background: activeCategory === cat ? 'var(--primary)' : 'var(--bg-card)',
                     color: activeCategory === cat ? '#fff' : 'var(--text-muted)',
-                    fontWeight: '700',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s',
-                    fontSize: '0.9rem',
-                    whiteSpace: 'nowrap'
+                    fontWeight: '700', cursor: 'pointer', transition: 'all 0.3s',
+                    fontSize: '0.9rem', whiteSpace: 'nowrap'
                   }}
                 >
                   {cat}
@@ -137,7 +133,6 @@ const Pelatihan = () => {
             </div>
           </div>
 
-          {/* Cards Grid supporting Swipe 2-Card on Mobile */}
           <div className="scroll-x">
             {filtered.map((item, i) => (
               <motion.div 
@@ -166,7 +161,7 @@ const Pelatihan = () => {
                   }}>{item.category}</span>
                 </div>
 
-                <h3 style={{ fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', flexShrink: 0 }}>{item.title}</h3>
+                <h3 style={{ fontSize: '1.6rem', fontWeight: '800', marginBottom: '1rem' }}>{item.title}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '2rem', flex: 1 }}>{item.desc}</p>
                 
                 <div style={{ 
@@ -191,27 +186,44 @@ const Pelatihan = () => {
         </div>
       </section>
 
+      {/* Why Yo'i Training */}
+      <section className="section">
+        <div className="container">
+          <div className="glass-card" style={{ padding: '4rem', background: 'var(--bg-card)' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '4rem', fontWeight: '800' }}>Mengapa Belajar di Yo'i?</h2>
+            <div className="grid grid-3" style={{ gap: '2rem' }}>
+              {[
+                { icon: <ShieldCheck size={32} />, title: 'Sertifikasi Resmi', desc: 'Dapatkan sertifikat yang diakui oleh mitra industri nasional.', color: '#059669' },
+                { icon: <Zap size={32} />, title: 'Kurikulum Intensif', desc: 'Materi yang padat dan fokus pada kebutuhan dunia kerja nyata.', color: 'var(--primary)' },
+                { icon: <Users size={32} />, title: 'Mentor Eksklusif', desc: 'Bimbingan langsung dari praktisi berpengalaman di bidangnya.', color: 'var(--secondary)' }
+              ].map((f, i) => (
+                <div key={i} style={{ textAlign: 'center' }}>
+                  <div style={{ width: '60px', height: '60px', background: `${f.color}15`, color: f.color, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
+                    {f.icon}
+                  </div>
+                  <h4 style={{ fontWeight: '800', marginBottom: '1rem' }}>{f.title}</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Training CTA */}
-      <section className="section" style={{ paddingBottom: '10rem' }}>
+      <section className="section">
         <div className="container">
           <div className="glass-card" style={{ 
             padding: '5rem 2rem', textAlign: 'center', 
-            background: 'var(--bg-card)', borderRadius: '48px',
-            position: 'relative', overflow: 'hidden'
+            background: 'var(--primary-glow)', borderRadius: '48px',
+            border: '1px dashed var(--primary)'
           }}>
-            <div style={{ 
-              position: 'absolute', top: '-20%', left: '-10%', width: '300px', height: '300px', 
-              background: 'var(--primary-glow)', borderRadius: '50%', filter: 'blur(80px)', opacity: 0.5 
-            }} />
-            
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <Sparkles size={40} color="var(--primary)" style={{ marginBottom: '1.5rem' }} />
-              <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1.5rem' }}>Mulai Kariermu Hari Ini</h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', maxWidth: '500px', margin: '0 auto 3rem', lineHeight: 1.8 }}>
-                Jangan biarkan kesempatan berlalu. Bergabunglah dengan ribuan alumni yang telah sukses meniti karier bersama Yo'i.
-              </p>
-              <button className="btn btn-primary" style={{ padding: '1rem 3.5rem', fontSize: '1.1rem' }}>Mulai Perjalanan Anda</button>
-            </div>
+            <Sparkles size={40} color="var(--primary)" style={{ marginBottom: '1.5rem' }} />
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '800', marginBottom: '1rem' }}>Mulai Kariermu Hari Ini</h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '500px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
+              Jangan biarkan kesempatan berlalu. Bergabunglah dengan ribuan alumni yang telah sukses meniti karier bersama Yo'i.
+            </p>
+            <button className="btn btn-primary" style={{ padding: '1rem 3.5rem' }}>Mulai Perjalanan Anda</button>
           </div>
         </div>
       </section>

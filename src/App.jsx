@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
+import Preloader from './components/Preloader'
+import CustomCursor from './components/CustomCursor'
 import Home from './pages/Home'
 import Team from './pages/Team'
 import Learning from './pages/Learning'
@@ -19,6 +21,12 @@ import NotFound from './pages/NotFound'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -28,6 +36,10 @@ function App() {
 
   return (
     <Router>
+      <AnimatePresence>
+        {loading && <Preloader />}
+      </AnimatePresence>
+      <CustomCursor />
       <motion.div
         style={{
           position: 'fixed',

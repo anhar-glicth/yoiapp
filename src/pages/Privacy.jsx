@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Lock, Eye, FileText, ArrowLeft } from 'lucide-react'
+import { Shield, Lock, Eye, FileText, ArrowLeft, CheckCircle2, Info } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Privacy = () => {
@@ -9,64 +9,94 @@ const Privacy = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="section"
-      style={{ paddingTop: '8rem', background: 'var(--bg-dark)' }}
+      style={{ background: 'var(--bg-dark)', paddingBottom: '10rem' }}
     >
-      <div className="container">
-        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', textDecoration: 'none', marginBottom: '3rem', fontWeight: '700' }}>
-          <ArrowLeft size={16} /> Kembali
-        </Link>
-
-        <div className="glass-card" style={{ padding: '4rem', maxWidth: '900px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <div style={{ width: '80px', height: '80px', background: 'var(--primary-glow)', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', margin: '0 auto 2rem' }}>
-              <Shield size={40} />
-            </div>
-            <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1rem' }}>Kebijakan Privasi</h1>
-            <p style={{ color: 'var(--text-muted)' }}>Terakhir diperbarui: {new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-          </div>
-
-          <div className="content-area" style={{ color: 'var(--text-main)', lineHeight: 1.8 }}>
-            <section style={{ marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                <Eye size={24} color="var(--primary)" /> 1. Informasi yang Kami Kumpulkan
-              </h2>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>
-                Kami mengumpulkan informasi yang Anda berikan langsung kepada kami saat Anda mendaftar program pelatihan, memberikan donasi, atau menghubungi kami untuk informasi lebih lanjut.
-              </p>
-              <ul style={{ paddingLeft: '1.5rem', color: 'var(--text-muted)' }}>
-                <li>Nama lengkap dan informasi kontak (email, nomor telepon).</li>
-                <li>Informasi demografis untuk keperluan statistik program inklusif.</li>
-                <li>Data transaksi saat melakukan donasi melalui mitra pembayaran kami.</li>
-              </ul>
-            </section>
-
-            <section style={{ marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                <Lock size={24} color="var(--primary)" /> 2. Penggunaan Informasi
-              </h2>
-              <p style={{ color: 'var(--text-muted)' }}>
-                Informasi yang kami kumpulkan digunakan semata-mata untuk meningkatkan kualitas layanan pendidikan dan pelatihan kami, memproses dukungan donasi Anda, serta memberikan pembaruan terkait program-program inovasi inklusif Yo'i Foundation.
-              </p>
-            </section>
-
-            <section style={{ marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                <FileText size={24} color="var(--primary)" /> 3. Keamanan Data
-              </h2>
-              <p style={{ color: 'var(--text-muted)' }}>
-                Kami menerapkan standar keamanan teknis dan organisasional yang ketat untuk melindungi data pribadi Anda dari akses yang tidak sah, kehilangan, atau penyalahgunaan.
-              </p>
-            </section>
-          </div>
-
-          <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--glass-border)', textAlign: 'center' }}>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-              Punya pertanyaan tentang privasi? Hubungi kami di <span style={{ color: 'var(--primary)', fontWeight: '700' }}>privacy@yoi.or.id</span>
-            </p>
+      {/* Hero Legal */}
+      <section style={{ 
+        paddingTop: '10rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden',
+        background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
+      }}>
+        <div className="container">
+          <div style={{ textAlign: 'center' }}>
+            <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', color: 'var(--text-muted)', textDecoration: 'none', fontWeight: '700', marginBottom: '3rem' }}>
+              <ArrowLeft size={18} /> Kembali ke Beranda
+            </Link>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: '900', marginBottom: '1rem' }}>Kebijakan Privasi</h1>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Komitmen kami dalam menjaga data dan kepercayaan Anda.</p>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: '1000px' }}>
+          <div className="glass-card" style={{ padding: '4rem', background: 'var(--bg-card)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.5rem', background: 'var(--primary-glow)', borderRadius: '16px', color: 'var(--primary)', marginBottom: '4rem' }}>
+              <Info size={20} />
+              <span style={{ fontSize: '0.9rem', fontWeight: '800' }}>Terakhir diperbarui: {new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+              
+              <section>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <div style={{ width: '44px', height: '44px', background: 'var(--primary-glow)', color: 'var(--primary)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Eye size={24} />
+                  </div>
+                  <h2 style={{ fontSize: '1.8rem', fontWeight: '800' }}>1. Informasi yang Dikumpulkan</h2>
+                </div>
+                <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem', marginBottom: '2rem' }}>
+                  Kami mengumpulkan informasi yang Anda berikan langsung saat mendaftar program, memberikan donasi, atau berinteraksi dengan platform kami:
+                </p>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="grid-1-mobile">
+                  {['Nama Lengkap', 'Alamat Email', 'Nomor Telepon', 'Data Transaksi Donasi'].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-main)', fontWeight: '700', padding: '1rem', background: 'var(--bg-dark)', borderRadius: '12px' }}>
+                      <CheckCircle2 size={18} color="var(--primary)" /> {item}
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <div style={{ width: '44px', height: '44px', background: 'var(--secondary-glow)', color: 'var(--secondary)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Lock size={24} />
+                  </div>
+                  <h2 style={{ fontSize: '1.8rem', fontWeight: '800' }}>2. Penggunaan Data</h2>
+                </div>
+                <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                  Data Anda digunakan semata-mata untuk meningkatkan kualitas layanan pendidikan, memproses donasi secara aman, dan memberikan informasi relevan mengenai program inklusivitas Yo'i Foundation. Kami tidak akan pernah menjual data Anda kepada pihak ketiga.
+                </p>
+              </section>
+
+              <section>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <div style={{ width: '44px', height: '44px', background: 'rgba(5, 150, 105, 0.1)', color: '#059669', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Shield size={24} />
+                  </div>
+                  <h2 style={{ fontSize: '1.8rem', fontWeight: '800' }}>3. Keamanan Informasi</h2>
+                </div>
+                <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                  Kami menerapkan enkripsi SSL/TLS standar industri untuk setiap transmisi data. Server kami dipantau 24/7 untuk mencegah akses tidak sah dan memastikan data pribadi Anda tetap terlindungi di setiap langkah.
+                </p>
+              </section>
+
+            </div>
+
+            <div style={{ marginTop: '5rem', paddingTop: '3rem', borderTop: '1px solid var(--glass-border)', textAlign: 'center' }}>
+              <p style={{ color: 'var(--text-muted)' }}>
+                Ada pertanyaan mengenai privasi Anda? Hubungi kami di <span style={{ color: 'var(--primary)', fontWeight: '800' }}>privacy@yoi.or.id</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .grid-1-mobile { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </motion.div>
   )
 }

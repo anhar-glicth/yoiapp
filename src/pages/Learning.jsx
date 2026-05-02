@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Play, Book, Info, Globe, MessageSquare, Camera, Heart, X, Loader2, Sparkles, GraduationCap } from 'lucide-react'
+import { Book, Globe, Sparkles, GraduationCap, Clock, Star, Zap, CheckCircle2, ChevronRight, X, Loader2 } from 'lucide-react'
 
 const Learning = () => {
   const [activeTab, setActiveTab] = useState('sibi')
@@ -13,23 +13,23 @@ const Learning = () => {
     sibi: {
       title: 'SIBI',
       fullName: 'Sistem Isyarat Bahasa Indonesia',
-      desc: 'Standar isyarat formal yang mengikuti tata bahasa lisan Indonesia secara baku. Digunakan secara luas dalam instansi pendidikan.',
-      features: ['Gramatikal', 'Baku', 'Formal'],
-      color: 'var(--primary)'
+      desc: 'Standar isyarat formal yang mengikuti tata bahasa lisan Indonesia secara baku.',
+      color: 'var(--primary)',
+      icon: '🏛️'
     },
     bisindo: {
       title: 'BISINDO',
       fullName: 'Bahasa Isyarat Indonesia',
-      desc: 'Bahasa alami komunitas Tuli. Sangat ekspresif, kultural, dan berkembang sesuai dialek daerah masing-masing di Indonesia.',
-      features: ['Alami', 'Kultural', 'Ekspresif'],
-      color: 'var(--secondary)'
+      desc: 'Bahasa alami komunitas Tuli yang ekspresif, kultural, dan berkembang secara sosial.',
+      color: 'var(--secondary)',
+      icon: '🤝'
     },
     quran: {
       title: 'QURAN',
-      fullName: 'Quran Isyarat Hijaiyah',
-      desc: 'Metode isyarat khusus yang mempermudah teman Tuli dalam menghafal dan memahami huruf-huruf Al-Quran secara visual.',
-      features: ['Hijaiyah', 'Standar MUI', 'Inklusif'],
-      color: '#059669'
+      fullName: 'Isyarat Hijaiyah',
+      desc: 'Metode isyarat khusus untuk mempermudah penghafalan huruf Al-Quran secara visual.',
+      color: '#059669',
+      icon: '📖'
     }
   }
 
@@ -48,13 +48,6 @@ const Learning = () => {
     : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(char => ({ char, id: char.toLowerCase() }))
 
   useEffect(() => {
-    alphabet.forEach(item => {
-      const img = new Image()
-      img.src = `/isyarat/${activeTab}/${item.id}.jpg`
-    })
-  }, [activeTab, alphabet])
-
-  useEffect(() => {
     if (selectedLetter) {
       setIsImageLoading(true)
       setImageError(false)
@@ -66,331 +59,206 @@ const Learning = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="section"
-      style={{ paddingTop: '8rem' }}
+      style={{ background: 'var(--bg-dark)', paddingBottom: '10rem' }}
     >
-      <div className="container">
-        {/* Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center',
-              gap: '0.6rem',
-              padding: '0.6rem 1.5rem', 
-              background: 'var(--primary-glow)', 
-              borderRadius: '100px', 
-              color: 'var(--primary)',
-              fontSize: '0.85rem',
-              fontWeight: '700',
-              marginBottom: '2rem',
-              letterSpacing: '1px'
-            }}
-          >
-            <Sparkles size={16} /> AKADEMI ISYARAT YO'I
-          </motion.div>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.2rem)', marginBottom: '1.5rem', fontWeight: '800' }}>
-            Pusat Pembelajaran <span style={{ color: 'var(--primary)' }} className="glow-text">Inklusif</span>
-          </h1>
-          <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', maxWidth: '650px', margin: '0 auto', lineHeight: 1.8 }}>
-            Belajar bahasa isyarat kini lebih mudah, seru, dan interaktif. Pilih metode yang paling cocok untuk Anda mulai hari ini.
-          </p>
-        </div>
-
-        {/* Custom Tab Switcher */}
-        <div style={{ 
-          background: 'var(--bg-card)', 
-          padding: '0.5rem', 
-          borderRadius: '20px', 
-          display: 'inline-flex', 
-          gap: '0.5rem', 
-          marginBottom: '4rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          position: 'relative',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
-          border: '1px solid var(--glass-border)',
-          width: 'auto',
-          maxWidth: '100%',
-          flexWrap: 'wrap',
-          justifyContent: 'center'
-        }}>
-          {['sibi', 'bisindo', 'quran'].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => {
-                setActiveTab(tab)
-                setSelectedLetter(null)
-              }}
-              style={{
-                padding: '0.8rem 1.8rem',
-                borderRadius: '15px',
-                border: 'none',
-                background: activeTab === tab ? 'var(--primary)' : 'transparent',
-                color: activeTab === tab ? '#fff' : 'var(--text-muted)',
-                fontWeight: '700',
-                cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                fontSize: '0.9rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
+      {/* Hero Academy */}
+      <section style={{ 
+        paddingTop: '10rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden',
+        background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
+      }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              style={{ 
+                display: 'inline-flex', padding: '0.6rem 1.2rem', background: 'var(--primary-glow)', 
+                borderRadius: '100px', color: 'var(--primary)', fontSize: '0.85rem',
+                fontWeight: '800', marginBottom: '2rem'
               }}
             >
-              {tab === 'quran' && <span style={{ fontSize: '1.2rem' }}>📖</span>}
-              {tab === 'quran' ? 'QURAN' : tab.toUpperCase()}
-            </button>
-          ))}
-        </div>
-
-        {/* Interactive Learning Area */}
-        <div className="learning-layout" style={{ marginBottom: '8rem' }}>
-          {/* Method Info */}
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="glass-card"
-            style={{ height: 'fit-content', padding: '2.5rem' }}
-          >
-            <span style={{ color: content[activeTab].color, fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '1rem', display: 'block' }}>
-              {content[activeTab].title}
-            </span>
-            <h2 style={{ marginBottom: '1.5rem', fontSize: '2rem', fontWeight: '800' }}>{content[activeTab].fullName}</h2>
-            <p style={{ fontSize: '1rem', marginBottom: '2.5rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>{content[activeTab].desc}</p>
-
-            <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
-              {content[activeTab].features.map((f, i) => (
-                <span key={i} style={{ 
-                  padding: '0.6rem 1.2rem', 
-                  background: 'var(--bg-dark)', 
-                  borderRadius: '12px', 
-                  fontSize: '0.8rem', 
-                  fontWeight: '700', 
-                  color: 'var(--text-main)',
-                  border: '1px solid var(--glass-border)' 
-                }}>
-                  {f}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          <div className="alphabet-container">
-            {/* Alphabet Keyboard */}
-            <div className="glass-card" style={{ background: 'var(--bg-card)', height: 'fit-content', padding: '2rem' }}>
-              <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: '800' }}>
-                {activeTab === 'quran' ? 'Pilih Huruf Hijaiyah' : `Kamus Huruf`}
-              </h3>
-              <div className="alphabet-grid">
-                {alphabet.map((item) => (
-                  <motion.button
-                    key={item.id}
-                    whileHover={{ scale: 1.05, borderColor: 'var(--primary)' }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setSelectedLetter(item)}
-                    className={`alphabet-btn ${selectedLetter?.id === item.id ? 'active' : ''}`}
-                    style={{
-                      aspectRatio: '1/1',
-                      borderRadius: '12px',
-                      border: '1px solid var(--glass-border)',
-                      background: selectedLetter?.id === item.id ? 'var(--primary)' : 'var(--bg-dark)',
-                      color: selectedLetter?.id === item.id ? '#fff' : 'var(--text-main)',
-                      fontSize: activeTab === 'quran' ? '1.4rem' : '1rem',
-                      fontWeight: '800',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                      fontFamily: activeTab === 'quran' ? 'inherit' : "'Outfit', sans-serif"
-                    }}
-                  >
-                    {item.char}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-
-            {/* Visual Preview */}
-            <AnimatePresence>
-              {selectedLetter && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                  className="glass-card preview-panel"
+              <GraduationCap size={16} style={{ marginRight: '0.6rem' }} /> AKADEMI ISYARAT YO'I
+            </motion.div>
+            <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: '900', lineHeight: 1.1, marginBottom: '2rem' }}>
+              Pusat Pembelajaran <br /><span style={{ color: 'var(--primary)' }}>Inklusif Terpercaya</span>
+            </h1>
+            
+            {/* Methodology Tab Switcher */}
+            <div style={{ 
+              display: 'inline-flex', background: 'var(--bg-card)', padding: '0.5rem', 
+              borderRadius: '24px', border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' 
+            }}>
+              {['sibi', 'bisindo', 'quran'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => { setActiveTab(tab); setSelectedLetter(null); }}
                   style={{
-                    textAlign: 'center',
-                    border: '1px solid var(--primary)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: '1.5rem'
+                    padding: '1rem 2rem', borderRadius: '18px', border: 'none',
+                    background: activeTab === tab ? 'var(--primary)' : 'transparent',
+                    color: activeTab === tab ? '#fff' : 'var(--text-muted)',
+                    fontWeight: '800', cursor: 'pointer', transition: 'all 0.3s',
+                    fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.6rem'
                   }}
                 >
-                  <button
-                    onClick={() => setSelectedLetter(null)}
-                    style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--bg-dark)', border: 'none', color: 'var(--text-muted)', width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}
-                  >
-                    <X size={14} />
-                  </button>
-                  
-                  <div className="preview-box" style={{
-                    width: '100%',
-                    aspectRatio: '1/1',
-                    background: '#000',
-                    borderRadius: '20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '1.5rem',
-                    overflow: 'hidden',
-                    position: 'relative',
-                    boxShadow: '0 15px 30px rgba(0,0,0,0.2)'
-                  }}>
-                    {!imageError && (
-                      <img
-                        src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`}
-                        alt={`Isyarat ${selectedLetter.char}`}
-                        style={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'contain',
-                          opacity: isImageLoading ? 0 : 1,
-                          transition: 'opacity 0.3s ease'
-                        }}
-                        onLoad={() => setIsImageLoading(false)}
-                        onError={() => {
-                          setIsImageLoading(false)
-                          setImageError(true)
-                        }}
-                      />
-                    )}
-                    
-                    {isImageLoading && (
-                      <div style={{ position: 'absolute' }}>
-                        <Loader2 className="animate-spin" size={32} color="var(--primary)" />
-                      </div>
-                    )}
-
-                    {imageError && (
-                      <div style={{ textAlign: 'center', padding: '1rem' }}>
-                        <span style={{ fontSize: '4.5rem', color: '#fff', opacity: 0.9, display: 'block', marginBottom: '0.5rem', fontWeight: '800' }}>
-                          {selectedLetter.char}
-                        </span>
-                        <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)' }}>Visual belum tersedia</p>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div style={{ textAlign: 'left' }}>
-                    <h4 style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '1px', marginBottom: '0.4rem' }}>Karakter</h4>
-                    <p style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--primary)' }}>{selectedLetter.char}</p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  <span style={{ fontSize: '1.2rem' }}>{content[tab].icon}</span>
+                  {tab.toUpperCase()}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Curriculum Scroll Section */}
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
-            <GraduationCap size={24} color="var(--primary)" />
-            <h2 style={{ fontSize: '2.2rem', fontWeight: '800' }}>Kurikulum Utama</h2>
+      {/* Interactive Academy Content */}
+      <section className="section">
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }} className="learning-layout">
+            
+            {/* Left: Methodology Info */}
+            <aside style={{ position: 'sticky', top: '100px', height: 'fit-content' }}>
+              <motion.div 
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="glass-card" 
+                style={{ padding: '3rem 2rem', borderTop: `4px solid ${content[activeTab].color}` }}
+              >
+                <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem' }}>{content[activeTab].fullName}</h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>{content[activeTab].desc}</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#fff', fontSize: '0.9rem', fontWeight: '700' }}>
+                    <CheckCircle2 size={18} color="var(--primary)" /> Kurikulum Terverifikasi
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#fff', fontSize: '0.9rem', fontWeight: '700' }}>
+                    <Zap size={18} color="var(--secondary)" /> Interaktif & Real-time
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Quick Academy Stats */}
+              <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="glass-card" style={{ padding: '1.5rem', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)' }}>150+</div>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: '700' }}>MODUL</div>
+                </div>
+                <div className="glass-card" style={{ padding: '1.5rem', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)' }}>10K+</div>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: '700' }}>SISWA</div>
+                </div>
+              </div>
+            </aside>
+
+            {/* Right: Alphabet & Preview */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              {/* Alphabet Keyboard */}
+              <div className="glass-card" style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '2rem' }}>Daftar Huruf & Isyarat</h3>
+                <div className="alphabet-grid">
+                  {alphabet.map((item) => (
+                    <motion.button
+                      key={item.id}
+                      whileHover={{ scale: 1.1, borderColor: 'var(--primary)' }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => setSelectedLetter(item)}
+                      style={{
+                        aspectRatio: '1/1', borderRadius: '14px', border: '1px solid var(--glass-border)',
+                        background: selectedLetter?.id === item.id ? 'var(--primary)' : 'var(--bg-dark)',
+                        color: selectedLetter?.id === item.id ? '#fff' : 'var(--text-main)',
+                        fontSize: activeTab === 'quran' ? '1.5rem' : '1.1rem',
+                        fontWeight: '800', cursor: 'pointer', transition: 'all 0.2s',
+                        fontFamily: activeTab === 'quran' ? 'inherit' : "'Outfit', sans-serif"
+                      }}
+                    >
+                      {item.char}
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Visual Preview Section */}
+              <AnimatePresence>
+                {selectedLetter && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 30 }}
+                    className="glass-card"
+                    style={{ padding: '2rem', display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', border: '1px solid var(--primary)' }}
+                  >
+                    <div style={{ 
+                      width: '100%', aspectRatio: '16/9', background: '#000', borderRadius: '24px', 
+                      overflow: 'hidden', position: 'relative', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' 
+                    }}>
+                      <button 
+                        onClick={() => setSelectedLetter(null)}
+                        style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', padding: '0.5rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10 }}
+                      >
+                        <X size={20} />
+                      </button>
+                      <img 
+                        src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`} 
+                        alt={selectedLetter.char}
+                        style={{ width: '100%', height: '100%', objectFit: 'contain', opacity: isImageLoading ? 0 : 1 }}
+                        onLoad={() => setIsImageLoading(false)}
+                        onError={() => { setIsImageLoading(false); setImageError(true); }}
+                      />
+                      {isImageLoading && (
+                        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Loader2 className="animate-spin" size={40} color="var(--primary)" />
+                        </div>
+                      )}
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700' }}>KARAKTER TERPILIH</div>
+                        <div style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--primary)' }}>{selectedLetter.char}</div>
+                      </div>
+                      <button className="btn btn-primary" style={{ padding: '1rem 2.5rem', borderRadius: '14px' }}>Pelajari Lebih Lanjut</button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
-          <p style={{ color: 'var(--text-muted)', marginBottom: '4rem' }}>Program pembelajaran terstruktur dari tingkat pemula hingga mahir.</p>
-          
+        </div>
+      </section>
+
+      {/* Curriculum Levels */}
+      <section className="section">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '800' }}>Jenjang Pendidikan</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Mulai dari dasar hingga penguasaan penuh.</p>
+          </div>
+
           <div className="scroll-x">
             {[
-              { id: 'level-dasar', title: 'Level Dasar', sub: 'Alfabet & Angka', desc: 'Langkah awal mengenal simbol isyarat paling mendasar.', color: 'var(--primary)' },
-              { id: 'level-menengah', title: 'Menengah', sub: 'Percakapan', desc: 'Mulai membangun kalimat dan komunikasi dua arah.', color: 'var(--secondary)' },
-              { id: 'level-mahir', title: 'Level Mahir', sub: 'Interpretasi', desc: 'Penguasaan struktur bahasa dan kecepatan isyarat.', color: 'var(--primary)' },
-              { id: 'quran-isyarat', title: 'Quran Isyarat', sub: 'Spiritual', desc: 'Pembelajaran hijaiyah inklusif berbasis standar MUI.', color: '#059669' }
-            ].map((course, i) => (
-              <motion.div 
-                key={i} 
-                className="glass-card" 
-                style={{ textAlign: 'left', padding: '2rem', display: 'flex', flexDirection: 'column' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div style={{ 
-                  width: '48px', height: '48px', borderRadius: '12px',
-                  background: `${course.color}15`, color: course.color,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: '1.5rem'
-                }}>
-                  <Book size={24} />
-                </div>
-                <h3 style={{ fontSize: '1.4rem', marginBottom: '0.4rem', fontWeight: '800' }}>{course.title}</h3>
-                <p style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.85rem', marginBottom: '1rem' }}>{course.sub}</p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '2rem', flex: 1 }}>{course.desc}</p>
-                <Link to={`/learning/${course.id}`} className="btn btn-primary" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', borderRadius: '12px' }}>Mulai Belajar</Link>
+              { title: 'Level Dasar', level: 'Level 1', desc: 'Pengenalan alfabet, angka, dan salam dasar.', color: 'var(--primary)' },
+              { title: 'Percakapan', level: 'Level 2', desc: 'Membangun kalimat dan interaksi harian.', color: 'var(--secondary)' },
+              { title: 'Struktur Bahasa', level: 'Level 3', desc: 'Pendalaman tata bahasa dan ekspresi.', color: '#059669' },
+              { title: 'Interpretasi', level: 'Level 4', desc: 'Kecepatan dan akurasi penerjemahan.', color: '#8b5cf6' }
+            ].map((l, i) => (
+              <motion.div key={i} className="glass-card" style={{ padding: '2.5rem', minWidth: '280px' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: '800', color: l.color, marginBottom: '0.5rem' }}>{l.level}</div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem' }}>{l.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: 1.6 }}>{l.desc}</p>
+                <Link to="/learning/level-dasar" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', textDecoration: 'none', fontWeight: '700', fontSize: '0.9rem' }}>
+                  Lihat Modul <ChevronRight size={16} />
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
-      </div>
-
+      </section>
+      
       <style>{`
-        .learning-layout {
-          display: grid;
-          gap: 2rem;
-          grid-template-columns: 1fr;
+        @media (min-width: 1024px) {
+          .learning-layout { grid-template-columns: 320px 1fr !important; gap: 4rem !important; }
         }
-
         .alphabet-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-          gap: 0.8rem;
-        }
-
-        .alphabet-container {
-          display: grid;
-          gap: 1.5rem;
-          grid-template-columns: 1fr;
-        }
-
-        @media (max-width: 767px) {
-          ${selectedLetter ? `
-            .alphabet-container {
-              grid-template-columns: 1.4fr 1fr;
-              gap: 1rem;
-            }
-            .alphabet-grid {
-              grid-template-columns: repeat(3, 1fr);
-              gap: 0.6rem;
-            }
-            .preview-panel {
-              position: sticky;
-              top: 80px;
-              height: fit-content;
-            }
-          ` : ''}
-        }
-
-        @media (min-width: 768px) {
-          .learning-layout {
-            grid-template-columns: 1fr 1fr;
-          }
-          .alphabet-container {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .learning-layout {
-            grid-template-columns: ${selectedLetter ? '1fr 2.4fr' : '1.2fr 2fr'};
-            gap: 3rem;
-          }
-          .alphabet-container {
-            grid-template-columns: ${selectedLetter ? '1.5fr 1fr' : '1fr'};
-          }
-          .alphabet-grid {
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-          }
+          grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+          gap: 1rem;
         }
       `}</style>
     </motion.div>

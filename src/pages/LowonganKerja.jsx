@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { MapPin, Briefcase, Clock, DollarSign, ChevronRight, Search, Building2, Users, TrendingUp, Sparkles, Filter } from 'lucide-react'
+import { MapPin, Briefcase, Clock, DollarSign, ChevronRight, Search, Building2, Users, TrendingUp, Sparkles, Filter, CheckCircle2 } from 'lucide-react'
 
 const jobTypes = ['Semua', 'Full-time', 'Part-time', 'Magang', 'Freelance', 'Remote']
 
@@ -13,7 +13,7 @@ const jobs = [
   },
   {
     id: 2, title: 'Graphic Designer', company: 'Kreatif Studio', location: 'Bandung',
-    type: 'Full-time', salary: '6 - 10 Juta', posted: '3 hari lalu', color: '#6A1B9A', icon: '🎨',
+    type: 'Full-time', salary: '6 - 10 Juta', posted: '3 hari lalu', color: '#8b5cf6', icon: '🎨',
     tags: ['Figma', 'Adobe XD', 'Illustrator'],
     desc: 'Bergabunglah sebagai Graphic Designer kreatif untuk merancang konten visual yang menarik dan berdampak.',
   },
@@ -25,29 +25,16 @@ const jobs = [
   },
   {
     id: 4, title: 'Content Creator', company: 'MediaKita', location: 'Yogyakarta',
-    type: 'Part-time', salary: '3 - 5 Juta', posted: '5 hari lalu', color: '#2E7D32', icon: '📸',
+    type: 'Part-time', salary: '3 - 5 Juta', posted: '5 hari lalu', color: '#ef4444', icon: '📸',
     tags: ['Video', 'Copywriting', 'TikTok'],
     desc: 'Ciptakan konten kreatif dan menarik untuk berbagai platform media sosial.',
   },
   {
     id: 5, title: 'IT Intern', company: 'Startup Inkubator', location: 'Surabaya',
-    type: 'Magang', salary: '1,5 - 2,5 Juta', posted: '1 minggu lalu', color: '#00838F', icon: '🎓',
+    type: 'Magang', salary: '1,5 - 2,5 Juta', posted: '1 minggu lalu', color: '#059669', icon: '🎓',
     tags: ['Python', 'Data', 'SQL'],
     desc: 'Program magang 3 bulan di bidang teknologi informasi, cocok untuk mahasiswa.',
   },
-  {
-    id: 6, title: 'UI/UX Designer', company: 'Freelance Hub', location: 'Remote',
-    type: 'Freelance', salary: 'Proyekan', posted: '2 hari lalu', color: '#C62828', icon: '✏️',
-    tags: ['Figma', 'Prototyping', 'Research'],
-    desc: 'Proyek desain UI/UX untuk startup dan UMKM yang membutuhkan talenta desain.',
-  },
-]
-
-const stats = [
-  { icon: <Briefcase size={22} />, value: '150+', label: 'Lowongan', color: 'var(--primary)' },
-  { icon: <Building2 size={22} />, value: '60+', label: 'Mitra', color: 'var(--secondary)' },
-  { icon: <Users size={22} />, value: '500+', label: 'Kandidat', color: '#059669' },
-  { icon: <TrendingUp size={22} />, value: '92%', label: 'Penempatan', color: '#8b5cf6' },
 ]
 
 const LowonganKerja = () => {
@@ -65,99 +52,76 @@ const LowonganKerja = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      style={{ background: 'var(--bg-dark)' }}
+      style={{ background: 'var(--bg-dark)', paddingBottom: '10rem' }}
     >
-      {/* Hero Header */}
+      {/* Hero Job Board */}
       <section style={{ 
-        position: 'relative', 
-        paddingTop: '100px', 
-        paddingBottom: '60px', 
-        textAlign: 'center',
+        paddingTop: '10rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden',
         background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
       }}>
         <div className="container">
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
-            <div style={{ 
-              display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
-              padding: '0.6rem 1.2rem', background: 'var(--primary-glow)',
-              borderRadius: '100px', color: 'var(--primary)', fontSize: '0.8rem',
-              fontWeight: '800', marginBottom: '2rem', letterSpacing: '1px'
-            }}>
-              <Sparkles size={16} /> KARIR INKLUSIF
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: '800', marginBottom: '1.5rem' }}>
-              Temukan <span style={{ color: 'var(--primary)' }}>Karier Impian</span>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              style={{ 
+                display: 'inline-flex', padding: '0.6rem 1.2rem', background: 'var(--primary-glow)', 
+                borderRadius: '100px', color: 'var(--primary)', fontSize: '0.85rem',
+                fontWeight: '800', marginBottom: '2rem'
+              }}
+            >
+              <Sparkles size={16} style={{ marginRight: '0.6rem' }} /> KARIR INKLUSIF
+            </motion.div>
+            <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: '900', lineHeight: 1.1, marginBottom: '2rem' }}>
+              Temukan <br /><span style={{ color: 'var(--primary)' }}>Karier Impian Anda</span>
             </h1>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
-              Platform karir khusus untuk talenta muda dan penyandang disabilitas di seluruh Indonesia.
-            </p>
-
-            {/* Premium Search */}
+            
+            {/* Search Bar Premium */}
             <div style={{ 
-              maxWidth: '600px', margin: '0 auto', background: 'var(--bg-card)', 
-              borderRadius: '20px', padding: '0.5rem', display: 'flex', 
-              alignItems: 'center', border: '1px solid var(--glass-border)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+              maxWidth: '700px', margin: '0 auto', background: 'var(--bg-card)', 
+              borderRadius: '24px', padding: '0.8rem', display: 'flex', gap: '0.5rem',
+              border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
             }}>
-              <div style={{ paddingLeft: '1.2rem', color: 'var(--text-muted)' }}>
-                <Search size={22} />
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1, paddingLeft: '1rem' }}>
+                <Search size={22} color="var(--text-muted)" />
+                <input 
+                  type="text" 
+                  placeholder="Cari posisi atau perusahaan..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  style={{ 
+                    width: '100%', background: 'transparent', border: 'none', 
+                    padding: '1rem', color: '#fff', fontSize: '1rem', outline: 'none' 
+                  }}
+                />
               </div>
-              <input
-                type="text"
-                placeholder="Cari posisi, skill, atau perusahaan..."
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                style={{ 
-                  flex: 1, padding: '1rem', background: 'transparent', 
-                  border: 'none', color: 'var(--text-main)', fontSize: '1rem', outline: 'none' 
-                }}
-              />
-              <button className="btn btn-primary" style={{ borderRadius: '15px', padding: '0.8rem 1.5rem' }}>Cari</button>
+              <button className="btn btn-primary" style={{ padding: '0 2.5rem', borderRadius: '16px' }}>Cari</button>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Mini Stats Horizontal */}
-      <section style={{ padding: '2rem 0' }}>
-        <div className="container">
-          <div className="scroll-x">
-            {stats.map((s, i) => (
-              <div key={i} className="glass-card" style={{ 
-                display: 'flex', alignItems: 'center', gap: '1rem', 
-                padding: '1rem 1.5rem', minWidth: '180px' 
-              }}>
-                <div style={{ color: s.color }}>{s.icon}</div>
-                <div>
-                  <div style={{ fontWeight: '800', fontSize: '1.2rem', color: 'var(--text-main)' }}>{s.value}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{s.label}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* Main Jobs Section */}
+      {/* Main Content */}
       <section className="section">
         <div className="container">
-          <div className="job-layout">
-            {/* Sidebar Filter (Desktop) / Top Bar (Mobile) */}
-            <div className="filter-sidebar">
-              <div className="glass-card" style={{ padding: '1.5rem', position: 'sticky', top: '100px' }}>
-                <h3 style={{ fontSize: '1rem', fontWeight: '800', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }} className="job-layout">
+            
+            {/* Filter Sidebar */}
+            <aside style={{ position: 'sticky', top: '100px', height: 'fit-content' }}>
+              <div className="glass-card" style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
                   <Filter size={18} /> Tipe Pekerjaan
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {jobTypes.map(type => (
                     <button 
-                      key={type} 
+                      key={type}
                       onClick={() => setActiveType(type)}
                       style={{
-                        padding: '0.8rem 1.2rem', borderRadius: '12px', border: 'none',
-                        textAlign: 'left', cursor: 'pointer', fontWeight: '700',
+                        padding: '1rem 1.2rem', borderRadius: '12px', border: 'none',
                         background: activeType === type ? 'var(--primary)' : 'transparent',
                         color: activeType === type ? '#fff' : 'var(--text-muted)',
+                        fontWeight: '700', textAlign: 'left', cursor: 'pointer',
                         transition: 'all 0.3s'
                       }}
                     >
@@ -166,167 +130,100 @@ const LowonganKerja = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </aside>
 
             {/* Job List */}
-            <div className="job-list">
-              {filtered.length === 0 ? (
-                <div className="glass-card" style={{ textAlign: 'center', padding: '4rem' }}>
-                  <Search size={48} style={{ opacity: 0.2, marginBottom: '1.5rem' }} />
-                  <p style={{ color: 'var(--text-muted)' }}>Tidak ditemukan lowongan yang cocok.</p>
-                </div>
-              ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-                  {filtered.map((job, i) => (
-                    <motion.div 
-                      key={job.id} 
-                      className="glass-card job-card"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
-                      <div className="job-card-header">
-                        <div style={{ 
-                          width: '56px', height: '56px', borderRadius: '16px', 
-                          background: `${job.color}15`, display: 'flex', 
-                          alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem'
-                        }}>
-                          {job.icon}
-                        </div>
-                        <div style={{ flex: 1 }}>
-                          <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-main)', marginBottom: '0.2rem' }}>{job.title}</h3>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: '700' }}>{job.company}</span>
-                            <span style={{ width: '4px', height: '4px', background: 'var(--glass-border)', borderRadius: '50%' }} />
-                            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}><MapPin size={14} /> {job.location}</span>
-                          </div>
-                        </div>
-                        <div className="job-tag">{job.type}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {filtered.map((job, i) => (
+                <motion.div 
+                  key={job.id}
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card job-card-premium"
+                  style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                >
+                  <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                    <div style={{ 
+                      width: '64px', height: '64px', borderRadius: '20px', background: `${job.color}15`, 
+                      color: job.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' 
+                    }}>
+                      {job.icon}
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginBottom: '0.5rem' }}>{job.title}</h3>
+                      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                        <span style={{ color: 'var(--primary)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <Building2 size={16} /> {job.company}
+                        </span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <MapPin size={16} /> {job.location}
+                        </span>
+                        <span style={{ background: 'var(--bg-dark)', padding: '0.3rem 0.8rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: '800', color: 'var(--text-muted)' }}>
+                          {job.type}
+                        </span>
                       </div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--text-main)' }}>{job.salary}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Gaji Bulanan</div>
+                    </div>
+                  </div>
 
-                      <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, margin: '1.5rem 0' }}>{job.desc}</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7 }}>{job.desc}</p>
 
-                      <div className="job-card-footer">
-                        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-                          {job.tags.map(tag => (
-                            <span key={tag} className="tag-pill">{tag}</span>
-                          ))}
-                        </div>
-                        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                          <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Gaji Est.</div>
-                            <div style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--text-main)' }}>{job.salary}</div>
-                          </div>
-                          <button className="btn btn-primary" style={{ padding: '0.7rem 1.5rem', borderRadius: '12px' }}>Lamar</button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
+                  <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
+                    {job.tags.map(tag => (
+                      <span key={tag} style={{ background: 'var(--bg-dark)', padding: '0.4rem 1rem', borderRadius: '10px', fontSize: '0.8rem', color: 'var(--text-muted)', border: '1px solid var(--glass-border)' }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#059669', fontSize: '0.85rem', fontWeight: '700' }}>
+                      <CheckCircle2 size={16} /> Perusahaan Terverifikasi
+                    </div>
+                    <button className="btn btn-primary" style={{ padding: '0.8rem 2.5rem', borderRadius: '12px' }}>Lamar Sekarang</button>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Post Job CTA */}
-      <section className="section" style={{ paddingBottom: '10rem' }}>
+      {/* Market Trends */}
+      <section className="section">
         <div className="container">
-          <div className="glass-card" style={{ 
-            padding: '4rem 2rem', textAlign: 'center', 
-            background: 'var(--bg-card)', borderRadius: '40px',
-            border: '1px dashed var(--primary)'
-          }}>
-            <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1rem' }}>Mencari Talenta Muda?</h2>
-            <p style={{ color: 'var(--text-muted)', marginBottom: '2.5rem', maxWidth: '500px', margin: '0 auto 2.5rem' }}>
-              Pasang lowongan kerja Anda secara gratis dan temukan ribuan kandidat terbaik dari komunitas Yo'i.
-            </p>
-            <button className="btn btn-outline" style={{ padding: '1rem 3rem' }}>Posting Lowongan</button>
+          <div className="glass-card" style={{ padding: '4rem', background: 'var(--bg-card)', textAlign: 'center' }}>
+            <h2 style={{ marginBottom: '3rem', fontWeight: '800' }}>Statistik Karir Yo'i</h2>
+            <div className="grid grid-4" style={{ gap: '2rem' }}>
+              {[
+                { value: '150+', label: 'Lowongan Aktif', color: 'var(--primary)' },
+                { value: '60+', label: 'Mitra Perusahaan', color: 'var(--secondary)' },
+                { value: '500+', label: 'Talenta Terhubung', color: '#059669' },
+                { value: '92%', label: 'Tingkat Penempatan', color: '#8b5cf6' }
+              ].map((s, i) => (
+                <div key={i}>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '900', color: s.color, fontFamily: "'Outfit', sans-serif" }}>{s.value}</div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '700' }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <style>{`
-        .job-layout {
-          display: grid;
-          gap: 2.5rem;
-          grid-template-columns: 1fr;
-        }
         @media (min-width: 1024px) {
-          .job-layout {
-            grid-template-columns: 280px 1fr;
-          }
+          .job-layout { grid-template-columns: 280px 1fr !important; }
         }
-        .job-card {
-          padding: 1.8rem;
-          transition: all 0.3s;
-        }
-        .job-card:hover {
+        .job-card-premium:hover {
           border-color: var(--primary);
-          transform: translateY(-5px);
+          transform: scale(1.01);
           box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .job-card-header {
-          display: flex;
-          align-items: center;
-          gap: 1.2rem;
-          flex-wrap: wrap;
-        }
-        .job-tag {
-          padding: 0.4rem 1rem;
-          background: var(--bg-dark);
-          border: 1px solid var(--glass-border);
-          border-radius: 100px;
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: var(--text-muted);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-        .job-card-footer {
-          display: flex;
-          align-items: center;
-          gap: 1.5rem;
-          padding-top: 1.5rem;
-          border-top: 1px solid var(--glass-border);
-          flex-wrap: wrap;
-        }
-        .tag-pill {
-          padding: 0.3rem 0.8rem;
-          background: var(--bg-dark);
-          border-radius: 8px;
-          font-size: 0.75rem;
-          color: var(--text-muted);
-          font-weight: 600;
-        }
-        @media (max-width: 768px) {
-          .filter-sidebar {
-            overflow-x: auto;
-            margin-bottom: 2rem;
-          }
-          .filter-sidebar > div {
-            display: flex;
-            flex-direction: row !important;
-            gap: 0.8rem;
-            background: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-          }
-          .filter-sidebar button {
-            white-space: nowrap;
-            background: var(--bg-card) !important;
-            border: 1px solid var(--glass-border) !important;
-          }
-          .job-card-footer {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          .job-card-footer > div:last-child {
-            margin-left: 0 !important;
-            width: 100%;
-            justify-content: space-between;
-            margin-top: 1.5rem;
-          }
         }
       `}</style>
     </motion.div>
