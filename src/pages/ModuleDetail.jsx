@@ -88,7 +88,7 @@ const ModuleDetail = () => {
             <ArrowLeft size={18} /> Kembali ke Akademi
           </Link>
 
-          <div className="grid grid-2" style={{ gridTemplateColumns: '1.8fr 1fr', gap: '4rem' }} id="module-layout">
+          <div className="grid grid-2" style={{ gridTemplateColumns: '1.8fr 1fr', gap: '4rem', alignItems: 'start' }} id="module-layout">
             {/* Left: Content */}
             <div>
               <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -110,7 +110,7 @@ const ModuleDetail = () => {
               </div>
 
               {/* Learning Outcomes - COMPACT VERSION */}
-              <div className="glass-card" style={{ padding: '1.5rem', maxWidth: '600px' }}>
+              <div className="glass-card" style={{ padding: '1.5rem', maxWidth: '600px', alignSelf: 'start' }}>
                 <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: '800' }}>Yang Akan Anda Pelajari</h3>
                 <div className="grid grid-2" style={{ gap: '1rem 2rem' }}>
                   {data.outcomes.map((item, i) => (
