@@ -39,25 +39,34 @@
   padding: 0;
 }
 
-html {
-  font-size: 16px;
+html, body {
+  width: 100% !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  background-color: var(--bg-dark);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: var(--bg-dark);
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
-  width: 100%;
+  position: relative;
+}
+
+#root, main {
+  width: 100% !important;
+  overflow-x: hidden !important;
 }
 
 .container {
-  width: 100%;
+  width: 100% !important;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.25rem;
-  overflow: visible;
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4 {
