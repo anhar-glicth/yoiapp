@@ -172,31 +172,37 @@ const Navbar = () => {
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="mobile-drawer"
               onClick={e => e.stopPropagation()}
             >
-              <div className="drawer-handle" />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: '900' }}>Navigasi</h2>
-                <button onClick={() => setIsOpen(false)} className="icon-btn"><X size={24} /></button>
+              <div className="drawer-header">
+                <div>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: '900', color: 'var(--text-main)', marginBottom: '0.2rem' }}>Menu</h2>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700' }}>Navigasi Yo'i Foundation</p>
+                </div>
+                <button onClick={() => setIsOpen(false)} className="close-drawer-btn"><X size={24} /></button>
               </div>
 
-              <div className="drawer-links">
-                {allLinks.map((link) => (
-                  <Link key={link.path} to={link.path} className={`drawer-link-item ${isActive(link.path) ? 'active' : ''}`}>
-                    <span style={{ fontSize: '1.4rem' }}>{link.icon}</span>
-                    {link.name}
-                  </Link>
-                ))}
+              <div className="drawer-content">
+                <div className="drawer-links-grid">
+                  {allLinks.map((link) => (
+                    <Link key={link.path} to={link.path} className={`drawer-link-card ${isActive(link.path) ? 'active' : ''}`}>
+                      <div className="link-icon">{link.icon}</div>
+                      <div className="link-text">{link.name}</div>
+                    </Link>
+                  ))}
+                </div>
               </div>
 
-              <Link to="/donation" className="btn btn-primary" style={{ width: '100%', marginTop: 'auto', padding: '1.2rem', fontSize: '1.1rem', borderRadius: '18px' }}>
-                Donasi Sekarang <Heart size={20} fill="currentColor" />
-              </Link>
+              <div className="drawer-footer">
+                <Link to="/donation" className="btn btn-primary drawer-cta">
+                  Dukung Kami <Heart size={18} fill="currentColor" />
+                </Link>
+              </div>
             </motion.div>
           </motion.div>
         )}
@@ -266,26 +272,70 @@ const Navbar = () => {
           display: flex; align-items: flex-end;
         }
         .mobile-drawer {
-          width: 100%; background: var(--bg-card);
-          border-radius: 30px 30px 0 0; padding: 2rem;
-          height: 85vh; display: flex; flexDirection: column;
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 85%;
+          height: 100vh;
+          background: var(--bg-card);
+          box-shadow: -10px 0 50px rgba(0,0,0,0.2);
+          display: flex;
+          flex-direction: column;
+          z-index: 3000;
         }
-        .drawer-handle {
-          width: 40px; height: 5px; background: var(--glass-border);
-          border-radius: 10px; margin: -1rem auto 2rem;
+        .drawer-header {
+          padding: 2.5rem 1.5rem 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--glass-border);
         }
-        .drawer-links {
-          display: grid; grid-template-columns: 1fr; gap: 0.8rem;
-        }
-        .drawer-link-item {
-          display: flex; alignItems: center; gap: 1.2rem;
-          padding: 1.2rem; border-radius: 18px;
-          text-decoration: none; color: var(--text-main);
-          font-weight: 800; font-size: 1.15rem;
+        .close-drawer-btn {
+          width: 44px; height: 44px; border-radius: 12px;
           background: var(--bg-dark); border: 1px solid var(--glass-border);
+          color: var(--text-main); display: flex; align-items: center; justify-content: center;
         }
-        .drawer-link-item.active {
-          background: var(--primary-glow); color: var(--primary); border-color: var(--primary);
+        .drawer-content {
+          flex: 1;
+          overflow-y: auto;
+          padding: 1.5rem;
+        }
+        .drawer-links-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+        .drawer-link-card {
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+          padding: 1rem;
+          border-radius: 16px;
+          text-decoration: none;
+          background: var(--bg-dark);
+          border: 1px solid var(--glass-border);
+          transition: 0.3s;
+        }
+        .drawer-link-card .link-icon {
+          width: 45px; height: 45px; border-radius: 12px;
+          background: var(--bg-card); display: flex; align-items: center; justify-content: center;
+          font-size: 1.2rem;
+        }
+        .drawer-link-card .link-text {
+          font-weight: 800; color: var(--text-main); font-size: 1.05rem;
+        }
+        .drawer-link-card.active {
+          background: var(--primary-glow); border-color: var(--primary);
+        }
+        .drawer-link-card.active .link-text { color: var(--primary); }
+        .drawer-footer {
+          padding: 1.5rem;
+          border-top: 1px solid var(--glass-border);
+          background: var(--bg-dark);
+        }
+        .drawer-cta {
+          width: 100%; padding: 1rem; border-radius: 16px; font-weight: 900;
+          display: flex; align-items: center; justify-content: center; gap: 0.8rem;
         }
         .mobile-bottom-nav {
           position: fixed;
