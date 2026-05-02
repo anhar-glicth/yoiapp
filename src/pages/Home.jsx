@@ -46,7 +46,7 @@ const Home = () => {
 
           {/* Content row */}
           <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', minHeight: '75vh', paddingTop: '1rem', paddingBottom: '3rem' }}>
+            <div className="grid grid-2" style={{ alignItems: 'center', minHeight: '75vh', paddingTop: '1rem', paddingBottom: '3rem' }}>
               
               {/* Left: text inside the blob */}
               <motion.div
@@ -141,9 +141,14 @@ const Home = () => {
               <div className="image-stack-bottom image-stack-item">
                 <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Teamwork" />
               </div>
-              <div className="stats-badge float-anim">
-                <h4>50 Lakh</h4>
-                <p>Lives Impacted</p>
+              <div className="stats-badge float-anim" style={{ 
+                bottom: '10%', 
+                right: '5%',
+                padding: '1rem',
+                minWidth: '120px'
+              }}>
+                <h4 style={{ fontSize: '1.2rem', margin: 0 }}>50 Lakh</h4>
+                <p style={{ fontSize: '0.8rem', margin: 0 }}>Lives Impacted</p>
               </div>
               
               {/* Decorative Arrow */}
@@ -182,7 +187,7 @@ const Home = () => {
           </motion.div>
 
           {/* Testimonial Cards Grid */}
-          <div className="grid grid-2 grid-3" style={{ gap: '1rem' }}>
+          <div className="grid grid-m-2 grid-3" style={{ gap: '1rem' }}>
             {[
               {
                 name: 'Rina Marlina',

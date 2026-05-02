@@ -217,18 +217,21 @@ h1, h2, h3, h4 {
 
 .grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
-/* All card grids show 2 columns on mobile */
+/* Default mobile: 1 column for layout */
 .grid-2, .grid-3, .grid-4 {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+}
+
+/* Specific class for 2-columns on mobile (for cards) */
+.grid-m-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
 }
 
 @media (min-width: 768px) {
-  .grid {
-    gap: 1.5rem;
-  }
+  .grid { gap: 1.5rem; }
   .grid-2 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
   .grid-4 { grid-template-columns: repeat(4, 1fr); }

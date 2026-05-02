@@ -71,7 +71,7 @@ const Pelatihan = () => {
       {/* Stats */}
       <section style={{ background: 'var(--bg-dark)', padding: '4rem 0 2rem' }}>
         <div className="container">
-          <div className="grid grid-4">
+          <div className="grid grid-m-2 grid-4">
             {stats.map((s, i) => (
               <motion.div key={i} className="glass-card" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ textAlign: 'center', padding: '1.2rem 0.8rem' }}>
                 <div style={{ color: s.color, marginBottom: '0.8rem', display: 'flex', justifyContent: 'center' }}>{s.icon}</div>
@@ -98,7 +98,7 @@ const Pelatihan = () => {
             </div>
           </div>
 
-          <div className="grid grid-3">
+          <div className="grid grid-m-2 grid-3">
             {filtered.map((item, i) => (
               <motion.div key={item.id} className="glass-card" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4, delay: i * 0.08 }} whileHover={{ y: -6 }} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ background: `${item.color}18`, borderRadius: '12px', padding: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
