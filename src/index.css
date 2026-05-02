@@ -553,3 +553,37 @@ h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); }
     font-size: 0.65rem !important;
   }
 }
+
+/* Horizontal Scroll System (Mobile) */
+.scroll-x {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem 1.25rem 1.5rem;
+  margin: 0 -1.25rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-x > * {
+  flex: 0 0 82%; /* Bleeds next card to indicate scroll */
+  scroll-snap-align: center;
+}
+
+/* For Stats Cards specifically in horizontal scroll */
+.scroll-x.stats-scroll > * {
+  flex: 0 0 55%;
+}
+
+@media (min-width: 768px) {
+  .scroll-x {
+    display: grid !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
