@@ -72,14 +72,13 @@ const Pelatihan = () => {
                 borderRadius: '100px', color: 'var(--primary)', fontSize: '0.85rem',
                 fontWeight: '800', marginBottom: '1.5rem'
               }}>PROGRAM SIAP KERJA</div>
-              <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: '900', lineHeight: 1, marginBottom: '2rem' }}>
+              <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: '900', lineHeight: 1, marginBottom: '2rem' }}>
                 Belajar, Berkarya, <br /><span style={{ color: 'var(--primary)' }}>Langsung Bekerja</span>
               </h1>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
                 Kurikulum yang dirancang bersama pakar industri untuk memastikan Anda memiliki skill yang paling dibutuhkan pasar kerja saat ini.
               </p>
               
-              {/* Hero Mini Stats - 2 Columns on Mobile */}
               <div className="grid grid-stats" style={{ gap: '1.5rem' }}>
                 {stats.slice(0, 2).map((s, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -87,8 +86,8 @@ const Pelatihan = () => {
                       {s.icon}
                     </div>
                     <div>
-                      <div style={{ fontWeight: '900', color: 'var(--text-main)', fontSize: '1.2rem' }}>{s.value}</div>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700' }}>{s.label}</div>
+                      <div style={{ fontWeight: '900', color: 'var(--text-main)', fontSize: '1.1rem' }}>{s.value}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '700' }}>{s.label}</div>
                     </div>
                   </div>
                 ))}
@@ -111,13 +110,11 @@ const Pelatihan = () => {
         </div>
       </section>
 
-      {/* Main Training Grid */}
+      {/* Main Training Grid - FIXED GRID TO PREVENT STACKING */}
       <section className="section">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '2.5rem' }}>Eksplorasi Modul</h2>
-            
-            {/* Filter Tabs - Horizontal Scroll on Mobile */}
             <div className="filter-scroll-wrapper">
               <div className="filter-tabs">
                 {categories.map(cat => (
@@ -133,8 +130,7 @@ const Pelatihan = () => {
             </div>
           </div>
 
-          {/* Training Cards - 2 Columns on Mobile via grid-2-mobile OR scroll-x */}
-          <div className="scroll-x">
+          <div className="training-grid-system">
             {filtered.map((item, i) => (
               <motion.div 
                 key={item.id} 
@@ -145,7 +141,7 @@ const Pelatihan = () => {
                 style={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}
               >
                 <div style={{ 
-                  width: '60px', height: '60px', borderRadius: '18px', 
+                  width: '56px', height: '56px', borderRadius: '16px', 
                   background: `${item.color}15`, display: 'flex', 
                   alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem',
                   marginBottom: '1.5rem', border: `1px solid ${item.color}25`
@@ -161,11 +157,11 @@ const Pelatihan = () => {
                   }}>{item.category}</span>
                 </div>
 
-                <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginBottom: '1rem', lineHeight: 1.3 }}>{item.title}</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '2rem', flex: 1 }}>{item.desc}</p>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '1rem', lineHeight: 1.3 }}>{item.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.7, marginBottom: '1.5rem', flex: 1 }}>{item.desc}</p>
                 
                 <div style={{ 
-                  display: 'flex', gap: '1rem', marginBottom: '2rem', 
+                  display: 'flex', gap: '1rem', marginBottom: '1.5rem', 
                   padding: '1rem 0', borderTop: '1px solid var(--glass-border)'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--text-main)', fontWeight: '800' }}>
@@ -176,7 +172,7 @@ const Pelatihan = () => {
                   </div>
                 </div>
 
-                <button className="btn btn-primary" style={{ width: '100%', borderRadius: '12px', padding: '0.8rem' }}>
+                <button className="btn btn-primary" style={{ width: '100%', borderRadius: '12px', padding: '0.8rem', fontSize: '0.85rem' }}>
                   Daftar Kelas
                 </button>
               </motion.div>
@@ -185,23 +181,24 @@ const Pelatihan = () => {
         </div>
       </section>
 
-      {/* Why Yo'i Training - Fixed Grid */}
+      {/* Why Yo'i Training */}
       <section className="section">
         <div className="container">
           <div className="glass-card" style={{ padding: '4rem 2rem', background: 'var(--bg-card)' }}>
             <h2 style={{ textAlign: 'center', marginBottom: '4rem', fontWeight: '900' }}>Mengapa Belajar di Yo'i?</h2>
-            <div className="grid grid-3 grid-stats" style={{ gap: '2.5rem' }}>
+            <div className="grid grid-stats" style={{ gap: '2.5rem' }}>
               {[
                 { icon: <ShieldCheck size={32} />, title: 'Sertifikasi', desc: 'Diakui oleh mitra industri nasional.', color: '#059669' },
                 { icon: <Zap size={32} />, title: 'Intensif', desc: 'Materi padat sesuai kebutuhan kerja.', color: 'var(--primary)' },
-                { icon: <Users size={32} />, title: 'Mentor', desc: 'Bimbingan langsung dari praktisi.', color: 'var(--secondary)' }
+                { icon: <Users size={32} />, title: 'Mentor', desc: 'Bimbingan langsung dari praktisi.', color: 'var(--secondary)' },
+                { icon: <Award size={32} />, title: 'Karier', desc: 'Akses ke jaringan bursa kerja Yo\'i.', color: '#8b5cf6' }
               ].map((f, i) => (
                 <div key={i} style={{ textAlign: 'center' }}>
-                  <div style={{ width: '64px', height: '64px', background: `${f.color}15`, color: f.color, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
+                  <div style={{ width: '60px', height: '60px', background: `${f.color}15`, color: f.color, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
                     {f.icon}
                   </div>
                   <h4 style={{ fontWeight: '800', marginBottom: '0.8rem' }}>{f.title}</h4>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{f.desc}</p>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -215,6 +212,17 @@ const Pelatihan = () => {
         }
         @media (max-width: 1024px) {
           #pelatihan-hero { grid-template-columns: 1fr; gap: 3rem; }
+        }
+        .training-grid-system {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+          .training-grid-system { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+          .training-grid-system { grid-template-columns: repeat(3, 1fr); }
         }
         .filter-scroll-wrapper {
           overflow-x: auto;
@@ -231,8 +239,8 @@ const Pelatihan = () => {
           .filter-tabs { justify-content: center; }
         }
         .filter-tab-item {
-          padding: 0.8rem 1.8rem;
-          border-radius: 14px;
+          padding: 0.7rem 1.5rem;
+          border-radius: 12px;
           border: 1px solid var(--glass-border);
           background: var(--bg-card);
           color: var(--text-muted);
@@ -240,7 +248,7 @@ const Pelatihan = () => {
           cursor: pointer;
           transition: all 0.3s;
           white-space: nowrap;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
         }
         .filter-tab-item.active {
           background: var(--primary);

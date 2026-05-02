@@ -106,7 +106,7 @@ const LowonganKerja = () => {
         <div className="container">
           <div className="job-layout">
             
-            {/* Filter Sidebar / Top Bar on Mobile */}
+            {/* Filter Sidebar */}
             <aside className="job-filter-sidebar">
               <div className="glass-card" style={{ padding: '1.5rem' }}>
                 <h3 style={{ fontSize: '1rem', fontWeight: '800', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }} className="hide-on-mobile">
@@ -126,8 +126,8 @@ const LowonganKerja = () => {
               </div>
             </aside>
 
-            {/* Job List */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {/* Job List - IMPROVED GRID TO PREVENT STACKING */}
+            <div className="job-grid-system">
               {filtered.map((job, i) => (
                 <motion.div 
                   key={job.id}
@@ -136,47 +136,44 @@ const LowonganKerja = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   className="glass-card job-card-premium"
-                  style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                  style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
                 >
-                  <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <div style={{ 
-                      width: '56px', height: '56px', borderRadius: '16px', background: `${job.color}15`, 
-                      color: job.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem' 
+                      width: '48px', height: '48px', borderRadius: '12px', background: `${job.color}15`, 
+                      color: job.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' 
                     }}>
                       {job.icon}
                     </div>
-                    <div style={{ flex: 1, minWidth: '200px' }}>
-                      <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.4rem' }}>{job.title}</h3>
-                      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-                        <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                          <Building2 size={14} /> {job.company}
-                        </span>
-                        <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                          <MapPin size={14} /> {job.location}
-                        </span>
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '0.2rem' }}>{job.title}</h3>
+                      <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+                        <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.8rem' }}>{job.company}</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>• {job.location}</span>
                       </div>
-                    </div>
-                    <div className="job-salary-box">
-                      <div style={{ fontSize: '1.1rem', fontWeight: '900', color: 'var(--text-main)' }}>{job.salary}</div>
-                      <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: '700' }}>GAJI / BLN</div>
                     </div>
                   </div>
 
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>{job.desc}</p>
+                  <div style={{ background: 'var(--bg-dark)', padding: '0.8rem', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '700' }}>ESTIMASI GAJI</div>
+                    <div style={{ fontSize: '1rem', fontWeight: '900', color: 'var(--text-main)' }}>{job.salary}</div>
+                  </div>
 
-                  <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-                    {job.tags.map(tag => (
-                      <span key={tag} style={{ background: 'var(--bg-dark)', padding: '0.3rem 0.8rem', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--text-muted)', border: '1px solid var(--glass-border)', fontWeight: '700' }}>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, flex: 1 }}>{job.desc}</p>
+
+                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                    {job.tags.slice(0, 3).map(tag => (
+                      <span key={tag} style={{ background: 'var(--bg-dark)', padding: '0.2rem 0.6rem', borderRadius: '6px', fontSize: '0.7rem', color: 'var(--text-muted)', border: '1px solid var(--glass-border)', fontWeight: '700' }}>
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.2rem', borderTop: '1px solid var(--glass-border)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#059669', fontSize: '0.8rem', fontWeight: '800' }}>
-                      <CheckCircle2 size={14} /> VERIFIED
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--glass-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#059669', fontSize: '0.75rem', fontWeight: '800' }}>
+                      <CheckCircle2 size={12} /> VERIFIED
                     </div>
-                    <button className="btn btn-primary" style={{ padding: '0.7rem 2rem', borderRadius: '10px', fontSize: '0.85rem' }}>Lamar Sekarang</button>
+                    <button className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', borderRadius: '10px', fontSize: '0.8rem' }}>Lamar</button>
                   </div>
                 </motion.div>
               ))}
@@ -185,7 +182,7 @@ const LowonganKerja = () => {
         </div>
       </section>
 
-      {/* Market Trends - FIXED GRID */}
+      {/* Market Trends */}
       <section className="section" style={{ background: 'var(--bg-card)', borderTop: '1px solid var(--glass-border)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
@@ -193,8 +190,7 @@ const LowonganKerja = () => {
             <p style={{ color: 'var(--text-muted)' }}>Data terkini pertumbuhan talenta inklusif kami.</p>
           </div>
           
-          {/* Using grid-stats for 2-column mobile, 4-column desktop */}
-          <div className="grid grid-4 grid-stats" style={{ gap: '1.5rem' }}>
+          <div className="grid grid-stats" style={{ gap: '1.5rem' }}>
             {[
               { value: '150+', label: 'Lowongan Aktif', color: 'var(--primary)' },
               { value: '60+', label: 'Mitra Bisnis', color: 'var(--secondary)' },
@@ -224,6 +220,16 @@ const LowonganKerja = () => {
         @media (min-width: 1024px) {
           .job-layout {
             grid-template-columns: 280px 1fr;
+          }
+        }
+        .job-grid-system {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+          .job-grid-system {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
         .filter-button-group {
@@ -272,17 +278,6 @@ const LowonganKerja = () => {
             background: transparent;
             padding: 1rem 0;
             box-shadow: none;
-          }
-        }
-        .job-salary-box {
-          text-align: right;
-        }
-        @media (max-width: 640px) {
-          .job-salary-box {
-            text-align: left;
-            width: 100%;
-            padding-top: 1rem;
-            border-top: 1px dashed var(--glass-border);
           }
         }
         .job-card-premium:hover {

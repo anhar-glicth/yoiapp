@@ -7,22 +7,22 @@ const Donation = () => {
     {
       title: 'Pendidikan Isyarat',
       amount: 'Rp 50.000',
-      desc: 'Penyediaan materi belajar isyarat digital untuk 1 orang teman Tuli selama sebulan.',
-      icon: <Heart size={28} />,
+      desc: 'Materi belajar isyarat digital untuk 1 orang teman Tuli selama sebulan.',
+      icon: <Heart size={24} />,
       color: '#ef4444'
     },
     {
       title: 'Aksesibilitas AI',
       amount: 'Rp 250.000',
-      desc: 'Mendukung pengembangan server AI untuk fitur penerjemah isyarat real-time di platform.',
-      icon: <Zap size={28} />,
+      desc: 'Mendukung server AI untuk fitur penerjemah isyarat real-time.',
+      icon: <Zap size={24} />,
       color: 'var(--primary)'
     },
     {
       title: 'Pahlawan Inklusi',
       amount: 'Rp 1.000.000',
-      desc: 'Beasiswa penuh untuk satu komunitas disabilitas daerah terpencil untuk akses pelatihan.',
-      icon: <Sparkles size={28} />,
+      desc: 'Beasiswa penuh untuk satu komunitas disabilitas di daerah terpencil.',
+      icon: <Sparkles size={24} />,
       color: 'var(--secondary)'
     }
   ]
@@ -40,7 +40,7 @@ const Donation = () => {
         background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
       }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -54,17 +54,17 @@ const Donation = () => {
             <h1 style={{ fontSize: 'clamp(2.5rem, 7vw, 4.2rem)', fontWeight: '900', lineHeight: 1.1, marginBottom: '2rem' }}>
               Ubah Dunia dengan <br /><span style={{ color: 'var(--primary)' }}>Kebaikan Anda</span>
             </h1>
-            <p style={{ maxWidth: '650px', margin: '0 auto 3rem', fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>
-              Donasi Anda bukan sekadar uang, tapi harapan bagi jutaan teman disabilitas untuk mendapatkan pendidikan dan peluang yang setara.
+            <p style={{ maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.15rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>
+              Donasi Anda bukan sekadar uang, tapi harapan bagi jutaan teman disabilitas untuk mendapatkan peluang yang setara.
             </p>
 
-            {/* Mock Donation Progress */}
+            {/* Campaign Progress Card */}
             <div className="glass-card" style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', fontWeight: '800' }}>
-                <span style={{ color: 'var(--text-main)' }}>Target Kampanye: Rp 500 Juta</span>
-                <span style={{ color: 'var(--primary)' }}>75% Tercapai</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', fontWeight: '900', fontSize: '0.9rem' }}>
+                <span style={{ color: 'var(--text-main)' }}>TARGET: RP 500 JT</span>
+                <span style={{ color: 'var(--primary)' }}>75% TERCAPAI</span>
               </div>
-              <div style={{ width: '100%', height: '12px', background: 'var(--bg-dark)', borderRadius: '10px', overflow: 'hidden' }}>
+              <div style={{ width: '100%', height: '10px', background: 'var(--bg-dark)', borderRadius: '10px', overflow: 'hidden' }}>
                 <motion.div 
                   initial={{ width: 0 }}
                   whileInView={{ width: '75%' }}
@@ -72,15 +72,14 @@ const Donation = () => {
                   style={{ height: '100%', background: 'linear-gradient(90deg, var(--primary), var(--secondary))' }}
                 />
               </div>
-              <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', justifyContent: 'center' }}>
-                <div>
-                  <div style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--text-main)' }}>1.2K</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Donatur</div>
+              <div className="grid grid-stats" style={{ marginTop: '2rem' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-main)' }}>1.2K</div>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: '700' }}>DONATUR</div>
                 </div>
-                <div style={{ width: '1px', background: 'var(--glass-border)' }} />
-                <div>
-                  <div style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--text-main)' }}>12 Hari</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Tersisa</div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-main)' }}>12 HARI</div>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: '700' }}>TERSISA</div>
                 </div>
               </div>
             </div>
@@ -88,61 +87,55 @@ const Donation = () => {
         </div>
       </section>
 
-      {/* Donation Packages */}
+      {/* Donation Packages - RESPONSIVE GRID */}
       <section className="section">
         <div className="container">
-          <div className="scroll-x">
+          <div className="donation-grid-system">
             {donationPlans.map((plan, i) => (
               <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
-                className="glass-card"
-                style={{ display: 'flex', flexDirection: 'column', padding: '3rem 2.5rem' }}
+                className="glass-card donation-card"
+                style={{ display: 'flex', flexDirection: 'column', padding: '2.5rem 2rem', borderRadius: '32px' }}
               >
                 <div style={{ 
-                  width: '64px', height: '64px', borderRadius: '20px',
+                  width: '56px', height: '56px', borderRadius: '16px',
                   background: `${plan.color}15`, color: plan.color,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: '2rem'
+                  marginBottom: '1.5rem'
                 }}>
                   {plan.icon}
                 </div>
-                <h3 style={{ fontSize: '1.6rem', fontWeight: '800', marginBottom: '0.8rem' }}>{plan.title}</h3>
-                <div style={{ fontSize: '2.2rem', fontWeight: '900', color: plan.color, marginBottom: '1.5rem', fontFamily: "'Outfit', sans-serif" }}>{plan.amount}</div>
-                <p style={{ color: 'var(--text-muted)', marginBottom: '3rem', flex: 1, lineHeight: 1.7, fontSize: '1rem' }}>{plan.desc}</p>
-                <button className="btn btn-primary" style={{ width: '100%', padding: '1.2rem', borderRadius: '16px', fontSize: '1rem' }}>Pilih Paket</button>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '0.5rem' }}>{plan.title}</h3>
+                <div style={{ fontSize: '1.8rem', fontWeight: '900', color: plan.color, marginBottom: '1.2rem', fontFamily: "'Outfit', sans-serif" }}>{plan.amount}</div>
+                <p style={{ color: 'var(--text-muted)', marginBottom: '2.5rem', flex: 1, lineHeight: 1.6, fontSize: '0.9rem' }}>{plan.desc}</p>
+                <button className="btn btn-primary" style={{ width: '100%', padding: '1rem', borderRadius: '14px', fontSize: '0.9rem' }}>Pilih Paket</button>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trust Badge / Payment */}
+      {/* Trust & Payment - RESPONSIVE GRID */}
       <section className="section">
         <div className="container">
           <div className="glass-card" style={{ padding: '4rem 2rem', background: 'var(--bg-card)', textAlign: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', color: '#059669', marginBottom: '2rem', fontWeight: '800' }}>
-              <ShieldCheck size={24} /> Transaksi Aman & Terverifikasi
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem', color: '#059669', marginBottom: '2rem', fontWeight: '900', fontSize: '0.85rem' }}>
+              <ShieldCheck size={20} /> TRANSAKSI AMAN & TERVERIFIKASI
             </div>
-            <h2 style={{ marginBottom: '3rem', fontWeight: '800' }}>Metode Pembayaran</h2>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap' }}>
+            <h2 style={{ fontSize: '2rem', marginBottom: '3rem', fontWeight: '900' }}>Metode Pembayaran</h2>
+            <div className="grid grid-stats" style={{ gap: '2rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '60px', height: '60px', borderRadius: '15px', background: 'var(--bg-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <CreditCard size={28} color="var(--primary)" />
+                <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'var(--bg-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <CreditCard size={24} color="var(--primary)" />
                 </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: '700' }}>Bank Transfer</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: '800' }}>TRANSFER</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '60px', height: '60px', borderRadius: '15px', background: 'var(--bg-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Smartphone size={28} color="var(--secondary)" />
+                <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'var(--bg-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Smartphone size={24} color="var(--secondary)" />
                 </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: '700' }}>E-Wallet</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '60px', height: '60px', borderRadius: '15px', background: 'var(--bg-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Banknote size={28} color="#059669" />
-                </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: '700' }}>QRIS / Retail</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: '800' }}>E-WALLET</span>
               </div>
             </div>
           </div>
@@ -158,14 +151,32 @@ const Donation = () => {
             border: '1px dashed var(--primary)'
           }}>
             <Target size={40} color="var(--primary)" style={{ marginBottom: '1.5rem' }} />
-            <h2 style={{ fontSize: '2.2rem', fontWeight: '800', marginBottom: '1rem' }}>Donasi Rutin Bulanan</h2>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1rem' }}>Donasi Rutin Bulanan</h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '500px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
               Berikan dukungan berkelanjutan untuk memastikan program inklusivitas tetap berjalan setiap bulannya.
             </p>
-            <button className="btn btn-primary" style={{ padding: '1rem 3.5rem' }}>Jadi Donatur Tetap</button>
+            <button className="btn btn-primary" style={{ padding: '1rem 3.5rem', borderRadius: '16px' }}>Jadi Donatur Tetap</button>
           </div>
         </div>
       </section>
+
+      <style>{`
+        .donation-grid-system {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+          .donation-grid-system { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+          .donation-grid-system { grid-template-columns: repeat(3, 1fr); }
+        }
+        .donation-card:hover {
+          border-color: var(--primary);
+          transform: translateY(-5px);
+        }
+      `}</style>
     </motion.div>
   )
 }

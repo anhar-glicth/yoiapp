@@ -273,10 +273,16 @@ h1, h2, h3, h4 {
   }
 }
 
-/* Stats specific grid */
+/* Stats specific grid: 2 columns on mobile, 4 columns on desktop */
 .grid-stats {
   grid-template-columns: repeat(2, 1fr) !important;
-  gap: 0.75rem !important;
+  gap: 1rem !important;
+}
+
+@media (min-width: 900px) {
+  .grid-stats {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
 }
 
 @media (min-width: 768px) {
