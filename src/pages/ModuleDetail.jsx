@@ -109,13 +109,13 @@ const ModuleDetail = () => {
                 </div>
               </div>
 
-              {/* Learning Outcomes */}
-              <div className="glass-card" style={{ padding: '2.5rem' }}>
-                <h3 style={{ marginBottom: '1.5rem', fontWeight: '800' }}>Yang Akan Anda Pelajari</h3>
-                <div className="grid grid-2" style={{ gap: '1.5rem' }}>
+              {/* Learning Outcomes - COMPACT VERSION */}
+              <div className="glass-card" style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: '800' }}>Yang Akan Anda Pelajari</h3>
+                <div className="grid grid-2" style={{ gap: '1rem 2rem' }}>
                   {data.outcomes.map((item, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--text-main)', fontWeight: '600' }}>
-                      <CheckCircle size={20} color="var(--primary)" /> {item}
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-main)', fontWeight: '600', fontSize: '0.95rem' }}>
+                      <CheckCircle size={18} color="var(--primary)" /> {item}
                     </div>
                   ))}
                 </div>
