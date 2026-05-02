@@ -225,14 +225,53 @@ h1, h2, h3, h4 {
   gap: 1.25rem;
 }
 
-/* Default mobile: 1 column for everything */
+/* Default mobile: 1 column */
 .grid-2, .grid-3, .grid-4 {
   grid-template-columns: 1fr;
 }
 
-/* Explicit class for 2-columns on mobile (ONLY for small stats cards) */
+/* Specialized 2-column Mobile Grid */
+.grid-2-mobile {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.75rem !important;
+}
+
+/* Compact Card Styling for 2-column mobile */
+@media (max-width: 600px) {
+  .grid-2-mobile .glass-card {
+    padding: 0.8rem !important;
+    border-radius: 16px !important;
+  }
+  .grid-2-mobile h3 {
+    font-size: 0.95rem !important;
+  }
+  .grid-2-mobile p, .grid-2-mobile .alumni-comment {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .grid-2-mobile .btn, .grid-2-mobile button {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  .grid-2-mobile .alumni-info img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .grid-2-mobile .icon-box {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Stats specific grid */
 .grid-stats {
   grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.75rem !important;
 }
 
 @media (min-width: 768px) {

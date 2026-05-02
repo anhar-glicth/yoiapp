@@ -116,7 +116,7 @@ const Inovasi = () => {
             </p>
           </div>
 
-          <div className="grid grid-3">
+          <div className="grid grid-2-mobile grid-3">
             {innovations.map((item, i) => (
               <motion.div
                 key={i}
@@ -128,7 +128,7 @@ const Inovasi = () => {
                 style={{ cursor: 'default', display: 'flex', flexDirection: 'column' }}
               >
                 {/* Icon Box */}
-                <div style={{
+                <div className="icon-box" style={{
                   width: '64px', height: '64px', borderRadius: '18px',
                   background: `${item.color}12`, border: `1px solid ${item.color}20`,
                   color: item.color, display: 'flex', alignItems: 'center',

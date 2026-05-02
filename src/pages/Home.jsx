@@ -187,7 +187,7 @@ const Home = () => {
           </motion.div>
 
           {/* Testimonial Cards Grid */}
-          <div className="grid grid-3" style={{ gap: '1.25rem' }}>
+          <div className="grid grid-2-mobile grid-3">
             {[
               {
                 name: 'Rina Marlina',
