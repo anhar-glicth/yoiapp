@@ -246,30 +246,29 @@ const Home = () => {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="glass-card"
+                className="glass-card alumni-card"
                 initial={{ y: 40, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -6, boxShadow: `0 20px 40px ${item.color}18` }}
-                style={{ display: 'flex', flexDirection: 'column', gap: '1rem', cursor: 'default' }}
+                style={{ cursor: 'default' }}
               >
                 {/* Stars */}
-                <div style={{ display: 'flex', gap: '0.25rem' }}>
+                <div style={{ display: 'flex', gap: '0.2rem' }}>
                   {[...Array(item.rating)].map((_, s) => (
-                    <span key={s} style={{ color: '#F59E0B', fontSize: '1rem' }}>★</span>
+                    <span key={s} style={{ color: '#F59E0B', fontSize: '0.8rem' }}>★</span>
                   ))}
                 </div>
 
                 {/* Quote */}
-                <p style={{
+                <p className="alumni-comment" style={{
                   color: 'var(--text-muted)',
-                  fontSize: '0.95rem',
                   lineHeight: 1.75,
                   flex: 1,
                   fontStyle: 'italic',
                   position: 'relative',
-                  paddingLeft: '1rem',
+                  paddingLeft: '0.8rem',
                   borderLeft: `3px solid ${item.color}`,
                 }}>
                   "{item.comment}"
@@ -279,16 +278,16 @@ const Home = () => {
                 <div style={{ height: '1px', background: 'var(--glass-border)' }} />
 
                 {/* Alumni Info */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                <div className="alumni-info">
                   <img
                     src={item.avatar}
                     alt={item.name}
-                    style={{ width: '46px', height: '46px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${item.color}` }}
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${item.color}`, flexShrink: 0 }}
                   />
                   <div>
-                    <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '0.95rem' }}>{item.name}</div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{item.role}</div>
-                    <div style={{ fontSize: '0.75rem', color: item.color, fontWeight: '600', marginTop: '0.1rem' }}>@ {item.company}</div>
+                    <div className="alumni-name" style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '0.9rem' }}>{item.name}</div>
+                    <div className="alumni-meta" style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.2 }}>{item.role}</div>
+                    <div className="alumni-meta" style={{ fontSize: '0.7rem', color: item.color, fontWeight: '700', marginTop: '0.1rem' }}>@ {item.company}</div>
                   </div>
                 </div>
               </motion.div>
