@@ -53,7 +53,13 @@ const Contact = () => {
                   <div key={i} className="glass-card" style={{ padding: '2rem' }}>
                     <div style={{ color: item.color, marginBottom: '1rem' }}>{item.icon}</div>
                     <div style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>{item.title}</div>
-                    <div style={{ fontWeight: '800', color: 'var(--text-main)' }}>{item.value}</div>
+                    {item.title === 'WhatsApp' ? (
+                      <a href="https://wa.me/6287816431029" target="_blank" rel="noopener noreferrer" style={{ fontWeight: '800', color: 'var(--text-main)', textDecoration: 'none', borderBottom: '2px solid #25D366' }}>
+                        0878-1643-1029
+                      </a>
+                    ) : (
+                      <div style={{ fontWeight: '800', color: 'var(--text-main)' }}>{item.value}</div>
+                    )}
                   </div>
                 ))}
               </div>
