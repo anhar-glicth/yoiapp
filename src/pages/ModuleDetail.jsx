@@ -12,7 +12,7 @@ const moduleData = {
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     duration: '45 Menit',
     rating: '4.9',
-    outcomes: ['Menguasai abjad A-Z', 'Menghitung 1-100', 'Sapaan dasar'],
+    outcomes: ['Abjad Jari SIBI & BISINDO', 'Angka 1-100 secara Visual', 'Sapaan & Perkenalan Diri', 'Ekspresi Wajah & Gestur', 'Dasar Komunikasi Non-Verbal', 'Tips Berinteraksi dengan Tuli'],
     lessons: [
       { id: 1, title: 'Abjad Jari A - J', duration: '10:00', completed: true },
       { id: 2, title: 'Abjad Jari K - Z', duration: '12:00', completed: false },
