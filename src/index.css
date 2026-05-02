@@ -579,13 +579,13 @@ h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); }
 }
 
 .scroll-x > * {
-  flex: 0 0 82%; /* Bleeds next card to indicate scroll */
-  scroll-snap-align: center;
+  flex: 0 0 46%; /* Exactly 2 cards visible with gap */
+  scroll-snap-align: start;
 }
 
 /* For Stats Cards specifically in horizontal scroll */
 .scroll-x.stats-scroll > * {
-  flex: 0 0 55%;
+  flex: 0 0 40%;
 }
 
 @media (min-width: 768px) {

@@ -94,7 +94,7 @@ const LowonganKerja = () => {
       {/* Stats */}
       <section style={{ background: 'var(--bg-dark)', padding: '4rem 0 2rem', width: '100%', overflow: 'hidden' }}>
         <div className="container">
-          <div className="grid grid-2-mobile grid-4">
+          <div className="scroll-x stats-scroll">
             {stats.map((s, i) => (
               <motion.div key={i} className="glass-card" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ textAlign: 'center', padding: '1.2rem 0.8rem' }}>
                 <div style={{ color: s.color, marginBottom: '0.8rem', display: 'flex', justifyContent: 'center' }}>{s.icon}</div>
