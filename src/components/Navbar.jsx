@@ -33,7 +33,7 @@ const Navbar = () => {
   const primaryLinks = [
     { name: 'Beranda', path: '/' },
     { name: 'Pendidikan', path: '/learning' },
-    { name: 'EduWork', path: '/pelatihan' },
+    { name: 'Siap Kerja', path: '/pelatihan' },
     { name: 'Lowongan Kerja', path: '/lowongan' },
     { name: 'Inovasi', path: '/inovasi' },
   ]

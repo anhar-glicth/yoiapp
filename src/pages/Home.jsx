@@ -156,6 +156,172 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Alumni Testimonials Section */}
+      <section className="section" style={{ background: 'var(--bg-dark)', overflow: 'hidden' }}>
+        <div className="container">
+          {/* Section Header */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: '4rem' }}
+          >
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
+              <div style={{ height: '2px', width: '40px', background: 'var(--secondary)' }} />
+              <span style={{ color: 'var(--secondary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Suara Alumni</span>
+              <div style={{ height: '2px', width: '40px', background: 'var(--secondary)' }} />
+            </div>
+            <h2 style={{ color: 'var(--text-main)', fontSize: 'clamp(1.8rem, 4vw, 3rem)', marginBottom: '1rem' }}>
+              Apa Kata Mereka yang<br />
+              <span style={{ color: 'var(--primary)' }}>Sudah Bersama Kami</span>
+            </h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '500px', margin: '0 auto' }}>
+              Kisah nyata dari alumni yang telah merasakan manfaat program Yo'i Foundation.
+            </p>
+          </motion.div>
+
+          {/* Testimonial Cards Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
+            {[
+              {
+                name: 'Rina Marlina',
+                role: 'Alumni Siap Kerja · Kini Frontend Dev',
+                company: 'PT Teknologi Nusantara',
+                avatar: 'https://i.pravatar.cc/100?img=47',
+                comment: 'Program Siap Kerja benar-benar mengubah hidup saya. Dari nol coding, sekarang saya bekerja di perusahaan tech impian. Mentornya sangat suportif dan materinya langsung praktis.',
+                rating: 5,
+                color: '#1565C0',
+              },
+              {
+                name: 'Budi Santoso',
+                role: 'Alumni Pendidikan · Kini Content Creator',
+                company: 'MediaKita',
+                avatar: 'https://i.pravatar.cc/100?img=12',
+                comment: 'Saya tidak menyangka bisa berkarier di bidang kreatif. Berkat bimbingan Yo\'i, portofolio saya diakui dan langsung diterima kerja 2 minggu setelah lulus!',
+                rating: 5,
+                color: '#FF6D00',
+              },
+              {
+                name: 'Dewi Kusuma',
+                role: 'Alumni Bahasa Inggris · Kini HRD Manager',
+                company: 'Startup Indonesia',
+                avatar: 'https://i.pravatar.cc/100?img=32',
+                comment: 'Kelas Bahasa Inggris Profesional sangat membantu saya dalam wawancara kerja internasional. Metode belajarnya menyenangkan dan tidak membosankan.',
+                rating: 5,
+                color: '#2E7D32',
+              },
+              {
+                name: 'Arif Rahman',
+                role: 'Alumni Kewirausahaan · Founder',
+                company: 'ArRa Coffee & Space',
+                avatar: 'https://i.pravatar.cc/100?img=68',
+                comment: 'Program kewirausahaan Yo\'i memberi saya fondasi bisnis yang kuat. Sekarang usaha saya sudah punya 3 cabang dan 12 karyawan. Terima kasih Yo\'i!',
+                rating: 5,
+                color: '#6A1B9A',
+              },
+              {
+                name: 'Siti Aisyah',
+                role: 'Alumni UI/UX · Kini Product Designer',
+                company: 'GoTech Indonesia',
+                avatar: 'https://i.pravatar.cc/100?img=45',
+                comment: 'Yo\'i Foundation bukan cuma mengajarkan skill, tapi juga membangun kepercayaan diri saya. Komunitas alumninya aktif dan saling mendukung satu sama lain.',
+                rating: 5,
+                color: '#C62828',
+              },
+              {
+                name: 'Hendra Wijaya',
+                role: 'Alumni Digital Marketing · Kini Growth Lead',
+                company: 'E-Commerce Maju',
+                avatar: 'https://i.pravatar.cc/100?img=15',
+                comment: 'Ilmu digital marketing yang saya dapat langsung saya terapkan. Dalam 3 bulan pertama bekerja, saya berhasil meningkatkan traffic website klien hingga 300%.',
+                rating: 5,
+                color: '#00838F',
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="glass-card"
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -6, boxShadow: `0 20px 40px ${item.color}18` }}
+                style={{ display: 'flex', flexDirection: 'column', gap: '1rem', cursor: 'default' }}
+              >
+                {/* Stars */}
+                <div style={{ display: 'flex', gap: '0.25rem' }}>
+                  {[...Array(item.rating)].map((_, s) => (
+                    <span key={s} style={{ color: '#F59E0B', fontSize: '1rem' }}>★</span>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p style={{
+                  color: 'var(--text-muted)',
+                  fontSize: '0.95rem',
+                  lineHeight: 1.75,
+                  flex: 1,
+                  fontStyle: 'italic',
+                  position: 'relative',
+                  paddingLeft: '1rem',
+                  borderLeft: `3px solid ${item.color}`,
+                }}>
+                  "{item.comment}"
+                </p>
+
+                {/* Divider */}
+                <div style={{ height: '1px', background: 'var(--glass-border)' }} />
+
+                {/* Alumni Info */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                  <img
+                    src={item.avatar}
+                    alt={item.name}
+                    style={{ width: '46px', height: '46px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${item.color}` }}
+                  />
+                  <div>
+                    <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '0.95rem' }}>{item.name}</div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{item.role}</div>
+                    <div style={{ fontSize: '0.75rem', color: item.color, fontWeight: '600', marginTop: '0.1rem' }}>@ {item.company}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Stats Row */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            style={{
+              marginTop: '4rem',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              gap: '1rem',
+              background: 'var(--primary)',
+              borderRadius: '24px',
+              padding: '2.5rem',
+              textAlign: 'center',
+            }}
+          >
+            {[
+              { value: '2.500+', label: 'Alumni Aktif' },
+              { value: '92%', label: 'Dapat Kerja dalam 3 Bulan' },
+              { value: '4.9/5', label: 'Rating Alumni' },
+              { value: '50+', label: 'Perusahaan Mitra' },
+            ].map((stat, i) => (
+              <div key={i}>
+                <div style={{ fontSize: '2rem', fontWeight: '800', color: 'white', fontFamily: "'Outfit', sans-serif" }}>{stat.value}</div>
+                <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)', marginTop: '0.3rem' }}>{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="section" style={{ background: 'var(--bg-dark)' }}>
         <div className="container">
