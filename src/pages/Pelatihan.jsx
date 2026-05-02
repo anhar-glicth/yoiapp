@@ -89,9 +89,34 @@ const Pelatihan = () => {
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ color: 'var(--text-main)', marginBottom: '0.6rem' }}>Pilih Kelas Siap Kerja</h2>
             <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.95rem' }}>Semua kelas dirancang bersama praktisi industri — bukan teori saja, tapi langsung praktik nyata dan siap kerja.</p>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <div className="hide-scrollbar" style={{ 
+              display: 'flex', 
+              gap: '0.6rem', 
+              overflowX: 'auto', 
+              padding: '0.5rem 1rem', 
+              margin: '0 -1rem 1.5rem',
+              justifyContent: 'flex-start',
+              WebkitOverflowScrolling: 'touch'
+            }}>
               {categories.map(cat => (
-                <button key={cat} onClick={() => setActiveCategory(cat)} style={{ padding: '0.6rem 1.4rem', borderRadius: '100px', border: 'none', cursor: 'pointer', fontWeight: '600', fontSize: '0.9rem', transition: 'all 0.25s', background: activeCategory === cat ? 'var(--primary)' : 'var(--bg-card)', color: activeCategory === cat ? 'white' : 'var(--text-muted)', boxShadow: activeCategory === cat ? '0 4px 14px var(--primary-glow)' : 'none' }}>
+                <button 
+                  key={cat} 
+                  onClick={() => setActiveCategory(cat)} 
+                  style={{ 
+                    padding: '0.5rem 1.2rem', 
+                    borderRadius: '100px', 
+                    border: 'none', 
+                    cursor: 'pointer', 
+                    fontWeight: '600', 
+                    fontSize: '0.85rem', 
+                    whiteSpace: 'nowrap',
+                    transition: 'all 0.25s', 
+                    background: activeCategory === cat ? 'var(--primary)' : 'var(--bg-card)', 
+                    color: activeCategory === cat ? 'white' : 'var(--text-muted)', 
+                    boxShadow: activeCategory === cat ? '0 4px 14px var(--primary-glow)' : 'none',
+                    flexShrink: 0
+                  }}
+                >
                   {cat}
                 </button>
               ))}
