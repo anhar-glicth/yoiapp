@@ -101,8 +101,8 @@ const Pelatihan = () => {
           <div className="grid grid-3">
             {filtered.map((item, i) => (
               <motion.div key={item.id} className="glass-card" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4, delay: i * 0.08 }} whileHover={{ y: -6 }} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ background: `${item.color}18`, borderRadius: '12px', padding: '1.2rem', marginBottom: '1.2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <span style={{ fontSize: '2.2rem' }}>{item.icon}</span>
+                <div style={{ background: `${item.color}18`, borderRadius: '12px', padding: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                  <span style={{ fontSize: '2rem' }}>{item.icon}</span>
                   <div>
                     <span style={{ display: 'inline-block', background: `${item.color}22`, color: item.color, padding: '0.2rem 0.7rem', borderRadius: '100px', fontSize: '0.72rem', fontWeight: '700', textTransform: 'uppercase' }}>{item.category}</span>
                     <div style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginTop: '0.2rem' }}>{item.level}</div>

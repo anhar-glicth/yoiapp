@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Menu, X, Moon, Sun, User, ChevronDown } from 'lucide-react'
+import { Heart, Menu, X, Moon, Sun, User, ChevronDown, Home, GraduationCap, Briefcase, Search, MoreHorizontal } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,7 +15,6 @@ const Navbar = () => {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e) => {
       if (moreRef.current && !moreRef.current.contains(e.target)) setMoreOpen(false)
@@ -24,12 +23,10 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => { setIsOpen(false); setMoreOpen(false) }, [location])
 
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
 
-  // Primary links shown directly in navbar
   const primaryLinks = [
     { name: 'Beranda', path: '/' },
     { name: 'Pendidikan', path: '/learning' },
@@ -38,7 +35,6 @@ const Navbar = () => {
     { name: 'Inovasi', path: '/inovasi' },
   ]
 
-  // Secondary links inside "Lainnya" dropdown
   const moreLinks = [
     { name: 'Tentang Kami', path: '/about', icon: '🏛️' },
     { name: 'Tim Kami', path: '/team', icon: '👥' },
@@ -48,10 +44,17 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path
 
+  const mobileNavItems = [
+    { name: 'Beranda', path: '/', icon: <Home size={20} /> },
+    { name: 'Pendidikan', path: '/learning', icon: <GraduationCap size={20} /> },
+    { name: 'Siap Kerja', path: '/pelatihan', icon: <Briefcase size={20} /> },
+    { name: 'Lowongan', path: '/lowongan', icon: <Search size={20} /> },
+    { name: 'Menu', path: '#', icon: <MoreHorizontal size={20} />, action: () => setIsOpen(true) },
+  ]
+
   return (
     <>
       <nav className="navbar" style={{ padding: '0 3%' }}>
-        {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', flexShrink: 0 }}>
           <div style={{
             background: 'var(--accent)',
@@ -69,7 +72,6 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
         <ul className="nav-links" style={{ gap: '0.3rem' }}>
           {primaryLinks.map((link) => (
             <li key={link.path}>
@@ -91,7 +93,6 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* "Lainnya" Dropdown */}
           <li ref={moreRef} style={{ position: 'relative' }}>
             <button
               onClick={() => setMoreOpen(p => !p)}
@@ -151,9 +152,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* Right: CTA + Theme */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexShrink: 0 }}>
-          {/* Join Us - hide on medium screens */}
           <div className="nav-cta-group" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <div style={{
               width: '34px', height: '34px', borderRadius: '50%',
@@ -168,7 +167,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link to="/donation" style={{ textDecoration: 'none', flexShrink: 0 }}>
+          <Link to="/donation" className="desktop-only" style={{ textDecoration: 'none', flexShrink: 0 }}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -194,65 +193,84 @@ const Navbar = () => {
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="mobile-menu-btn"
-            style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer', display: 'none', padding: '0.3rem' }}
-          >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Bottom Navigation Bar */}
+      <div className="mobile-bottom-nav">
+        {mobileNavItems.map((item, idx) => (
+          item.action ? (
+            <button key={idx} onClick={item.action} className={`mobile-nav-item ${isOpen ? 'active' : ''}`} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+              {item.icon}
+              <span>{item.name}</span>
+            </button>
+          ) : (
+            <Link key={idx} to={item.path} className={`mobile-nav-item ${isActive(item.path) ? 'active' : ''}`}>
+              {item.icon}
+              <span>{item.name}</span>
+            </Link>
+          )
+        ))}
+      </div>
+
+      {/* Full Screen Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             style={{
-              position: 'fixed', top: '68px', left: '1rem', right: '1rem',
-              background: 'var(--bg-card)', borderRadius: '20px', padding: '1.5rem',
-              zIndex: 999, border: '1px solid var(--glass-border)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.1)'
+              position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)',
+              zIndex: 2000, display: 'flex', justifyContent: 'flex-end'
             }}
+            onClick={() => setIsOpen(false)}
           >
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {allLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: '0.6rem',
-                      padding: '0.8rem 1rem', borderRadius: '12px',
-                      color: isActive(link.path) ? 'var(--primary)' : 'var(--text-main)',
-                      textDecoration: 'none', fontSize: '1rem', fontWeight: '600',
-                      background: isActive(link.path) ? 'var(--primary-glow)' : 'transparent',
-                    }}
-                  >
-                    {link.icon && <span>{link.icon}</span>}
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--glass-border)', display: 'flex', gap: '0.8rem' }}>
-              <Link
-                to="/donation"
-                onClick={() => setIsOpen(false)}
-                className="btn"
-                style={{ background: 'var(--secondary)', color: 'white', flex: 1, justifyContent: 'center' }}
-              >
-                Donate Now
-              </Link>
-              <button onClick={toggleTheme} style={{ background: 'var(--bg-card)', border: '1px solid var(--glass-border)', borderRadius: '12px', padding: '0 1.2rem', cursor: 'pointer', color: 'var(--text-muted)' }}>
-                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-            </div>
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              style={{
+                width: '80%', maxWidth: '300px', height: '100%', background: 'var(--bg-card)',
+                padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem'
+              }}
+              onClick={e => e.stopPropagation()}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontWeight: '800', color: 'var(--primary)', fontSize: '1.2rem' }}>Menu</span>
+                <button onClick={() => setIsOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--text-main)' }}>
+                  <X size={24} />
+                </button>
+              </div>
+
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {allLinks.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: '0.8rem',
+                        padding: '1rem', borderRadius: '12px',
+                        color: isActive(link.path) ? 'var(--primary)' : 'var(--text-main)',
+                        textDecoration: 'none', fontSize: '1.1rem', fontWeight: '600',
+                        background: isActive(link.path) ? 'var(--primary-glow)' : 'transparent',
+                      }}
+                    >
+                      {link.icon && <span>{link.icon}</span>}
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div style={{ marginTop: 'auto' }}>
+                <Link to="/donation" className="btn" style={{ background: 'var(--secondary)', color: 'white', width: '100%', justifyContent: 'center' }}>
+                  Donate Now <Heart size={16} fill="white" />
+                </Link>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -263,7 +281,7 @@ const Navbar = () => {
         }
         @media (max-width: 900px) {
           .nav-links { display: none !important; }
-          .mobile-menu-btn { display: flex !important; }
+          .desktop-only { display: none !important; }
         }
         .nav-link:hover {
           color: var(--primary) !important;

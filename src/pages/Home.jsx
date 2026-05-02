@@ -182,7 +182,7 @@ const Home = () => {
           </motion.div>
 
           {/* Testimonial Cards Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          <div className="grid grid-2 grid-3" style={{ gap: '1rem' }}>
             {[
               {
                 name: 'Rina Marlina',
