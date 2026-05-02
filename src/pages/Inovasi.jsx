@@ -124,65 +124,56 @@ const Inovasi = () => {
                 initial={{ y: 40, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -6, boxShadow: `0 20px 40px ${item.color}22` }}
-                style={{ cursor: 'default' }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                style={{ cursor: 'default', display: 'flex', flexDirection: 'column' }}
               >
-                {/* Icon */}
+                {/* Icon Box */}
                 <div style={{
-                  width: '60px',
-                  height: '60px',
-                  borderRadius: '16px',
-                  background: `${item.color}1a`,
-                  color: item.color,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.5rem',
+                  width: '64px', height: '64px', borderRadius: '18px',
+                  background: `${item.color}12`, border: `1px solid ${item.color}20`,
+                  color: item.color, display: 'flex', alignItems: 'center',
+                  justifyContent: 'center', marginBottom: '1.5rem',
                 }}>
                   {item.icon}
                 </div>
 
                 {/* Tag */}
-                <span style={{
-                  display: 'inline-block',
-                  background: `${item.color}1a`,
-                  color: item.color,
-                  padding: '0.2rem 0.8rem',
-                  borderRadius: '100px',
-                  fontSize: '0.75rem',
-                  fontWeight: '700',
-                  marginBottom: '1rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                }}>
-                  {item.tag}
-                </span>
+                <div style={{ marginBottom: '0.8rem' }}>
+                  <span style={{
+                    display: 'inline-block', background: `${item.color}15`,
+                    color: item.color, padding: '0.2rem 0.8rem', borderRadius: '100px',
+                    fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                  }}>
+                    {item.tag}
+                  </span>
+                </div>
 
-                <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', color: 'var(--text-main)' }}>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.8rem', color: 'var(--text-main)', fontWeight: '800' }}>
                   {item.title}
                 </h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '0.95rem' }}>
+                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '0.92rem', flex: 1 }}>
                   {item.desc}
                 </p>
 
-                {/* Coming Soon Badge */}
+                {/* Status Indicator */}
                 <div style={{
-                  marginTop: '1.5rem',
-                  paddingTop: '1rem',
-                  borderTop: '1px solid var(--glass-border)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
+                  marginTop: '1.5rem', paddingTop: '1.2rem',
+                  borderTop: '1px solid rgba(0,0,0,0.05)',
+                  display: 'flex', alignItems: 'center', gap: '0.6rem',
                 }}>
-                  <span style={{
-                    width: '8px', height: '8px', borderRadius: '50%',
-                    background: item.color,
-                    display: 'inline-block',
-                    animation: 'pulse 2s infinite',
-                  }} />
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '600' }}>
-                    Segera Hadir
+                  <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{
+                      width: '8px', height: '8px', borderRadius: '50%',
+                      background: item.color, display: 'inline-block',
+                    }} />
+                    <span style={{
+                      position: 'absolute', width: '16px', height: '16px', borderRadius: '50%',
+                      background: item.color, opacity: 0.3, animation: 'pulse-ring 2s infinite',
+                    }} />
+                  </div>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700' }}>
+                    Proyek Berjalan
                   </span>
                 </div>
               </motion.div>
@@ -216,9 +207,9 @@ const Inovasi = () => {
       </section>
 
       <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.4); }
+        @keyframes pulse-ring {
+          0% { transform: scale(1); opacity: 0.5; }
+          100% { transform: scale(2.5); opacity: 0; }
         }
       `}</style>
     </motion.div>

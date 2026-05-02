@@ -94,7 +94,7 @@ const LowonganKerja = () => {
       {/* Stats */}
       <section style={{ background: 'var(--bg-dark)', padding: '4rem 0 2rem' }}>
         <div className="container">
-          <div className="grid grid-m-2 grid-4">
+          <div className="grid grid-stats grid-4">
             {stats.map((s, i) => (
               <motion.div key={i} className="glass-card" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ textAlign: 'center', padding: '1.2rem 0.8rem' }}>
                 <div style={{ color: s.color, marginBottom: '0.8rem', display: 'flex', justifyContent: 'center' }}>{s.icon}</div>
@@ -126,40 +126,84 @@ const LowonganKerja = () => {
               <p style={{ fontSize: '1.1rem' }}>Tidak ada lowongan yang sesuai pencarian.</p>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            <div style={{ display: 'grid', gap: '1.5rem' }}>
               {filtered.map((job, i) => (
-                <motion.div key={job.id} className="glass-card" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.35, delay: i * 0.06 }} whileHover={{ y: -3, boxShadow: `0 12px 30px ${job.color}18` }}
-                  style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '1.5rem 2rem', cursor: 'pointer', flexWrap: 'wrap' }}>
-                  {/* Company Logo */}
-                  <div style={{ width: '60px', height: '60px', borderRadius: '16px', background: `${job.color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', flexShrink: 0 }}>
+                <motion.div 
+                  key={job.id} 
+                  className="glass-card" 
+                  initial={{ y: 20, opacity: 0 }} 
+                  animate={{ y: 0, opacity: 1 }} 
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '1.5rem', 
+                    padding: '1.5rem', 
+                    cursor: 'pointer',
+                    flexWrap: 'wrap'
+                  }}
+                >
+                  {/* Company Logo Icon */}
+                  <div style={{ 
+                    width: '64px', height: '64px', borderRadius: '18px', 
+                    background: `${job.color}12`, border: `1px solid ${job.color}25`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                    fontSize: '2rem', flexShrink: 0 
+                  }}>
                     {job.icon}
                   </div>
 
-                  {/* Info */}
-                  <div style={{ flex: 1, minWidth: '200px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
-                      <h3 style={{ fontSize: '1.1rem', color: 'var(--text-main)', margin: 0 }}>{job.title}</h3>
-                      <span style={{ display: 'inline-block', background: `${job.color}18`, color: job.color, padding: '0.15rem 0.7rem', borderRadius: '100px', fontSize: '0.72rem', fontWeight: '700' }}>{job.type}</span>
+                  {/* Job Info */}
+                  <div style={{ flex: 1, minWidth: '240px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
+                      <h3 style={{ fontSize: '1.2rem', color: 'var(--text-main)', margin: 0, fontWeight: '800' }}>{job.title}</h3>
+                      <span style={{ 
+                        display: 'inline-block', background: `${job.color}15`, color: job.color, 
+                        padding: '0.2rem 0.8rem', borderRadius: '100px', fontSize: '0.7rem', fontWeight: '800',
+                        textTransform: 'uppercase', letterSpacing: '0.5px'
+                      }}>
+                        {job.type}
+                      </span>
                     </div>
-                    <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.6rem' }}>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Building2 size={14} />{job.company}</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><MapPin size={14} />{job.location}</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><DollarSign size={14} />{job.salary}</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Clock size={14} />{job.posted}</span>
+                    
+                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.8rem' }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: '600' }}><Building2 size={15} /> {job.company}</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><MapPin size={15} /> {job.location}</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--primary)', fontWeight: '700' }}><DollarSign size={15} /> {job.salary}</span>
                     </div>
+
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       {job.tags.map(tag => (
-                        <span key={tag} style={{ background: 'var(--glass)', border: '1px solid var(--glass-border)', padding: '0.15rem 0.6rem', borderRadius: '6px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{tag}</span>
+                        <span key={tag} style={{ 
+                          background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', 
+                          padding: '0.2rem 0.7rem', borderRadius: '8px', fontSize: '0.72rem', 
+                          color: 'var(--text-muted)', fontWeight: '600'
+                        }}>
+                          {tag}
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Apply Button */}
-                  <button style={{ padding: '0.8rem 1.8rem', borderRadius: '12px', border: `2px solid ${job.color}`, background: 'transparent', color: job.color, fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'all 0.2s', whiteSpace: 'nowrap', fontSize: '0.9rem' }}
-                    onMouseEnter={e => { e.currentTarget.style.background = job.color; e.currentTarget.style.color = 'white' }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = job.color }}>
-                    Lamar <ChevronRight size={16} />
-                  </button>
+                  {/* Actions */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
+                    <div style={{ textAlign: 'right', display: 'none', md: 'block' }} className="desktop-only">
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Diposting</div>
+                      <div style={{ fontSize: '0.85rem', fontWeight: '700' }}>{job.posted}</div>
+                    </div>
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{ 
+                        padding: '0.8rem 1.8rem', borderRadius: '14px', border: 'none',
+                        background: job.color, color: 'white', fontWeight: '800', 
+                        cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.6rem',
+                        boxShadow: `0 8px 20px ${job.color}30`, fontSize: '0.95rem'
+                      }}
+                    >
+                      Lamar <ChevronRight size={18} />
+                    </motion.button>
+                  </div>
                 </motion.div>
               ))}
             </div>
