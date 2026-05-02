@@ -133,12 +133,8 @@ h1, h2, h3, h4 {
 
 /* Navbar Refined */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: none;
+  position: static;
   width: 100%;
-  max-width: none;
   z-index: 1000;
   display: flex;
   justify-content: space-between;

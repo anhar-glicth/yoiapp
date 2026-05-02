@@ -64,7 +64,7 @@ const LowonganKerja = () => {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--primary)', paddingTop: '140px', paddingBottom: '100px', textAlign: 'center' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--primary)', paddingTop: '60px', paddingBottom: '100px', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 2px, transparent 2px)', backgroundSize: '30px 30px', zIndex: 0 }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.7 }}>

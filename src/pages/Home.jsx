@@ -17,15 +17,15 @@ const Home = () => {
         </div>
         
         {/* Hero blob shape */}
-        <div style={{ position: 'relative', width: '100%', minHeight: '92vh', display: 'flex', alignItems: 'center', paddingTop: '80px' }}>
+        <div style={{ position: 'relative', width: '100%', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           
           {/* THE BLUE BLOB - covers left ~65%, big border-radius on right side */}
           <div style={{
             position: 'absolute',
-            top: '-80px',
+            top: 0,
             left: 0,
             width: '65%',
-            height: 'calc(100% + 80px)',
+            height: '100%',
             background: 'var(--primary)',
             borderRadius: '0 120px 120px 0',
             zIndex: 0,

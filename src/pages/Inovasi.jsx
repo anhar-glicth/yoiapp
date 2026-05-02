@@ -59,7 +59,7 @@ const Inovasi = () => {
         position: 'relative',
         overflow: 'hidden',
         background: 'var(--primary)',
-        paddingTop: '140px',
+        paddingTop: '60px',
         paddingBottom: '80px',
         textAlign: 'center',
       }}>
