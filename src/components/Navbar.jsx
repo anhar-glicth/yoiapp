@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Menu, X, Moon, Sun, User, ChevronDown, Home, GraduationCap, Briefcase, Search, MoreHorizontal } from 'lucide-react'
+import { Heart, Menu, X, Moon, Sun, User, ChevronDown, Home, GraduationCap, Briefcase, Search, MoreHorizontal, Sparkles } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
   const [moreOpen, setMoreOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const moreRef = useRef(null)
   const location = useLocation()
 
@@ -14,6 +15,12 @@ const Navbar = () => {
     document.body.setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     const handler = (e) => {
@@ -28,65 +35,60 @@ const Navbar = () => {
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
 
   const primaryLinks = [
-    { name: 'Beranda', path: '/' },
     { name: 'Pendidikan', path: '/learning' },
     { name: 'Siap Kerja', path: '/pelatihan' },
-    { name: 'Lowongan Kerja', path: '/lowongan' },
+    { name: 'Lowongan', path: '/lowongan' },
     { name: 'Inovasi', path: '/inovasi' },
   ]
 
   const moreLinks = [
     { name: 'Tentang Kami', path: '/about', icon: '🏛️' },
     { name: 'Tim Kami', path: '/team', icon: '👥' },
+    { name: 'Kontak', path: '/contact', icon: '📞' },
   ]
 
-  const allLinks = [...primaryLinks, ...moreLinks]
+  const allLinks = [{ name: 'Beranda', path: '/', icon: '🏠' }, ...primaryLinks, ...moreLinks]
 
   const isActive = (path) => location.pathname === path
 
   const mobileNavItems = [
-    { name: 'Beranda', path: '/', icon: <Home size={20} /> },
-    { name: 'Pendidikan', path: '/learning', icon: <GraduationCap size={20} /> },
-    { name: 'Siap Kerja', path: '/pelatihan', icon: <Briefcase size={20} /> },
-    { name: 'Lowongan', path: '/lowongan', icon: <Search size={20} /> },
-    { name: 'Menu', path: '#', icon: <MoreHorizontal size={20} />, action: () => setIsOpen(true) },
+    { name: 'Home', path: '/', icon: <Home size={22} /> },
+    { name: 'Akademi', path: '/learning', icon: <GraduationCap size={22} /> },
+    { name: 'Karir', path: '/lowongan', icon: <Briefcase size={22} /> },
+    { name: 'Inovasi', path: '/inovasi', icon: <Sparkles size={22} /> },
+    { name: 'Menu', path: '#', icon: <MoreHorizontal size={22} />, action: () => setIsOpen(true) },
   ]
 
   return (
     <>
-      <nav className="navbar" style={{ padding: '0 3%' }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', flexShrink: 0 }}>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} style={{ 
+        padding: scrolled ? '0.8rem 5%' : '1.5rem 5%',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+      }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', textDecoration: 'none' }}>
           <div style={{
-            background: 'var(--accent)',
-            padding: '0.4rem',
-            borderRadius: '10px',
+            background: 'var(--primary)',
+            width: '40px', height: '40px',
+            borderRadius: '12px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            boxShadow: '0 8px 15px var(--primary-glow)'
           }}>
-            <Heart size={20} fill="var(--primary)" color="var(--primary)" />
+            <Heart size={22} fill="#fff" color="#fff" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-            <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--primary)', fontFamily: "'Outfit', sans-serif" }}>Yo'i</span>
-            <span style={{ fontSize: '0.6rem', fontWeight: '700', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>Foundation</span>
+            <span style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-main)', fontFamily: "'Outfit', sans-serif" }}>Yo'i</span>
+            <span style={{ fontSize: '0.65rem', fontWeight: '800', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '2px' }}>Foundation</span>
           </div>
         </Link>
 
-        <ul className="nav-links" style={{ gap: '0.3rem' }}>
+        <ul className="nav-links" style={{ gap: '0.5rem' }}>
           {primaryLinks.map((link) => (
             <li key={link.path}>
               <Link
                 to={link.path}
-                className="nav-link"
-                style={{
-                  fontSize: '0.82rem',
-                  fontWeight: '600',
-                  whiteSpace: 'nowrap',
-                  padding: '0.45rem 0.7rem',
-                  borderRadius: '8px',
-                  color: isActive(link.path) ? 'var(--primary)' : 'var(--text-muted)',
-                  background: isActive(link.path) ? 'var(--primary-glow)' : 'transparent',
-                }}
+                className={`nav-link-item ${isActive(link.path) ? 'active' : ''}`}
               >
                 {link.name}
               </Link>
@@ -96,53 +98,23 @@ const Navbar = () => {
           <li ref={moreRef} style={{ position: 'relative' }}>
             <button
               onClick={() => setMoreOpen(p => !p)}
-              style={{
-                display: 'flex', alignItems: 'center', gap: '0.3rem',
-                padding: '0.45rem 0.7rem', borderRadius: '8px', border: 'none',
-                background: moreOpen ? 'var(--primary-glow)' : 'transparent',
-                color: moreOpen ? 'var(--primary)' : 'var(--text-muted)',
-                cursor: 'pointer', fontWeight: '600', fontSize: '0.82rem',
-                whiteSpace: 'nowrap', transition: 'all 0.2s'
-              }}
+              className={`nav-link-item ${moreOpen ? 'active' : ''}`}
+              style={{ border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
             >
-              Lainnya
-              <motion.span animate={{ rotate: moreOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                <ChevronDown size={14} />
-              </motion.span>
+              Lainnya <ChevronDown size={14} style={{ transform: moreOpen ? 'rotate(180deg)' : 'none', transition: '0.3s' }} />
             </button>
 
             <AnimatePresence>
               {moreOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                  initial={{ opacity: 0, y: 15, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                  transition={{ duration: 0.18 }}
-                  style={{
-                    position: 'absolute', top: 'calc(100% + 10px)', left: '50%',
-                    transform: 'translateX(-50%)',
-                    background: 'var(--bg-card)', borderRadius: '16px',
-                    border: '1px solid var(--glass-border)',
-                    boxShadow: '0 16px 40px rgba(0,0,0,0.12)',
-                    minWidth: '200px', zIndex: 100, overflow: 'hidden',
-                  }}
+                  exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                  className="dropdown-menu"
                 >
                   {moreLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      style={{
-                        display: 'flex', alignItems: 'center', gap: '0.8rem',
-                        padding: '0.9rem 1.2rem', textDecoration: 'none',
-                        color: isActive(link.path) ? 'var(--primary)' : 'var(--text-main)',
-                        background: isActive(link.path) ? 'var(--primary-glow)' : 'transparent',
-                        fontWeight: '600', fontSize: '0.9rem',
-                        transition: 'all 0.15s', borderBottom: '1px solid var(--glass-border)',
-                      }}
-                      onMouseEnter={e => { e.currentTarget.style.background = 'var(--glass)' }}
-                      onMouseLeave={e => { e.currentTarget.style.background = isActive(link.path) ? 'var(--primary-glow)' : 'transparent' }}
-                    >
-                      <span style={{ fontSize: '1.2rem' }}>{link.icon}</span>
+                    <Link key={link.path} to={link.path} className="dropdown-item">
+                      <span style={{ fontSize: '1.1rem' }}>{link.icon}</span>
                       {link.name}
                     </Link>
                   ))}
@@ -152,65 +124,41 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexShrink: 0 }}>
-          <div className="nav-cta-group" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <div style={{
-              width: '34px', height: '34px', borderRadius: '50%',
-              background: '#f1f5f9', display: 'flex', alignItems: 'center',
-              justifyContent: 'center', color: 'var(--text-main)', flexShrink: 0
-            }}>
-              <User size={17} />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
-              <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>Join Us Now</span>
-              <span style={{ fontSize: '0.78rem', fontWeight: '700', whiteSpace: 'nowrap' }}>Support a Child</span>
-            </div>
-          </div>
-
-          <Link to="/donation" className="desktop-only" style={{ textDecoration: 'none', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+          <button onClick={toggleTheme} className="icon-btn">
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          
+          <Link to="/donation" className="desktop-only">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn"
-              style={{
-                background: 'var(--secondary)', color: 'white',
-                padding: '0.65rem 1.3rem', fontSize: '0.82rem',
-                display: 'flex', alignItems: 'center', gap: '0.4rem',
-                whiteSpace: 'nowrap'
-              }}
+              className="btn btn-primary"
+              style={{ borderRadius: '12px', padding: '0.7rem 1.5rem', fontSize: '0.9rem', fontWeight: '800' }}
             >
-              Donate Now <Heart size={14} fill="white" />
+              Donasi <Heart size={16} fill="currentColor" style={{ marginLeft: '0.5rem' }} />
             </motion.button>
           </Link>
-
-          <button
-            onClick={toggleTheme}
-            style={{
-              background: 'none', border: 'none', color: 'var(--text-muted)',
-              cursor: 'pointer', display: 'flex', alignItems: 'center',
-              padding: '0.4rem', borderRadius: '8px', flexShrink: 0
-            }}
-          >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
         </div>
       </nav>
 
-      {/* Mobile Bottom Navigation Bar */}
+      {/* Mobile Bottom Navigation Bar - Native App Style */}
       <div className="mobile-bottom-nav">
-        {mobileNavItems.map((item, idx) => (
-          item.action ? (
-            <button key={idx} onClick={item.action} className={`mobile-nav-item ${isOpen ? 'active' : ''}`} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-              {item.icon}
-              <span>{item.name}</span>
-            </button>
-          ) : (
-            <Link key={idx} to={item.path} className={`mobile-nav-item ${isActive(item.path) ? 'active' : ''}`}>
-              {item.icon}
-              <span>{item.name}</span>
-            </Link>
-          )
-        ))}
+        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '100%' }}>
+          {mobileNavItems.map((item, idx) => (
+            item.action ? (
+              <button key={idx} onClick={item.action} className={`mobile-nav-btn ${isOpen ? 'active' : ''}`}>
+                <div className="icon-wrap">{item.icon}</div>
+                <span>{item.name}</span>
+              </button>
+            ) : (
+              <Link key={idx} to={item.path} className={`mobile-nav-btn ${isActive(item.path) ? 'active' : ''}`}>
+                <div className="icon-wrap">{item.icon}</div>
+                <span>{item.name}</span>
+              </Link>
+            )
+          ))}
+        </div>
       </div>
 
       {/* Full Screen Mobile Menu Overlay */}
@@ -220,72 +168,139 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)',
-              zIndex: 2000, display: 'flex', justifyContent: 'flex-end'
-            }}
+            className="mobile-overlay"
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              style={{
-                width: '80%', maxWidth: '300px', height: '100%', background: 'var(--bg-card)',
-                padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem'
-              }}
+              className="mobile-drawer"
               onClick={e => e.stopPropagation()}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontWeight: '800', color: 'var(--primary)', fontSize: '1.2rem' }}>Menu</span>
-                <button onClick={() => setIsOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--text-main)' }}>
-                  <X size={24} />
-                </button>
+              <div className="drawer-handle" />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '900' }}>Navigasi</h2>
+                <button onClick={() => setIsOpen(false)} className="icon-btn"><X size={24} /></button>
               </div>
 
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div className="drawer-links">
                 {allLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      style={{
-                        display: 'flex', alignItems: 'center', gap: '0.8rem',
-                        padding: '1rem', borderRadius: '12px',
-                        color: isActive(link.path) ? 'var(--primary)' : 'var(--text-main)',
-                        textDecoration: 'none', fontSize: '1.1rem', fontWeight: '600',
-                        background: isActive(link.path) ? 'var(--primary-glow)' : 'transparent',
-                      }}
-                    >
-                      {link.icon && <span>{link.icon}</span>}
-                      {link.name}
-                    </Link>
-                  </li>
+                  <Link key={link.path} to={link.path} className={`drawer-link-item ${isActive(link.path) ? 'active' : ''}`}>
+                    <span style={{ fontSize: '1.4rem' }}>{link.icon}</span>
+                    {link.name}
+                  </Link>
                 ))}
-              </ul>
-
-              <div style={{ marginTop: 'auto' }}>
-                <Link to="/donation" className="btn" style={{ background: 'var(--secondary)', color: 'white', width: '100%', justifyContent: 'center' }}>
-                  Donate Now <Heart size={16} fill="white" />
-                </Link>
               </div>
+
+              <Link to="/donation" className="btn btn-primary" style={{ width: '100%', marginTop: 'auto', padding: '1.2rem', fontSize: '1.1rem', borderRadius: '18px' }}>
+                Donasi Sekarang <Heart size={20} fill="currentColor" />
+              </Link>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
-        @media (max-width: 1200px) {
-          .nav-cta-group { display: none !important; }
+        .navbar.scrolled {
+          background: var(--bg-card);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid var(--glass-border);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
+        .nav-link-item {
+          padding: 0.6rem 1.1rem;
+          border-radius: 12px;
+          text-decoration: none;
+          color: var(--text-muted);
+          font-weight: 700;
+          font-size: 0.9rem;
+          transition: all 0.3s;
+        }
+        .nav-link-item:hover, .nav-link-item.active {
+          color: var(--primary);
+          background: var(--primary-glow);
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: calc(100% + 15px);
+          right: 0;
+          background: var(--bg-card);
+          border-radius: 20px;
+          border: 1px solid var(--glass-border);
+          padding: 0.8rem;
+          min-width: 220px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+          z-index: 1000;
+        }
+        .dropdown-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 1.2rem;
+          text-decoration: none;
+          color: var(--text-main);
+          font-weight: 700;
+          border-radius: 12px;
+          transition: 0.2s;
+        }
+        .dropdown-item:hover {
+          background: var(--primary-glow);
+          color: var(--primary);
+        }
+        .icon-btn {
+          width: 44px; height: 44px; border-radius: 12px;
+          background: var(--bg-card); border: 1px solid var(--glass-border);
+          color: var(--text-main); cursor: pointer;
+          display: flex; alignItems: center; justifyContent: center;
+          transition: all 0.3s;
+        }
+        .icon-btn:hover {
+          border-color: var(--primary);
+          color: var(--primary);
+        }
+        .mobile-overlay {
+          position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+          backdrop-filter: blur(8px); z-index: 2000;
+          display: flex; align-items: flex-end;
+        }
+        .mobile-drawer {
+          width: 100%; background: var(--bg-card);
+          border-radius: 30px 30px 0 0; padding: 2rem;
+          height: 85vh; display: flex; flexDirection: column;
+        }
+        .drawer-handle {
+          width: 40px; height: 5px; background: var(--glass-border);
+          border-radius: 10px; margin: -1rem auto 2rem;
+        }
+        .drawer-links {
+          display: grid; grid-template-columns: 1fr; gap: 0.8rem;
+        }
+        .drawer-link-item {
+          display: flex; alignItems: center; gap: 1.2rem;
+          padding: 1.2rem; border-radius: 18px;
+          text-decoration: none; color: var(--text-main);
+          font-weight: 800; font-size: 1.15rem;
+          background: var(--bg-dark); border: 1px solid var(--glass-border);
+        }
+        .drawer-link-item.active {
+          background: var(--primary-glow); color: var(--primary); border-color: var(--primary);
+        }
+        .mobile-nav-btn {
+          display: flex; flex-direction: column; align-items: center;
+          gap: 0.4rem; color: var(--text-muted); text-decoration: none;
+          background: none; border: none; font-weight: 700; font-size: 0.65rem;
+        }
+        .mobile-nav-btn.active { color: var(--primary); }
+        .mobile-nav-btn .icon-wrap {
+          width: 42px; height: 32px; border-radius: 12px;
+          display: flex; alignItems: center; justifyContent: center;
+          transition: 0.3s;
+        }
+        .mobile-nav-btn.active .icon-wrap { background: var(--primary-glow); }
         @media (max-width: 900px) {
-          .nav-links { display: none !important; }
-          .desktop-only { display: none !important; }
-        }
-        .nav-link:hover {
-          color: var(--primary) !important;
-          background: var(--primary-glow) !important;
+          .nav-links, .desktop-only { display: none !important; }
         }
       `}</style>
     </>

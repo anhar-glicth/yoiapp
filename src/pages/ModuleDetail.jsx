@@ -1,13 +1,16 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Play, CheckCircle, Lock } from 'lucide-react'
+import { ArrowLeft, Play, CheckCircle, Lock, Clock, BookOpen, Star, Trophy } from 'lucide-react'
 
 const moduleData = {
   'level-dasar': {
-    title: 'Level Dasar: Huruf & Angka',
-    description: 'Fondasi utama dalam belajar bahasa isyarat. Di sini Anda akan belajar abjad jari dan sistem penomoran.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder
+    title: 'Level Dasar',
+    sub: 'Alfabet & Angka Jari',
+    description: 'Fondasi utama dalam belajar bahasa isyarat. Di sini Anda akan belajar abjad jari (SIBI/BISINDO) dan sistem penomoran visual yang intuitif.',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    duration: '45 Menit',
+    rating: '4.9',
     lessons: [
       { id: 1, title: 'Abjad Jari A - J', duration: '10:00', completed: true },
       { id: 2, title: 'Abjad Jari K - Z', duration: '12:00', completed: false },
@@ -16,9 +19,12 @@ const moduleData = {
     ]
   },
   'level-menengah': {
-    title: 'Level Menengah: Percakapan',
-    description: 'Mulai membangun kalimat sederhana dan ekspresi wajah untuk komunikasi sehari-hari.',
+    title: 'Level Menengah',
+    sub: 'Percakapan Sehari-hari',
+    description: 'Mulai membangun kalimat sederhana, ekspresi wajah, dan gestur tubuh untuk komunikasi efektif dalam aktivitas sehari-hari.',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    duration: '60 Menit',
+    rating: '4.8',
     lessons: [
       { id: 1, title: 'Sapaan & Perkenalan', duration: '15:00', completed: false },
       { id: 2, title: 'Keluarga & Teman', duration: '18:00', completed: false },
@@ -26,27 +32,30 @@ const moduleData = {
     ]
   },
   'level-mahir': {
-    title: 'Level Mahir: Struktur Kalimat',
-    description: 'Menguasai tata bahasa kompleks dan dialek bahasa isyarat regional.',
+    title: 'Level Mahir',
+    sub: 'Struktur Kalimat Kompleks',
+    description: 'Menguasai tata bahasa kompleks, interpretasi cerita, dan dialek bahasa isyarat regional yang kaya akan budaya.',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    duration: '90 Menit',
+    rating: '5.0',
     lessons: [
       { id: 1, title: 'Struktur SPOK Isyarat', duration: '25:00', completed: false },
       { id: 2, title: 'Isyarat Idiom & Kiasan', duration: '30:00', locked: true }
     ]
   },
   'quran-isyarat': {
-    title: 'Quran Isyarat: Hijaiyah & Iqro',
-    description: 'Pelajari cara membaca Al-Quran menggunakan metode isyarat yang diakui, mulai dari dasar Hijaiyah hingga tingkatan Iqro 1-6.',
+    title: 'Quran Isyarat',
+    sub: 'Hijaiyah & Iqro Inklusif',
+    description: 'Metode isyarat khusus yang mempermudah teman Tuli dalam menghafal dan memahami huruf Al-Quran (Hijaiyah) hingga tingkatan Iqro 6.',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    duration: '120 Menit',
+    rating: '5.0',
     lessons: [
       { id: 1, title: 'Hijaiyah Isyarat: Dasar', duration: '15:00', completed: false },
-      { id: 2, title: 'Iqro 1: Pengenalan Huruf Tunggal', duration: '20:00', completed: false },
-      { id: 3, title: 'Iqro 2: Huruf Sambung Dasar', duration: '20:00', completed: false },
-      { id: 4, title: 'Iqro 3: Tanda Baca (Harakat)', duration: '25:00', completed: false },
-      { id: 5, title: 'Iqro 4: Tanwin & Sukun', duration: '25:00', locked: true },
-      { id: 6, title: 'Iqro 5: Tajwid Dasar', duration: '30:00', locked: true },
-      { id: 7, title: 'Iqro 6: Persiapan Tadarus', duration: '30:00', locked: true },
-      { id: 8, title: 'Surah Pendek Isyarat (Juz Amma)', duration: '45:00', locked: true }
+      { id: 2, title: 'Iqro 1: Huruf Tunggal', duration: '20:00', completed: false },
+      { id: 3, title: 'Iqro 2: Huruf Sambung', duration: '20:00', completed: false },
+      { id: 4, title: 'Iqro 3: Tanda Baca', duration: '25:00', completed: false },
+      { id: 5, title: 'Surah Pendek Isyarat', duration: '45:00', locked: true }
     ]
   }
 }
@@ -63,138 +72,98 @@ const ModuleDetail = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="section"
-      style={{ paddingTop: '8rem' }}
+      style={{ paddingTop: '7rem', background: 'var(--bg-dark)' }}
     >
       <div className="container">
-        {/* Breadcrumb / Back Link */}
-        <motion.div
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
+        {/* Back Button */}
+        <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} style={{ marginBottom: '2.5rem' }}>
           <Link to="/learning" style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            gap: '0.5rem', 
-            color: 'var(--text-muted)', 
-            textDecoration: 'none', 
-            marginBottom: '3rem', 
-            fontSize: '0.9rem',
-            transition: 'color 0.3s'
-          }}
-          onMouseEnter={(e) => e.target.style.color = 'var(--primary)'}
-          onMouseLeave={(e) => e.target.style.color = 'var(--text-muted)'}
-          >
-            <ArrowLeft size={16} /> Kembali ke Kurikulum
+            display: 'inline-flex', alignItems: 'center', gap: '0.6rem', 
+            color: 'var(--text-muted)', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem'
+          }}>
+            <ArrowLeft size={16} /> Kembali ke Akademi
           </Link>
         </motion.div>
 
-        <div className="module-grid">
-          {/* Main Content Area */}
-          <div className="module-main">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
-                {data.title.split(':').map((part, i) => (
-                  <span key={i} style={i === 1 ? { color: 'var(--primary)', display: 'block' } : {}}>
-                    {part}{i === 0 && ':'}
-                  </span>
-                ))}
-              </h1>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: 1.8, marginBottom: '4rem', maxWidth: '600px' }}>
+        <div className="module-layout">
+          {/* Main Content */}
+          <div className="module-content">
+            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }}>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                <span style={{ padding: '0.4rem 1rem', background: 'var(--primary-glow)', color: 'var(--primary)', borderRadius: '100px', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '1px' }}>
+                  MODUL AKTIF
+                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent)', fontSize: '0.85rem', fontWeight: '700' }}>
+                  <Star size={16} fill="var(--accent)" /> {data.rating} Rating
+                </div>
+              </div>
+              <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', marginBottom: '0.5rem', fontWeight: '800' }}>{data.title}</h1>
+              <p style={{ fontSize: '1.4rem', color: 'var(--primary)', fontWeight: '700', marginBottom: '1.5rem' }}>{data.sub}</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '3rem', maxWidth: '700px' }}>
                 {data.description}
               </p>
-            </motion.div>
 
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="video-container"
-            >
-              <div className="video-player-mock">
-                <div className="video-overlay">
-                  <motion.div 
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="play-button"
-                  >
-                    <Play fill="#000" size={32} />
-                  </motion.div>
-                  <div className="video-info-tag">
-                    Pratinjau Modul: {data.title}
+              {/* Video Player */}
+              <div className="video-player-container">
+                <div className="video-mock">
+                  <div className="video-overlay">
+                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="play-btn-large">
+                      <Play size={32} fill="currentColor" />
+                    </motion.div>
                   </div>
-                </div>
-                {/* Background gradient for mock video */}
-                <div style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  background: 'radial-gradient(circle at center, #1a1a1a 0%, #050505 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <div className="neon-ring"></div>
+                  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200" alt="Video cover" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} />
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Sidebar Area (Lessons & Progress) */}
+          {/* Sidebar */}
           <div className="module-sidebar">
-            <div style={{ position: 'sticky', top: '10rem' }}>
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                Daftar Pelajaran 
-                <span style={{ fontSize: '0.8rem', background: 'var(--glass)', padding: '0.2rem 0.6rem', borderRadius: '4px', color: 'var(--text-muted)' }}>
-                  {data.lessons.length} Materi
-                </span>
-              </h2>
-
-              <div className="lesson-list">
-                {data.lessons.map((lesson, i) => (
-                  <motion.div 
-                    key={lesson.id}
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 + (i * 0.1) }}
-                    className={`lesson-card ${lesson.locked ? 'locked' : ''} ${lesson.completed ? 'completed' : ''}`}
-                  >
-                    <div className="lesson-status">
-                      {lesson.completed ? <CheckCircle size={20} color="var(--primary)" /> : lesson.locked ? <Lock size={18} opacity={0.4} /> : <div className="status-dot"></div>}
-                    </div>
-                    
-                    <div className="lesson-info">
-                      <h4>{lesson.title}</h4>
-                      <span>{lesson.duration}</span>
-                    </div>
-
-                    {!lesson.locked && (
-                      <button className="lesson-action">
-                        {lesson.completed ? 'Ulangi' : 'Mulai'}
-                      </button>
-                    )}
-                  </motion.div>
-                ))}
+            <div style={{ position: 'sticky', top: '100px' }}>
+              <div className="glass-card" style={{ padding: '2rem', marginBottom: '1.5rem' }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                  <BookOpen size={20} color="var(--primary)" /> Materi Belajar
+                </h3>
+                
+                <div className="lesson-stack">
+                  {data.lessons.map((lesson, i) => (
+                    <motion.div 
+                      key={lesson.id} 
+                      className={`lesson-item ${lesson.locked ? 'locked' : ''} ${lesson.completed ? 'completed' : ''}`}
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.3 + (i * 0.1) }}
+                    >
+                      <div className="lesson-indicator">
+                        {lesson.completed ? <CheckCircle size={20} color="var(--primary)" /> : lesson.locked ? <Lock size={18} /> : <div className="dot" />}
+                      </div>
+                      <div className="lesson-text">
+                        <p className="lesson-title">{lesson.title}</p>
+                        <span className="lesson-time"><Clock size={12} /> {lesson.duration}</span>
+                      </div>
+                      {!lesson.locked && (
+                        <button className="lesson-btn">{lesson.completed ? 'Review' : 'Mulai'}</button>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              
+
               <motion.div 
+                className="glass-card progress-card"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.2 }}
-                className="progress-card"
+                transition={{ delay: 0.8 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                  <span style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Progres Belajar</span>
-                  <span style={{ fontSize: '0.9rem', color: 'var(--primary)' }}>25%</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
+                  <Trophy size={20} color="var(--accent)" />
+                  <span style={{ fontWeight: '800', fontSize: '0.9rem' }}>Sertifikat Progress</span>
                 </div>
-                <div className="progress-bar-bg">
-                  <div className="progress-bar-fill" style={{ width: '25%' }}></div>
+                <div className="custom-progress">
+                  <div className="progress-fill" style={{ width: '20%' }} />
                 </div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '1rem', textAlign: 'center' }}>
-                  Selesaikan 3 materi lagi untuk sertifikat
+                  <strong>20% Selesai</strong> — 4 materi lagi menuju sertifikat
                 </p>
               </motion.div>
             </div>
@@ -203,33 +172,33 @@ const ModuleDetail = () => {
       </div>
 
       <style>{`
-        .module-grid {
+        .module-layout {
           display: grid;
-          gap: 4rem;
+          gap: 3rem;
           grid-template-columns: 1fr;
         }
 
         @media (min-width: 1024px) {
-          .module-grid {
+          .module-layout {
             grid-template-columns: 1.8fr 1fr;
           }
         }
 
-        .video-container {
-          width: 100%;
+        .video-player-container {
+          background: #000;
           border-radius: 32px;
+          overflow: hidden;
           padding: 8px;
-          background: linear-gradient(135deg, var(--glass-border) 0%, transparent 100%);
           border: 1px solid var(--glass-border);
-          box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+          box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
 
-        .video-player-mock {
+        .video-mock {
           aspect-ratio: 16/9;
-          background: #000;
-          border-radius: 26px;
-          overflow: hidden;
           position: relative;
+          background: #0f172a;
+          border-radius: 24px;
+          overflow: hidden;
         }
 
         .video-overlay {
@@ -238,138 +207,116 @@ const ModuleDetail = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 2;
-          background: rgba(0,0,0,0.2);
+          z-index: 10;
         }
 
-        .play-button {
-          width: 90px;
-          height: 90px;
+        .play-btn-large {
+          width: 80px;
+          height: 80px;
           background: var(--primary);
+          color: #fff;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          box-shadow: 0 0 40px var(--primary-glow);
-          color: #000;
+          box-shadow: 0 0 30px var(--primary-glow);
         }
 
-        .video-info-tag {
-          position: absolute;
-          bottom: 2rem;
-          left: 2rem;
-          background: rgba(0,0,0,0.6);
-          backdrop-filter: blur(10px);
-          padding: 0.6rem 1.2rem;
-          border-radius: 100px;
-          font-size: 0.8rem;
-          border: 1px solid var(--glass-border);
-          color: var(--text-muted);
-        }
-
-        .lesson-list {
+        .lesson-stack {
           display: flex;
           flex-direction: column;
           gap: 1rem;
         }
 
-        .lesson-card {
+        .lesson-item {
           display: flex;
           align-items: center;
-          gap: 1.5rem;
-          padding: 1.25rem;
-          background: var(--bg-card);
+          gap: 1.2rem;
+          padding: 1rem;
+          background: var(--bg-dark);
           border: 1px solid var(--glass-border);
-          border-radius: 20px;
-          transition: all 0.3s ease;
-        }
-
-        .lesson-card:hover {
-          border-color: rgba(255,255,255,0.2);
-          transform: translateX(10px);
-        }
-
-        .lesson-card.completed {
-          border-color: var(--primary-glow);
-          background: rgba(193, 255, 0, 0.03);
-        }
-
-        .lesson-card.locked {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-
-        .status-dot {
-          width: 12px;
-          height: 12px;
-          border: 2px solid var(--text-muted);
-          border-radius: 50%;
-        }
-
-        .lesson-info h4 {
-          font-size: 1.05rem;
-          margin-bottom: 0.2rem;
-        }
-
-        .lesson-info span {
-          font-size: 0.8rem;
-          color: var(--text-muted);
-        }
-
-        .lesson-action {
-          margin-left: auto;
-          background: transparent;
-          border: 1px solid var(--glass-border);
-          color: var(--text-main);
-          padding: 0.5rem 1.2rem;
-          border-radius: 100px;
-          font-size: 0.8rem;
-          font-weight: bold;
-          cursor: pointer;
+          border-radius: 16px;
           transition: all 0.3s;
         }
 
-        .lesson-action:hover {
+        .lesson-item:hover:not(.locked) {
+          border-color: var(--primary);
+          transform: translateX(8px);
+        }
+
+        .lesson-item.completed {
+          background: var(--primary-glow);
+          border-color: var(--primary-glow);
+        }
+
+        .lesson-item.locked {
+          opacity: 0.5;
+          filter: grayscale(1);
+        }
+
+        .lesson-indicator {
+          width: 24px;
+          display: flex;
+          justify-content: center;
+          color: var(--text-muted);
+        }
+
+        .lesson-indicator .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          border: 2px solid var(--text-muted);
+        }
+
+        .lesson-text {
+          flex: 1;
+        }
+
+        .lesson-title {
+          font-weight: 700;
+          font-size: 0.95rem;
+          margin-bottom: 0.2rem;
+          color: var(--text-main);
+        }
+
+        .lesson-time {
+          font-size: 0.75rem;
+          color: var(--text-muted);
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+
+        .lesson-btn {
+          background: transparent;
+          border: 1px solid var(--glass-border);
+          padding: 0.4rem 1rem;
+          border-radius: 100px;
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: var(--text-main);
+          cursor: pointer;
+        }
+
+        .lesson-item:hover .lesson-btn {
           background: var(--primary);
-          color: #000;
+          color: #fff;
           border-color: var(--primary);
         }
 
-        .progress-card {
-          margin-top: 3rem;
-          padding: 2rem;
-          background: var(--bg-card);
-          border-radius: 24px;
-          border: 1px solid var(--glass-border);
-        }
-
-        .progress-bar-bg {
+        .custom-progress {
           height: 8px;
-          background: rgba(255,255,255,0.05);
+          background: var(--bg-dark);
           border-radius: 10px;
           overflow: hidden;
         }
 
-        .progress-bar-fill {
+        .progress-fill {
           height: 100%;
           background: var(--primary);
           box-shadow: 0 0 15px var(--primary-glow);
           border-radius: 10px;
-        }
-
-        .neon-ring {
-          width: 150px;
-          height: 150px;
-          border: 2px solid var(--primary-glow);
-          border-radius: 50%;
-          filter: blur(20px);
-          animation: pulse 4s infinite;
-        }
-
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); opacity: 0.2; }
-          50% { transform: scale(1.5); opacity: 0.5; }
         }
       `}</style>
     </motion.div>

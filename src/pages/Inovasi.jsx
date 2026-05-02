@@ -1,49 +1,49 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Lightbulb, Rocket, Cpu, Leaf, Globe, Zap } from 'lucide-react'
+import { Lightbulb, Rocket, Cpu, Leaf, Globe, Zap, Sparkles, ArrowRight } from 'lucide-react'
 
 const innovations = [
   {
-    icon: <Lightbulb size={32} />,
-    title: 'Inovasi 1',
+    icon: <Lightbulb size={28} />,
+    title: 'Edu-Access AI',
     tag: 'Pendidikan',
-    desc: 'Deskripsi inovasi pertama akan ditampilkan di sini. Ceritakan solusi kreatif yang dikembangkan.',
+    desc: 'Platform pembelajaran cerdas yang mengonversi video ceramah menjadi teks dan isyarat secara real-time.',
     color: '#FFD600',
   },
   {
-    icon: <Rocket size={32} />,
-    title: 'Inovasi 2',
+    icon: <Rocket size={28} />,
+    title: 'Yo\'i Connect',
     tag: 'Teknologi',
-    desc: 'Deskripsi inovasi kedua akan ditampilkan di sini. Jelaskan bagaimana inovasi ini berdampak.',
-    color: '#1565C0',
+    desc: 'Alat bantu komunikasi wearable yang menerjemahkan gerakan tangan menjadi suara melalui Bluetooth.',
+    color: '#3b82f6',
   },
   {
-    icon: <Cpu size={32} />,
-    title: 'Inovasi 3',
+    icon: <Cpu size={28} />,
+    title: 'Smart-Deaf Hub',
     tag: 'Digital',
-    desc: 'Deskripsi inovasi ketiga akan ditampilkan di sini. Uraikan manfaat dan penerapannya.',
+    desc: 'Sistem manajemen rumah pintar yang terintegrasi dengan notifikasi visual untuk teman-teman Tuli.',
     color: '#FF6D00',
   },
   {
-    icon: <Leaf size={32} />,
-    title: 'Inovasi 4',
+    icon: <Leaf size={28} />,
+    title: 'Eco-Inclusion',
     tag: 'Lingkungan',
-    desc: 'Deskripsi inovasi keempat akan ditampilkan di sini. Dampak positif terhadap lingkungan.',
-    color: '#2E7D32',
+    desc: 'Program pengolahan limbah ramah disabilitas yang menciptakan lapangan kerja inklusif dan berkelanjutan.',
+    color: '#10b981',
   },
   {
-    icon: <Globe size={32} />,
-    title: 'Inovasi 5',
+    icon: <Globe size={28} />,
+    title: 'Global Sign Kit',
     tag: 'Komunitas',
-    desc: 'Deskripsi inovasi kelima akan ditampilkan di sini. Bagaimana komunitas mendapatkan manfaat.',
-    color: '#6A1B9A',
+    desc: 'Standardisasi isyarat internasional untuk mempermudah kolaborasi disabilitas antar negara.',
+    color: '#8b5cf6',
   },
   {
-    icon: <Zap size={32} />,
-    title: 'Inovasi 6',
+    icon: <Zap size={28} />,
+    title: 'Social Impact Lab',
     tag: 'Sosial',
-    desc: 'Deskripsi inovasi keenam akan ditampilkan di sini. Perubahan sosial yang ingin diwujudkan.',
-    color: '#C62828',
+    desc: 'Inkubator ide bisnis untuk wirausahawan disabilitas yang ingin menciptakan perubahan sosial.',
+    color: '#ef4444',
   },
 ]
 
@@ -53,128 +53,111 @@ const Inovasi = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      style={{ background: 'var(--bg-dark)' }}
     >
-      {/* Hero Banner */}
+      {/* Hero Banner Premium */}
       <section style={{
         position: 'relative',
         overflow: 'hidden',
-        background: 'var(--primary)',
-        paddingTop: '60px',
-        paddingBottom: '80px',
+        background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)',
+        paddingTop: '100px',
+        paddingBottom: '120px',
         textAlign: 'center',
       }}>
-        {/* Dotted Background */}
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 2px)',
-          backgroundSize: '30px 30px',
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px)',
+          backgroundSize: '40px 40px',
           zIndex: 0,
+        }} />
+        
+        <div style={{
+          position: 'absolute', top: '10%', left: '-5%', width: '300px', height: '300px',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+          borderRadius: '50%', zIndex: 0
         }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8 }}
           >
-            <span style={{
-              display: 'inline-block',
-              background: 'rgba(255,255,255,0.2)',
-              color: 'white',
-              padding: '0.4rem 1.2rem',
-              borderRadius: '100px',
-              fontWeight: '700',
-              fontSize: '0.85rem',
-              letterSpacing: '2px',
-              marginBottom: '1.5rem',
-              textTransform: 'uppercase',
+            <div style={{ 
+              display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+              padding: '0.6rem 1.2rem', background: 'rgba(255,255,255,0.15)',
+              borderRadius: '100px', color: '#fff', fontSize: '0.8rem',
+              fontWeight: '700', marginBottom: '2rem', letterSpacing: '1px',
+              backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)'
             }}>
-              Yo'i Foundation
-            </span>
-            <h1 style={{ color: 'white', fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '1.5rem' }}>
-              Inovasi Kami
+              <Sparkles size={16} /> LABORATORIUM INOVASI
+            </div>
+            <h1 style={{ color: 'white', fontSize: 'clamp(2.8rem, 7vw, 4.5rem)', marginBottom: '1.5rem', fontWeight: '800' }}>
+              Masa Depan <br /><span style={{ color: 'var(--accent)' }}>Tanpa Batas</span>
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.15rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.8 }}>
-              Kumpulan ide dan solusi inovatif yang kami kembangkan untuk menciptakan dampak nyata bagi masyarakat luas.
+            <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.15rem', maxWidth: '650px', margin: '0 auto', lineHeight: 1.8 }}>
+              Kami mengembangkan teknologi dan solusi kreatif untuk meruntuhkan hambatan komunikasi dan menciptakan kesetaraan bagi semua.
             </p>
           </motion.div>
         </div>
 
-        {/* Wave shape at bottom */}
-        <svg viewBox="0 0 1440 80" style={{ position: 'absolute', bottom: 0, left: 0, width: '100%' }} preserveAspectRatio="none">
-          <path d="M0,80 C360,0 1080,80 1440,0 L1440,80 Z" fill="var(--bg-dark)" />
+        {/* Wave decoration */}
+        <svg viewBox="0 0 1440 100" style={{ position: 'absolute', bottom: -1, left: 0, width: '100%', height: 'auto' }} preserveAspectRatio="none">
+          <path d="M0,100 C240,0 480,100 720,50 C960,0 1200,100 1440,50 L1440,100 L0,100 Z" fill="var(--bg-dark)" />
         </svg>
       </section>
 
-      {/* Innovation Cards */}
-      <section className="section" style={{ background: 'var(--bg-dark)' }}>
+      {/* Innovation Cards Section */}
+      <section className="section" style={{ background: 'var(--bg-dark)', padding: '4rem 0 8rem' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ color: 'var(--text-main)', marginBottom: '1rem' }}>Program Inovasi</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '540px', margin: '0 auto' }}>
-              Setiap inovasi lahir dari kebutuhan nyata. Berikut adalah program-program unggulan yang sedang kami kembangkan.
-            </p>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1rem' }}>Eksperimen & Proyek</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Eksplorasi solusi masa depan yang sedang kami inkubasi.</p>
           </div>
 
-          <div className="grid grid-2-mobile grid-3">
+          <div className="scroll-x">
             {innovations.map((item, i) => (
               <motion.div
                 key={i}
                 className="glass-card"
-                initial={{ y: 40, opacity: 0 }}
+                initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                style={{ cursor: 'default', display: 'flex', flexDirection: 'column' }}
+                style={{ display: 'flex', flexDirection: 'column', padding: '2.5rem' }}
               >
-                {/* Icon Box */}
-                <div className="icon-box" style={{
-                  width: '64px', height: '64px', borderRadius: '18px',
-                  background: `${item.color}12`, border: `1px solid ${item.color}20`,
-                  color: item.color, display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', marginBottom: '1.5rem',
+                {/* Icon Circle */}
+                <div style={{
+                  width: '64px', height: '64px', borderRadius: '20px',
+                  background: `${item.color}15`, color: item.color,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: '1.8rem', border: `1px solid ${item.color}25`
                 }}>
                   {item.icon}
                 </div>
 
-                {/* Tag */}
-                <div style={{ marginBottom: '0.8rem' }}>
+                <div style={{ marginBottom: '1rem' }}>
                   <span style={{
-                    display: 'inline-block', background: `${item.color}15`,
-                    color: item.color, padding: '0.2rem 0.8rem', borderRadius: '100px',
-                    fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
+                    display: 'inline-block', background: 'var(--bg-dark)',
+                    color: item.color, padding: '0.3rem 0.9rem', borderRadius: '100px',
+                    fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase',
+                    letterSpacing: '1px', border: '1px solid var(--glass-border)'
                   }}>
                     {item.tag}
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.8rem', color: 'var(--text-main)', fontWeight: '800' }}>
-                  {item.title}
-                </h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '0.92rem', flex: 1 }}>
+                <h3 style={{ fontSize: '1.6rem', marginBottom: '1rem', fontWeight: '800' }}>{item.title}</h3>
+                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '0.95rem', flex: 1, marginBottom: '2rem' }}>
                   {item.desc}
                 </p>
 
-                {/* Status Indicator */}
-                <div style={{
-                  marginTop: '1.5rem', paddingTop: '1.2rem',
-                  borderTop: '1px solid rgba(0,0,0,0.05)',
-                  display: 'flex', alignItems: 'center', gap: '0.6rem',
+                <div style={{ 
+                  display: 'flex', alignItems: 'center', gap: '0.8rem', 
+                  paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)'
                 }}>
-                  <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{
-                      width: '8px', height: '8px', borderRadius: '50%',
-                      background: item.color, display: 'inline-block',
-                    }} />
-                    <span style={{
-                      position: 'absolute', width: '16px', height: '16px', borderRadius: '50%',
-                      background: item.color, opacity: 0.3, animation: 'pulse-ring 2s infinite',
-                    }} />
-                  </div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700' }}>
-                    Proyek Berjalan
-                  </span>
+                  <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: item.color, boxShadow: `0 0 10px ${item.color}` }} />
+                  <span style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-main)' }}>Tahap Inkubasi</span>
                 </div>
               </motion.div>
             ))}
@@ -182,36 +165,47 @@ const Inovasi = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section" style={{ textAlign: 'center', paddingBottom: '8rem' }}>
+      {/* Modern Call to Action */}
+      <section className="section" style={{ paddingBottom: '10rem' }}>
         <div className="container">
           <div className="glass-card" style={{
-            padding: '5rem 2rem',
-            background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)',
-            borderRadius: '40px',
-            color: 'white',
+            padding: '6rem 2rem',
+            background: 'var(--bg-card)',
+            borderRadius: '48px',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden'
           }}>
-            <h2 style={{ color: 'white', marginBottom: '1rem' }}>Punya Ide Inovatif?</h2>
-            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.1rem', marginBottom: '2.5rem', maxWidth: '500px', margin: '0 auto 2.5rem' }}>
-              Bergabunglah bersama kami dan wujudkan ide Anda menjadi solusi nyata untuk masyarakat.
-            </p>
-            <a
-              href="mailto:info@yoi.or.id"
-              className="btn"
-              style={{ background: 'var(--secondary)', color: 'white', fontSize: '1.1rem', padding: '1rem 3rem' }}
-            >
-              Hubungi Kami
-            </a>
+            {/* Decorative background shape */}
+            <div style={{ 
+              position: 'absolute', top: '-50%', left: '-10%', width: '400px', height: '400px',
+              background: 'var(--primary-glow)', borderRadius: '50%', filter: 'blur(60px)', zIndex: 0
+            }} />
+
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ 
+                width: '60px', height: '60px', background: 'var(--accent)', 
+                borderRadius: '50%', display: 'flex', alignItems: 'center', 
+                justifyContent: 'center', margin: '0 auto 2rem', color: 'var(--primary)'
+              }}>
+                <Rocket size={30} />
+              </div>
+              <h2 style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '1.5rem' }}>Kolaborasi Inovasi</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem', lineHeight: 1.8 }}>
+                Punya ide brilian untuk memajukan komunitas disabilitas? Kami siap mendukung dan mewujudkannya bersama Anda.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="mailto:info@yoi.or.id" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                  Kirim Proposal Ide <ArrowRight size={20} style={{ marginLeft: '0.8rem' }} />
+                </a>
+                <button className="btn btn-outline" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                  Pelajari Kemitraan
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      <style>{`
-        @keyframes pulse-ring {
-          0% { transform: scale(1); opacity: 0.5; }
-          100% { transform: scale(2.5); opacity: 0; }
-        }
-      `}</style>
     </motion.div>
   )
 }

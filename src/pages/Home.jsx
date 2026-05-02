@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Play, ChevronLeft, ChevronRight, Heart } from 'lucide-react'
+import { ArrowRight, Play, Heart, Star, Sparkles, Zap, ShieldCheck, GraduationCap, Users } from 'lucide-react'
 
 const Home = () => {
   return (
@@ -9,154 +9,148 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      style={{ background: 'var(--bg-dark)' }}
     >
-      {/* Hero Section */}
-      <section className="hero-wrapper">
-        <div className="hero-curve">
-          <div className="hero-pattern"></div>
-        </div>
-        
-        {/* Hero blob shape */}
-        <div style={{ position: 'relative', width: '100%', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          
-          {/* THE BLUE BLOB - covers left ~65%, big border-radius on right side */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '65%',
-            height: '100%',
-            background: 'var(--primary)',
-            borderRadius: '0 120px 120px 0',
-            zIndex: 0,
-          }} />
+      {/* Hero Section Premium */}
+      <section style={{ position: 'relative', overflow: 'hidden', minHeight: '95vh', display: 'flex', alignItems: 'center', background: 'var(--bg-dark)' }}>
+        {/* Background Decorative Blobs */}
+        <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '600px', height: '600px', background: 'var(--primary-glow)', borderRadius: '50%', filter: 'blur(100px)', opacity: 0.5, zIndex: 0 }} />
+        <div style={{ position: 'absolute', bottom: '10%', left: '-5%', width: '400px', height: '400px', background: 'rgba(255, 109, 0, 0.15)', borderRadius: '50%', filter: 'blur(100px)', zIndex: 0 }} />
 
-          {/* Dotted pattern on the right */}
-          <div style={{
-            position: 'absolute',
-            right: '2%',
-            top: '10%',
-            width: '340px',
-            height: '340px',
-            backgroundImage: 'radial-gradient(circle, rgba(21,101,192,0.25) 2px, transparent 2px)',
-            backgroundSize: '28px 28px',
-            zIndex: 0,
-            borderRadius: '50%',
-          }} />
-
-          {/* Content row */}
-          <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-            <div className="grid grid-2" style={{ alignItems: 'center', minHeight: '75vh', paddingTop: '1rem', paddingBottom: '3rem' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="grid grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+            {/* Left: Content */}
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div style={{ 
+                display: 'inline-flex', alignItems: 'center', gap: '0.8rem',
+                padding: '0.6rem 1.2rem', background: 'var(--primary-glow)',
+                borderRadius: '100px', color: 'var(--primary)', fontSize: '0.85rem',
+                fontWeight: '800', marginBottom: '2rem', letterSpacing: '1px'
+              }}>
+                <Sparkles size={16} /> PLATFORM INKLUSIF MASA DEPAN
+              </div>
+              <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', marginBottom: '1.5rem', lineHeight: 1.1, fontWeight: '800', letterSpacing: '-0.04em' }}>
+                Wujudkan Potensi <br />
+                <span style={{ color: 'var(--primary)' }} className="glow-text">Tanpa Batasan</span>
+              </h1>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginBottom: '3rem', maxWidth: '540px', lineHeight: 1.8 }}>
+                Yo'i Foundation hadir untuk memberdayakan penyandang disabilitas melalui pendidikan isyarat digital, pelatihan siap kerja, dan inovasi teknologi inklusif.
+              </p>
               
-              {/* Left: text inside the blob */}
-              <motion.div
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                style={{ color: 'white' }}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+                <Link to="/learning" className="btn btn-primary" style={{ padding: '1.1rem 2.8rem', fontSize: '1rem', borderRadius: '16px' }}>
+                  Mulai Belajar <ArrowRight size={18} style={{ marginLeft: '0.6rem' }} />
+                </Link>
+                <Link to="/donation" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-main)', textDecoration: 'none', fontWeight: '700', fontSize: '1rem' }}>
+                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--bg-card)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }}>
+                    <Heart size={20} color="var(--secondary)" fill="var(--secondary)" />
+                  </div>
+                  Donasi Sekarang
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right: Floating Mockup Area */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              style={{ position: 'relative' }}
+            >
+              <div style={{ 
+                background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)', 
+                borderRadius: '40px', padding: '1rem', position: 'relative', zIndex: 2,
+                boxShadow: '0 40px 80px rgba(13, 71, 161, 0.25)'
+              }}>
+                <img 
+                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Inclusion Empowerment" 
+                  style={{ width: '100%', borderRadius: '32px', display: 'block', height: '450px', objectFit: 'cover' }} 
+                />
+              </div>
+              {/* Floating Badge */}
+              <motion.div 
+                animate={{ y: [0, -20, 0] }} 
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ position: 'absolute', bottom: '-20px', left: '-20px', zIndex: 3 }}
               >
-                <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3.8rem)', marginBottom: '1.5rem', lineHeight: 1.15, fontWeight: '800' }}>
-                  Empowering Youth<br />Skills &amp; Opportunities
-                </h1>
-                <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1rem', marginBottom: '2.5rem', maxWidth: '460px', lineHeight: 1.7 }}>
-                  Kami mendukung individu muda dalam mendapatkan keterampilan relevan industri yang membuka pintu menuju lapangan kerja berkelanjutan dan kewirausahaan. Program kami berfokus pada pelatihan vokasional yang lebih aksesibel dan inklusif.
-                </p>
-                
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
-                  <Link to="/donation" className="btn" style={{ background: 'white', color: 'var(--primary)', padding: '0.9rem 2.2rem', fontWeight: '700', borderRadius: '100px', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                    Dukung Kami <Heart size={16} fill="var(--primary)" />
-                  </Link>
-                  <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1rem' }}>
-                    <div style={{ width: '42px', height: '42px', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Play size={16} fill="white" color="white" />
+                <div className="glass-card" style={{ padding: '1.2rem 2rem', background: 'var(--bg-card)', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                    <div style={{ width: '40px', height: '40px', background: 'var(--primary)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+                      <GraduationCap size={20} />
                     </div>
-                    Proses Kami
-                  </Link>
-                </div>
-
-                {/* Slider Controls */}
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <button style={{ width: '48px', height: '48px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.25)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <ChevronLeft size={22} />
-                  </button>
-                  <button style={{ width: '48px', height: '48px', borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,0.4)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <ChevronRight size={22} />
-                  </button>
+                    <div>
+                      <div style={{ fontWeight: '800', fontSize: '1.2rem', color: 'var(--text-main)', lineHeight: 1 }}>10K+</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Pelajar Isyarat Aktif</div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
-
-              {/* Right: image floating OUTSIDE the blob */}
-              <motion.div
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
-              >
-                <div style={{ borderRadius: '30px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.18)', maxWidth: '480px', width: '100%' }}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=900" 
-                    alt="Empowering Youth" 
-                    style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }} 
-                  />
-                </div>
-              </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="section" style={{ background: 'white' }}>
+      {/* Program Quick Links */}
+      <section style={{ padding: '4rem 0', background: 'var(--bg-dark)' }}>
         <div className="container">
-          <div className="grid grid-2" style={{ gap: '6rem', alignItems: 'center' }}>
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <span style={{ color: 'var(--secondary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem' }}>Who We Are</span>
-                <div style={{ height: '2px', width: '60px', background: 'var(--secondary)' }}></div>
-              </div>
-              <h2 style={{ color: 'var(--text-main)', fontSize: '3rem', marginBottom: '2rem' }}>ABOUT US</h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
-                SkillBridge Foundation is a registered not-for-profit organization dedicated to advancing the well-being of children and promoting equality for girls and young women across communities. Through its grassroots social development efforts, SkillBridge Foundation strives to create lasting positive change in the lives of vulnerable children, their families, and their communities by adopting a gender-transformative, child-centered approach. Since its inception in 1996, SkillBridge Foundation has positively impacted the lives of millions of young people by connecting them with protective services, quality education, accessible healthcare, a healthy environment, better livelihood opportunities, and meaningful community participation.
-              </p>
-              <Link to="/about" className="btn btn-primary" style={{ padding: '1rem 2.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.8rem' }}>
-                Know More <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: '50%', padding: '0.2rem' }}><ArrowRight size={18} /></div>
+          <div className="scroll-x">
+            {[
+              { title: 'Pendidikan', sub: 'Akademi Isyarat', icon: <GraduationCap size={24} />, color: 'var(--primary)', path: '/learning' },
+              { title: 'Siap Kerja', sub: 'Pelatihan Vokasional', icon: <Zap size={24} />, color: 'var(--secondary)', path: '/pelatihan' },
+              { title: 'Inovasi', sub: 'Teknologi Asistif', icon: <ShieldCheck size={24} />, color: '#059669', path: '/inovasi' },
+              { title: 'Lowongan', sub: 'Karir Inklusif', icon: <Users size={24} />, color: '#8b5cf6', path: '/lowongan' },
+            ].map((item, i) => (
+              <Link key={i} to={item.path} style={{ textDecoration: 'none' }}>
+                <motion.div 
+                  className="glass-card" 
+                  style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', padding: '1.5rem 2rem', minWidth: '240px' }}
+                  whileHover={{ y: -5, borderColor: item.color }}
+                >
+                  <div style={{ width: '48px', height: '48px', background: `${item.color}15`, borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: item.color }}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: '800', fontSize: '1.05rem', color: 'var(--text-main)' }}>{item.title}</div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{item.sub}</div>
+                  </div>
+                </motion.div>
               </Link>
-            </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="image-stack"
-            >
-              <div className="image-stack-top image-stack-item">
-                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800" alt="Students" />
+      {/* Impact Stats */}
+      <section className="section" style={{ background: 'var(--bg-card)' }}>
+        <div className="container">
+          <div className="grid grid-2" style={{ alignItems: 'center', gap: '5rem' }}>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
+              <div style={{ borderRadius: '40px', overflow: 'hidden', border: '8px solid var(--bg-dark)' }}>
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800" alt="About Yo'i" style={{ width: '100%', height: '500px', objectFit: 'cover' }} />
               </div>
-              <div className="image-stack-bottom image-stack-item">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Teamwork" />
-              </div>
-              <div className="stats-badge float-anim" style={{ 
-                bottom: '10%', 
-                right: '5%',
-                padding: '1rem',
-                minWidth: '120px'
-              }}>
-                <h4 style={{ fontSize: '1.2rem', margin: 0 }}>50 Lakh</h4>
-                <p style={{ fontSize: '0.8rem', margin: 0 }}>Lives Impacted</p>
-              </div>
-              
-              {/* Decorative Arrow */}
-              <svg style={{ position: 'absolute', bottom: '-40px', right: '120px', width: '150px', height: '150px', zIndex: 0 }} viewBox="0 0 200 200">
-                <path d="M20,180 Q100,180 150,50" fill="none" stroke="var(--accent)" strokeWidth="4" strokeDasharray="8 8" />
-                <path d="M140,60 L150,50 L160,60" fill="none" stroke="var(--accent)" strokeWidth="4" />
-              </svg>
             </motion.div>
+            <div>
+              <span style={{ color: 'var(--secondary)', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '1rem', display: 'block' }}>SIAPA KAMI</span>
+              <h2 style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '1.5rem', lineHeight: 1.2 }}>Membangun Masa Depan yang <span style={{ color: 'var(--primary)' }}>Sama Untuk Semua</span></h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+                Yo'i Foundation adalah organisasi nirlaba yang berfokus pada pemberdayaan anak-anak dan pemuda disabilitas melalui pendekatan teknologi dan pendidikan yang inklusif. Kami percaya bahwa setiap individu memiliki hak yang sama untuk mendapatkan aksesibilitas dan peluang yang setara.
+              </p>
+              <div className="grid grid-2-mobile grid-2" style={{ gap: '1.5rem' }}>
+                <div className="glass-card" style={{ padding: '1.5rem' }}>
+                  <div style={{ fontSize: '2.2rem', fontWeight: '800', color: 'var(--primary)', marginBottom: '0.5rem' }}>50+</div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '700' }}>Komunitas Mitra</div>
+                </div>
+                <div className="glass-card" style={{ padding: '1.5rem' }}>
+                  <div style={{ fontSize: '2.2rem', fontWeight: '800', color: 'var(--primary)', marginBottom: '0.5rem' }}>100%</div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '700' }}>Gratis Selamanya</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -164,175 +158,86 @@ const Home = () => {
       {/* Alumni Testimonials Section */}
       <section className="section" style={{ background: 'var(--bg-dark)', overflow: 'hidden' }}>
         <div className="container">
-          {/* Section Header */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            style={{ textAlign: 'center', marginBottom: '4rem' }}
-          >
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
-              <div style={{ height: '2px', width: '40px', background: 'var(--secondary)' }} />
-              <span style={{ color: 'var(--secondary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Suara Alumni</span>
-              <div style={{ height: '2px', width: '40px', background: 'var(--secondary)' }} />
-            </div>
-            <h2 style={{ color: 'var(--text-main)', fontSize: 'clamp(1.8rem, 4vw, 3rem)', marginBottom: '1rem' }}>
-              Apa Kata Mereka yang<br />
-              <span style={{ color: 'var(--primary)' }}>Sudah Bersama Kami</span>
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '500px', margin: '0 auto' }}>
-              Kisah nyata dari alumni yang telah merasakan manfaat program Yo'i Foundation.
-            </p>
-          </motion.div>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <span style={{ color: 'var(--secondary)', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '1rem', display: 'block' }}>Kisah Nyata</span>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1rem' }}>Suara Alumni <span style={{ color: 'var(--primary)' }}>Yo'i</span></h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Mereka yang telah melampaui batasan dan meraih impian.</p>
+          </div>
 
-          {/* Testimonial Cards Grid */}
-          <div className="grid grid-2-mobile grid-3">
+          <div className="scroll-x">
             {[
               {
                 name: 'Rina Marlina',
-                role: 'Alumni Siap Kerja · Kini Frontend Dev',
-                company: 'PT Teknologi Nusantara',
-                avatar: 'https://i.pravatar.cc/100?img=47',
-                comment: 'Program Siap Kerja benar-benar mengubah hidup saya. Dari nol coding, sekarang saya bekerja di perusahaan tech impian. Mentornya sangat suportif dan materinya langsung praktis.',
+                role: 'Alumni Siap Kerja',
+                comment: 'Yo\'i benar-benar mengubah hidup saya. Sekarang saya bekerja di perusahaan tech impian.',
                 rating: 5,
-                color: '#1565C0',
+                color: 'var(--primary)',
+                avatar: 'https://i.pravatar.cc/100?img=47'
               },
               {
                 name: 'Budi Santoso',
-                role: 'Alumni Pendidikan · Kini Content Creator',
-                company: 'MediaKita',
-                avatar: 'https://i.pravatar.cc/100?img=12',
-                comment: 'Saya tidak menyangka bisa berkarier di bidang kreatif. Berkat bimbingan Yo\'i, portofolio saya diakui dan langsung diterima kerja 2 minggu setelah lulus!',
+                role: 'Alumni Pendidikan',
+                comment: 'Berkat bimbingan Yo\'i, portofolio saya diakui dan langsung diterima kerja 2 minggu setelah lulus!',
                 rating: 5,
-                color: '#FF6D00',
+                color: 'var(--secondary)',
+                avatar: 'https://i.pravatar.cc/100?img=12'
               },
               {
                 name: 'Dewi Kusuma',
-                role: 'Alumni Bahasa Inggris · Kini HRD Manager',
-                company: 'Startup Indonesia',
-                avatar: 'https://i.pravatar.cc/100?img=32',
-                comment: 'Kelas Bahasa Inggris Profesional sangat membantu saya dalam wawancara kerja internasional. Metode belajarnya menyenangkan dan tidak membosankan.',
+                role: 'Alumni Bisindo',
+                comment: 'Belajar isyarat di Yo\'i sangat mudah dan interaktif. Sekarang saya bisa berkomunikasi dengan teman Tuli.',
                 rating: 5,
-                color: '#2E7D32',
-              },
-              {
-                name: 'Arif Rahman',
-                role: 'Alumni Kewirausahaan · Founder',
-                company: 'ArRa Coffee & Space',
-                avatar: 'https://i.pravatar.cc/100?img=68',
-                comment: 'Program kewirausahaan Yo\'i memberi saya fondasi bisnis yang kuat. Sekarang usaha saya sudah punya 3 cabang dan 12 karyawan. Terima kasih Yo\'i!',
-                rating: 5,
-                color: '#6A1B9A',
-              },
-              {
-                name: 'Siti Aisyah',
-                role: 'Alumni UI/UX · Kini Product Designer',
-                company: 'GoTech Indonesia',
-                avatar: 'https://i.pravatar.cc/100?img=45',
-                comment: 'Yo\'i Foundation bukan cuma mengajarkan skill, tapi juga membangun kepercayaan diri saya. Komunitas alumninya aktif dan saling mendukung satu sama lain.',
-                rating: 5,
-                color: '#C62828',
-              },
-              {
-                name: 'Hendra Wijaya',
-                role: 'Alumni Digital Marketing · Kini Growth Lead',
-                company: 'E-Commerce Maju',
-                avatar: 'https://i.pravatar.cc/100?img=15',
-                comment: 'Ilmu digital marketing yang saya dapat langsung saya terapkan. Dalam 3 bulan pertama bekerja, saya berhasil meningkatkan traffic website klien hingga 300%.',
-                rating: 5,
-                color: '#00838F',
-              },
+                color: '#059669',
+                avatar: 'https://i.pravatar.cc/100?img=32'
+              }
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="glass-card alumni-card"
-                initial={{ y: 40, opacity: 0 }}
+                className="glass-card"
+                initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -6, boxShadow: `0 20px 40px ${item.color}18` }}
-                style={{ cursor: 'default' }}
+                transition={{ delay: i * 0.1 }}
+                style={{ padding: '2rem', display: 'flex', flexDirection: 'column', minWidth: '300px' }}
               >
-                {/* Stars */}
-                <div style={{ display: 'flex', gap: '0.2rem' }}>
-                  {[...Array(item.rating)].map((_, s) => (
-                    <span key={s} style={{ color: '#F59E0B', fontSize: '0.8rem' }}>★</span>
-                  ))}
+                <div style={{ display: 'flex', gap: '0.3rem', marginBottom: '1.5rem' }}>
+                  {[...Array(item.rating)].map((_, s) => <Star key={s} size={14} fill="#F59E0B" color="#F59E0B" />)}
                 </div>
-
-                {/* Quote */}
-                <p className="alumni-comment" style={{
-                  color: 'var(--text-muted)',
-                  lineHeight: 1.75,
-                  flex: 1,
-                  fontStyle: 'italic',
-                  position: 'relative',
-                  paddingLeft: '0.8rem',
-                  borderLeft: `3px solid ${item.color}`,
-                }}>
+                <p style={{ color: 'var(--text-main)', fontSize: '1rem', lineHeight: 1.7, fontStyle: 'italic', flex: 1, marginBottom: '2rem' }}>
                   "{item.comment}"
                 </p>
-
-                {/* Divider */}
-                <div style={{ height: '1px', background: 'var(--glass-border)' }} />
-
-                {/* Alumni Info */}
-                <div className="alumni-info">
-                  <img
-                    src={item.avatar}
-                    alt={item.name}
-                    style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${item.color}`, flexShrink: 0 }}
-                  />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.5rem' }}>
+                  <img src={item.avatar} alt={item.name} style={{ width: '44px', height: '44px', borderRadius: '50%', border: `2px solid ${item.color}` }} />
                   <div>
-                    <div className="alumni-name" style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '0.9rem' }}>{item.name}</div>
-                    <div className="alumni-meta" style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.2 }}>{item.role}</div>
-                    <div className="alumni-meta" style={{ fontSize: '0.7rem', color: item.color, fontWeight: '700', marginTop: '0.1rem' }}>@ {item.company}</div>
+                    <div style={{ fontWeight: '800', fontSize: '0.95rem', color: 'var(--text-main)' }}>{item.name}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '600' }}>{item.role}</div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-
-          {/* Stats Row */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            style={{
-              marginTop: '4rem',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-              gap: '1rem',
-              background: 'var(--primary)',
-              borderRadius: '24px',
-              padding: '2.5rem',
-              textAlign: 'center',
-            }}
-          >
-            {[
-              { value: '2.500+', label: 'Alumni Aktif' },
-              { value: '92%', label: 'Dapat Kerja dalam 3 Bulan' },
-              { value: '4.9/5', label: 'Rating Alumni' },
-              { value: '50+', label: 'Perusahaan Mitra' },
-            ].map((stat, i) => (
-              <div key={i}>
-                <div style={{ fontSize: '2rem', fontWeight: '800', color: 'white', fontFamily: "'Outfit', sans-serif" }}>{stat.value}</div>
-                <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)', marginTop: '0.3rem' }}>{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section" style={{ background: 'var(--bg-dark)' }}>
+      {/* Final CTA */}
+      <section className="section">
         <div className="container">
-          <div className="glass-card" style={{ textAlign: 'center', padding: '6rem 2rem', background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)', color: 'white', borderRadius: '40px' }}>
-            <h2 style={{ color: 'white', fontSize: '3.5rem', marginBottom: '2.5rem' }}>Ready to make a difference?</h2>
-            <Link to="/donation" className="btn" style={{ background: 'var(--secondary)', color: 'white', fontSize: '1.2rem', padding: '1.2rem 3.5rem' }}>Join Us Today</Link>
-          </div>
+          <motion.div 
+            className="glass-card" 
+            style={{ 
+              textAlign: 'center', padding: '6rem 2rem', 
+              background: 'linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%)', 
+              color: '#fff', borderRadius: '48px', position: 'relative', overflow: 'hidden' 
+            }}
+            whileHover={{ scale: 1.01 }}
+          >
+            <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '300px', height: '300px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(50px)' }} />
+            <h2 style={{ color: '#fff', fontSize: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: '1.5rem', fontWeight: '800' }}>Siap Bergabung Bersama Kami?</h2>
+            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
+              Dukungan Anda adalah bahan bakar bagi kami untuk terus berinovasi dan memberikan yang terbaik bagi komunitas.
+            </p>
+            <Link to="/donation" className="btn" style={{ background: 'var(--secondary)', color: '#fff', fontSize: '1.1rem', padding: '1.2rem 3.5rem', borderRadius: '16px', fontWeight: '800' }}>Dukung Sekarang</Link>
+          </motion.div>
         </div>
       </section>
     </motion.div>

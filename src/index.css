@@ -34,17 +34,13 @@
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
-  width: 100% !important;
-  min-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden !important;
+html {
+  scroll-behavior: smooth;
   background-color: var(--bg-dark);
   -webkit-text-size-adjust: 100%;
 }
@@ -579,13 +575,20 @@ h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); }
 }
 
 .scroll-x > * {
-  flex: 0 0 46%; /* Exactly 2 cards visible with gap */
+  flex: 0 0 calc(50% - 1.25rem); /* Perfectly fits 2 cards with gaps */
   scroll-snap-align: start;
+  min-width: 140px;
+}
+
+/* Extra spacer at the end to prevent touching edge */
+.scroll-x::after {
+  content: '';
+  flex: 0 0 1.25rem;
 }
 
 /* For Stats Cards specifically in horizontal scroll */
 .scroll-x.stats-scroll > * {
-  flex: 0 0 40%;
+  flex: 0 0 calc(45% - 1rem);
 }
 
 @media (min-width: 768px) {

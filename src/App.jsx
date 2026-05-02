@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Home from './pages/Home'
 import Team from './pages/Team'
 import Learning from './pages/Learning'
@@ -11,6 +12,9 @@ import Inovasi from './pages/Inovasi'
 import Pelatihan from './pages/Pelatihan'
 import LowonganKerja from './pages/LowonganKerja'
 import ModuleDetail from './pages/ModuleDetail'
+import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 import { motion, AnimatePresence } from 'framer-motion'
 
 function App() {
@@ -29,10 +33,14 @@ function App() {
             <Route path="/inovasi" element={<Inovasi />} />
             <Route path="/pelatihan" element={<Pelatihan />} />
             <Route path="/lowongan" element={<LowonganKerja />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </AnimatePresence>
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </Router>
   )
 }
