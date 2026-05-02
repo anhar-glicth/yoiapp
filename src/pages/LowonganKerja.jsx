@@ -118,27 +118,25 @@ const LowonganKerja = () => {
         <div className="container">
           <div className="job-layout">
             
-            {/* Filter Sidebar */}
+            {/* Filter Sidebar - IMPROVED SWIPE */}
             <aside className="job-filter-sidebar">
-              <div className="glass-card" style={{ padding: '1.5rem' }}>
-                <h3 style={{ fontSize: '1rem', fontWeight: '800', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }} className="hide-on-mobile">
-                  <Filter size={18} /> Filter Lowongan
-                </h3>
-                <div className="filter-button-group">
-                  {jobTypes.map(type => (
-                    <button 
-                      key={type}
-                      onClick={() => setActiveType(type)}
-                      className={`filter-tab-btn ${activeType === type ? 'active' : ''}`}
-                    >
-                      {type}
-                    </button>
-                  ))}
-                </div>
+              <div className="filter-header hide-on-mobile">
+                <Filter size={18} /> Filter Lowongan
+              </div>
+              <div className="filter-button-group">
+                {jobTypes.map(type => (
+                  <button 
+                    key={type}
+                    onClick={() => setActiveType(type)}
+                    className={`filter-tab-btn ${activeType === type ? 'active' : ''}`}
+                  >
+                    {type}
+                  </button>
+                ))}
               </div>
             </aside>
 
-            {/* Job List - IMPROVED GRID TO PREVENT STACKING */}
+            {/* Job List - COMPACT CARDS */}
             <div className="job-grid-system">
               {filtered.map((job, i) => (
                 <motion.div 
@@ -148,44 +146,44 @@ const LowonganKerja = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   className="glass-card job-card-premium"
-                  style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
+                  style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}
                 >
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
                     <div style={{ 
-                      width: '48px', height: '48px', borderRadius: '12px', background: `${job.color}15`, 
-                      color: job.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' 
+                      width: '38px', height: '38px', borderRadius: '10px', background: `${job.color}15`, 
+                      color: job.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' 
                     }}>
                       {job.icon}
                     </div>
                     <div style={{ flex: 1 }}>
-                      <h3 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '0.2rem' }}>{job.title}</h3>
-                      <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
-                        <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.8rem' }}>{job.company}</span>
-                        <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>• {job.location}</span>
+                      <h3 style={{ fontSize: '0.95rem', fontWeight: '800', marginBottom: '0.1rem', color: 'var(--text-main)' }}>{job.title}</h3>
+                      <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.7rem' }}>{job.company}</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>• {job.location}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div style={{ background: 'var(--bg-dark)', padding: '0.8rem', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '700' }}>ESTIMASI GAJI</div>
-                    <div style={{ fontSize: '1rem', fontWeight: '900', color: 'var(--text-main)' }}>{job.salary}</div>
+                  <div style={{ background: 'var(--bg-dark)', padding: '0.6rem 0.8rem', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: '700' }}>GAJI</div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: '900', color: 'var(--text-main)' }}>{job.salary}</div>
                   </div>
 
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, flex: 1 }}>{job.desc}</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', lineHeight: 1.5, flex: 1 }}>{job.desc}</p>
 
-                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap' }}>
                     {job.tags.slice(0, 3).map(tag => (
-                      <span key={tag} style={{ background: 'var(--bg-dark)', padding: '0.2rem 0.6rem', borderRadius: '6px', fontSize: '0.7rem', color: 'var(--text-muted)', border: '1px solid var(--glass-border)', fontWeight: '700' }}>
+                      <span key={tag} style={{ background: 'var(--bg-dark)', padding: '0.15rem 0.5rem', borderRadius: '5px', fontSize: '0.6rem', color: 'var(--text-muted)', border: '1px solid var(--glass-border)', fontWeight: '700' }}>
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--glass-border)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#059669', fontSize: '0.75rem', fontWeight: '800' }}>
-                      <CheckCircle2 size={12} /> VERIFIED
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.8rem', borderTop: '1px solid var(--glass-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#059669', fontSize: '0.7rem', fontWeight: '800' }}>
+                      <CheckCircle2 size={10} /> VERIFIED
                     </div>
-                    <button className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', borderRadius: '10px', fontSize: '0.8rem' }}>Lamar</button>
+                    <button className="btn btn-primary" style={{ padding: '0.5rem 1.2rem', borderRadius: '8px', fontSize: '0.75rem' }}>Lamar</button>
                   </div>
                 </motion.div>
               ))}
@@ -248,25 +246,34 @@ const LowonganKerja = () => {
           display: flex;
           flex-direction: row;
           overflow-x: auto;
-          gap: 0.5rem;
-          padding-bottom: 0.5rem;
+          overflow-y: hidden;
+          gap: 0.6rem;
+          padding: 0.5rem 0 1rem;
+          width: 100%;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
+        .filter-button-group::-webkit-scrollbar { display: none; }
+        
         @media (min-width: 1024px) {
           .filter-button-group {
             flex-direction: column;
             overflow-x: visible;
+            padding: 0;
           }
         }
         .filter-tab-btn {
-          padding: 0.8rem 1.2rem;
+          padding: 0.7rem 1.2rem;
           border-radius: 12px;
           border: 1px solid var(--glass-border);
-          background: transparent;
+          background: var(--bg-card);
           color: var(--text-muted);
           font-weight: 700;
           white-space: nowrap;
           cursor: pointer;
           transition: all 0.3s;
+          flex-shrink: 0;
         }
         .filter-tab-btn.active {
           background: var(--primary);
@@ -276,20 +283,10 @@ const LowonganKerja = () => {
         }
         @media (max-width: 1023px) {
           .hide-on-mobile { display: none; }
-          .filter-button-group::-webkit-scrollbar { display: none; }
           .job-filter-sidebar {
-            position: sticky;
-            top: 70px;
-            z-index: 10;
-            background: var(--bg-dark);
-            margin: 0 -1.25rem;
-            padding: 0 1.25rem;
-          }
-          .job-filter-sidebar .glass-card {
-            border: none;
-            background: transparent;
-            padding: 1rem 0;
-            box-shadow: none;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 1rem;
           }
         }
         .job-card-premium:hover {

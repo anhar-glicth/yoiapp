@@ -287,18 +287,55 @@ const Navbar = () => {
         .drawer-link-item.active {
           background: var(--primary-glow); color: var(--primary); border-color: var(--primary);
         }
+        .mobile-bottom-nav {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 75px;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
+          z-index: 1000;
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+        [data-theme='dark'] .mobile-bottom-nav {
+          background: rgba(15, 23, 42, 0.85);
+          border-top-color: rgba(255, 255, 255, 0.05);
+        }
         .mobile-nav-btn {
-          display: flex; flex-direction: column; align-items: center;
-          gap: 0.4rem; color: var(--text-muted); text-decoration: none;
-          background: none; border: none; font-weight: 700; font-size: 0.65rem;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          color: var(--text-muted);
+          text-decoration: none;
+          background: none;
+          border: none;
+          font-weight: 800;
+          font-size: 0.62rem;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          cursor: pointer;
         }
-        .mobile-nav-btn.active { color: var(--primary); }
+        .mobile-nav-btn.active {
+          color: var(--primary);
+        }
         .mobile-nav-btn .icon-wrap {
-          width: 42px; height: 32px; border-radius: 12px;
-          display: flex; alignItems: center; justifyContent: center;
+          width: 50px;
+          height: 30px;
+          border-radius: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           transition: 0.3s;
+          margin-bottom: 2px;
         }
-        .mobile-nav-btn.active .icon-wrap { background: var(--primary-glow); }
+        .mobile-nav-btn.active .icon-wrap {
+          background: var(--primary-glow);
+          transform: translateY(-2px);
+        }
         @media (max-width: 900px) {
           .nav-links, .desktop-only { display: none !important; }
         }
