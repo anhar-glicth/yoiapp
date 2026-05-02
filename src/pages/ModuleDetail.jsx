@@ -8,7 +8,7 @@ const moduleData = {
     title: 'Level Dasar',
     sub: 'Alfabet & Angka Jari',
     description: 'Fondasi utama dalam belajar bahasa isyarat. Di sini Anda akan belajar abjad jari (SIBI/BISINDO) dan sistem penomoran visual yang intuitif.',
-    instructor: { name: 'Andi Pratama', role: 'Pakar SIBI Nasional', avatar: 'https://i.pravatar.cc/100?img=11' },
+    instructor: { name: 'Aira Rakmah', role: 'Ahli Isyarat Digital', avatar: '/aira.jpeg' },
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     duration: '45 Menit',
     rating: '4.9',
@@ -135,9 +135,25 @@ const ModuleDetail = () => {
                       <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{data.instructor.role}</div>
                     </div>
                   </div>
-                  <button className="btn btn-outline" style={{ width: '100%', marginTop: '1.5rem', padding: '0.8rem', borderRadius: '12px', fontSize: '0.85rem' }}>
+                  <a 
+                    href="https://wa.me/6287816431029" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-outline" 
+                    style={{ 
+                      width: '100%', 
+                      marginTop: '1.5rem', 
+                      padding: '0.8rem', 
+                      borderRadius: '12px', 
+                      fontSize: '0.85rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textDecoration: 'none'
+                    }}
+                  >
                     <MessageCircle size={16} style={{ marginRight: '0.6rem' }} /> Kirim Pesan
-                  </button>
+                  </a>
                 </div>
 
                 {/* Lesson List */}

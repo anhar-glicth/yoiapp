@@ -84,26 +84,19 @@ const Learning = () => {
             </h1>
             
             {/* Methodology Tab Switcher */}
-            <div style={{ 
-              display: 'inline-flex', background: 'var(--bg-card)', padding: '0.5rem', 
-              borderRadius: '24px', border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' 
-            }}>
-              {['sibi', 'bisindo', 'quran'].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => { setActiveTab(tab); setSelectedLetter(null); }}
-                  style={{
-                    padding: '1rem 2rem', borderRadius: '18px', border: 'none',
-                    background: activeTab === tab ? 'var(--primary)' : 'transparent',
-                    color: activeTab === tab ? '#fff' : 'var(--text-muted)',
-                    fontWeight: '800', cursor: 'pointer', transition: 'all 0.3s',
-                    fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.6rem'
-                  }}
-                >
-                  <span style={{ fontSize: '1.2rem' }}>{content[tab].icon}</span>
-                  {tab.toUpperCase()}
-                </button>
-              ))}
+            <div className="tabs-container">
+              <div className="tabs-wrapper">
+                {['sibi', 'bisindo', 'quran'].map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => { setActiveTab(tab); setSelectedLetter(null); }}
+                    className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
+                  >
+                    <span style={{ fontSize: '1.2rem' }}>{content[tab].icon}</span>
+                    {tab.toUpperCase()}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -269,6 +262,51 @@ const Learning = () => {
       </section>
       
       <style>{`
+        .tabs-container {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding: 0 1rem;
+        }
+        .tabs-wrapper {
+          display: flex;
+          background: var(--bg-card);
+          padding: 0.4rem;
+          border-radius: 20px;
+          border: 1px solid var(--glass-border);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+          overflow-x: auto;
+          max-width: 100%;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .tabs-wrapper::-webkit-scrollbar { display: none; }
+        
+        .tab-btn {
+          padding: 0.8rem 1.5rem;
+          border-radius: 15px;
+          border: none;
+          background: transparent;
+          color: var(--text-muted);
+          font-weight: 800;
+          cursor: pointer;
+          transition: all 0.3s;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          white-space: nowrap;
+        }
+        .tab-btn.active {
+          background: var(--primary);
+          color: #fff;
+        }
+        
+        @media (max-width: 600px) {
+          .tab-btn { padding: 0.7rem 1rem; font-size: 0.75rem; gap: 0.4rem; }
+          .tabs-wrapper { border-radius: 16px; }
+        }
+
         .learning-layout {
           display: grid;
           grid-template-columns: 1fr;
