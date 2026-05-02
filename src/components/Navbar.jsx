@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Menu, X, Moon, Sun, User, ChevronDown, Home, GraduationCap, Briefcase, Search, MoreHorizontal, Sparkles } from 'lucide-react'
+import { Heart, Menu, X, Moon, Sun, User, ChevronDown, Home, GraduationCap, Briefcase, Search, MoreHorizontal, Sparkles, Globe, Users, Mail } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,9 +42,9 @@ const Navbar = () => {
   ]
 
   const moreLinks = [
-    { name: 'Tentang Kami', path: '/about', icon: '🏛️' },
-    { name: 'Tim Kami', path: '/team', icon: '👥' },
-    { name: 'Kontak', path: '/contact', icon: '📞' },
+    { name: 'Tentang Kami', path: '/about', icon: <Globe size={18} /> },
+    { name: 'Tim Kami', path: '/team', icon: <Users size={18} /> },
+    { name: 'Kontak', path: '/contact', icon: <Mail size={18} /> },
   ]
 
   const allLinks = [{ name: 'Beranda', path: '/', icon: '🏠' }, ...primaryLinks, ...moreLinks]
@@ -224,15 +224,15 @@ const Navbar = () => {
         }
         .dropdown-menu {
           position: absolute;
-          top: calc(100% + 15px);
+          top: calc(100% + 10px);
           right: 0;
           background: var(--bg-card);
           border-radius: 20px;
           border: 1px solid var(--glass-border);
-          padding: 0.8rem;
-          min-width: 220px;
+          padding: 0.5rem;
+          min-width: 200px;
           box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-          z-index: 1000;
+          z-index: 5000;
         }
         .dropdown-item {
           display: flex;
@@ -240,14 +240,14 @@ const Navbar = () => {
           gap: 1rem;
           padding: 1rem 1.2rem;
           text-decoration: none;
-          color: var(--text-main);
-          font-weight: 700;
+          color: #0D47A1 !important; /* Force deep blue for visibility */
+          font-weight: 800;
           border-radius: 12px;
           transition: 0.2s;
         }
         .dropdown-item:hover {
-          background: var(--primary-glow);
-          color: var(--primary);
+          background: rgba(21, 101, 192, 0.1);
+          color: #1565C0 !important;
         }
         .icon-btn {
           width: 44px; height: 44px; border-radius: 12px;

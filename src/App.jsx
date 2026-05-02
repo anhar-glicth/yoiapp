@@ -4,7 +4,6 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Preloader from './components/Preloader'
-import CustomCursor from './components/CustomCursor'
 import Home from './pages/Home'
 import Team from './pages/Team'
 import Learning from './pages/Learning'
@@ -21,7 +20,7 @@ import NotFound from './pages/NotFound'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -39,7 +38,6 @@ function App() {
       <AnimatePresence>
         {loading && <Preloader />}
       </AnimatePresence>
-      <CustomCursor />
       <motion.div
         style={{
           position: 'fixed',
@@ -49,9 +47,9 @@ function App() {
           height: '4px',
           background: 'var(--primary)',
           transformOrigin: '0%',
-          zIndex: 9999
+          zIndex: 9999,
+          scaleX
         }}
-        style={{ scaleX }}
       />
       <Navbar />
       <main>

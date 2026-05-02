@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, MessageSquare, Instagram, Globe, Sparkles, HelpCircle, ChevronRight } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, MessageSquare, Globe, Sparkles, HelpCircle, ChevronRight } from 'lucide-react'
 
 const Contact = () => {
   return (

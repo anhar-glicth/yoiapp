@@ -63,11 +63,11 @@ const Learning = () => {
     >
       {/* Hero Academy */}
       <section style={{ 
-        paddingTop: '10rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden',
+        paddingTop: '6rem', paddingBottom: '3rem', position: 'relative', overflow: 'hidden',
         background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
       }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -126,10 +126,10 @@ const Learning = () => {
                 <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem' }}>{content[activeTab].fullName}</h2>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>{content[activeTab].desc}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#fff', fontSize: '0.9rem', fontWeight: '700' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: '700' }}>
                     <CheckCircle2 size={18} color="var(--primary)" /> Kurikulum Terverifikasi
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#fff', fontSize: '0.9rem', fontWeight: '700' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: '700' }}>
                     <Zap size={18} color="var(--secondary)" /> Interaktif & Real-time
                   </div>
                 </div>
@@ -149,9 +149,10 @@ const Learning = () => {
             </aside>
 
             {/* Right: Alphabet & Preview */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            {/* Right: Alphabet & Preview Container */}
+            <div className="alphabet-preview-layout">
               {/* Alphabet Keyboard */}
-              <div className="glass-card" style={{ padding: '2rem' }}>
+              <div className="glass-card" style={{ padding: '2rem', height: 'fit-content' }}>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '2rem' }}>Daftar Huruf & Isyarat</h3>
                 <div className="alphabet-grid">
                   {alphabet.map((item) => (
@@ -176,48 +177,64 @@ const Learning = () => {
               </div>
 
               {/* Visual Preview Section */}
-              <AnimatePresence>
-                {selectedLetter && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 30 }}
-                    className="glass-card"
-                    style={{ padding: '2rem', display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', border: '1px solid var(--primary)' }}
-                  >
-                    <div style={{ 
-                      width: '100%', aspectRatio: '16/9', background: '#000', borderRadius: '24px', 
-                      overflow: 'hidden', position: 'relative', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' 
-                    }}>
-                      <button 
-                        onClick={() => setSelectedLetter(null)}
-                        style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', padding: '0.5rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10 }}
-                      >
-                        <X size={20} />
-                      </button>
-                      <img 
-                        src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`} 
-                        alt={selectedLetter.char}
-                        style={{ width: '100%', height: '100%', objectFit: 'contain', opacity: isImageLoading ? 0 : 1 }}
-                        onLoad={() => setIsImageLoading(false)}
-                        onError={() => { setIsImageLoading(false); setImageError(true); }}
-                      />
-                      {isImageLoading && (
-                        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <Loader2 className="animate-spin" size={40} color="var(--primary)" />
-                        </div>
-                      )}
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div>
-                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700' }}>KARAKTER TERPILIH</div>
-                        <div style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--primary)' }}>{selectedLetter.char}</div>
+              <div style={{ position: 'relative', minHeight: '300px' }}>
+                <AnimatePresence mode="wait">
+                  {selectedLetter ? (
+                    <motion.div
+                      key={selectedLetter.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      className="glass-card"
+                      style={{ padding: '1.5rem', border: '2px solid var(--primary)', position: 'sticky', top: '100px' }}
+                    >
+                      <div style={{ 
+                        width: '100%', aspectRatio: '1/1', background: '#000', borderRadius: '20px', 
+                        overflow: 'hidden', position: 'relative', boxShadow: '0 15px 40px rgba(0,0,0,0.3)',
+                        marginBottom: '1.5rem'
+                      }}>
+                        <button 
+                          onClick={() => setSelectedLetter(null)}
+                          style={{ position: 'absolute', top: '0.8rem', right: '0.8rem', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', padding: '0.4rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10 }}
+                        >
+                          <X size={18} />
+                        </button>
+                        <img 
+                          src={`/isyarat/${activeTab}/${selectedLetter.id}.jpg`} 
+                          alt={selectedLetter.char}
+                          style={{ width: '100%', height: '100%', objectFit: 'contain', opacity: isImageLoading ? 0 : 1 }}
+                          onLoad={() => setIsImageLoading(false)}
+                          onError={() => { setIsImageLoading(false); setImageError(true); }}
+                        />
+                        {isImageLoading && (
+                          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Loader2 className="animate-spin" size={30} color="var(--primary)" />
+                          </div>
+                        )}
                       </div>
-                      <button className="btn btn-primary" style={{ padding: '1rem 2.5rem', borderRadius: '14px' }}>Pelajari Lebih Lanjut</button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                      
+                      <div style={{ textAlign: 'center' }} className="preview-info-box">
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px' }}>KARAKTER</div>
+                        <div style={{ fontSize: '3rem', fontWeight: '900', color: 'var(--primary)', lineHeight: 1, margin: '0.5rem 0' }}>{selectedLetter.char}</div>
+                        <button className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.8rem', borderRadius: '12px', fontSize: '0.85rem' }}>Pelajari</button>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      style={{ 
+                        height: '100%', minHeight: '400px', display: 'flex', flexDirection: 'column', 
+                        alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+                        color: 'var(--text-muted)', border: '2px dashed var(--glass-border)', borderRadius: '32px'
+                      }}
+                    >
+                      <Sparkles size={48} style={{ marginBottom: '1.5rem', opacity: 0.2 }} />
+                      <p style={{ fontWeight: '700' }}>Pilih huruf untuk <br />melihat isyarat</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
@@ -252,13 +269,58 @@ const Learning = () => {
       </section>
       
       <style>{`
-        @media (min-width: 1024px) {
-          .learning-layout { grid-template-columns: 320px 1fr !important; gap: 4rem !important; }
+        .learning-layout {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
         }
+        @media (min-width: 1024px) {
+          .learning-layout { grid-template-columns: 320px 1fr !important; gap: 3rem !important; }
+        }
+        
+        /* Forced Side-by-Side Layout for all screens */
+        .alphabet-preview-layout { 
+          display: grid !important; 
+          grid-template-columns: 1fr 140px !important; 
+          gap: 1rem !important; 
+          align-items: start;
+        }
+
+        @media (min-width: 480px) {
+          .alphabet-preview-layout { grid-template-columns: 1fr 180px !important; }
+        }
+
+        @media (min-width: 768px) {
+          .alphabet-preview-layout { grid-template-columns: 1fr 280px !important; gap: 2rem !important; }
+        }
+
+        @media (min-width: 1024px) {
+          .alphabet-preview-layout { grid-template-columns: 1fr 320px !important; }
+        }
+
+        @media (min-width: 1400px) {
+          .alphabet-preview-layout { grid-template-columns: 1fr 400px !important; }
+        }
+
         .alphabet-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-          gap: 1rem;
+          grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+          gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+          .alphabet-grid {
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 1rem;
+          }
+        }
+
+        /* Mobile specific adjustments to make it fit */
+        @media (max-width: 768px) {
+          .glass-card { padding: 1rem !important; border-radius: 20px !important; }
+          .alphabet-grid button { border-radius: 10px !important; font-size: 0.8rem !important; }
+          h3 { font-size: 1rem !important; margin-bottom: 1rem !important; }
+          .preview-info-box { display: none !important; } /* Hide extra text to save space on mobile */
         }
       `}</style>
     </motion.div>

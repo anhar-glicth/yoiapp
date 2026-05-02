@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Globe, FileText, Mail, Sparkles, Users, Linkedin, Instagram, ShieldCheck, Heart, Zap } from 'lucide-react'
+import { Globe, FileText, Mail, Sparkles, Users, ShieldCheck, Heart, Zap } from 'lucide-react'
 
 const Team = () => {
   const members = [
@@ -9,42 +9,42 @@ const Team = () => {
       role: 'Chief Technology Officer',
       dept: 'Tech & Innovation',
       image: '/anhar.jpeg',
-      links: [{ icon: <Instagram size={18} />, url: 'https://www.instagram.com/anhars._/' }, { icon: <Linkedin size={18} />, url: '#' }]
+      links: [{ icon: <Globe size={18} />, url: 'https://www.instagram.com/anhars._/' }]
     },
     {
       name: 'Nurul Hasana',
       role: 'Head of Education',
       dept: 'Academic',
       image: '/Nurul Hasana.jpg',
-      links: [{ icon: <Mail size={18} />, url: 'mailto:nurul@yoi.com' }, { icon: <Linkedin size={18} />, url: '#' }]
+      links: [{ icon: <Mail size={18} />, url: 'mailto:nurul@yoi.com' }]
     },
     {
       name: 'Aira Rakmah',
       role: 'Fullstack Developer',
       dept: 'Engineering',
       image: '/aira.jpeg',
-      links: [{ icon: <Globe size={18} />, url: '#' }, { icon: <Linkedin size={18} />, url: '#' }]
+      links: [{ icon: <Globe size={18} />, url: '#' }]
     },
     {
       name: 'Ghaitsa Shofa Adelya',
       role: 'Community Manager',
       dept: 'Public Relations',
       image: '/ghaitsa.jpg',
-      links: [{ icon: <Instagram size={18} />, url: '#' }, { icon: <Mail size={18} />, url: 'mailto:ghaitsa@yoi.com' }]
+      links: [{ icon: <Mail size={18} />, url: 'mailto:ghaitsa@yoi.com' }]
     },
     {
       name: 'Jabaringin Hasibuan',
       role: 'Strategic Relations',
       dept: 'Partnership',
       image: 'https://i.pravatar.cc/300?img=12',
-      links: [{ icon: <Linkedin size={18} />, url: '#' }, { icon: <Mail size={18} />, url: 'mailto:jabar@yoi.com' }]
+      links: [{ icon: <Globe size={18} />, url: 'mailto:jabar@yoi.com' }]
     },
     {
       name: 'Indi',
       role: 'Creative Designer',
       dept: 'Visual Design',
       image: 'https://i.pravatar.cc/300?img=32',
-      links: [{ icon: <Instagram size={18} />, url: '#' }, { icon: <Globe size={18} />, url: '#' }]
+      links: [{ icon: <Globe size={18} />, url: '#' }]
     }
   ]
 
@@ -83,16 +83,24 @@ const Team = () => {
         </div>
       </section>
 
-      {/* Main Team Grid - RESPONSIVE GRID TO PREVENT STACKING */}
-      <section className="section">
-        <div className="container">
-          <div className="team-grid-system">
-            {members.map((member, i) => (
+      {/* Main Team Marquee - MOVING AUTOMATICALLY */}
+      <section className="section" style={{ padding: '0' }}>
+        <div className="marquee-container" style={{ padding: '2rem 0 5rem' }}>
+          <div className="marquee-content">
+            {/* Double the members for seamless loop */}
+            {[...members, ...members].map((member, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="glass-card team-card"
-                style={{ padding: '0.8rem', display: 'flex', flexDirection: 'column', height: '100%', borderRadius: '32px' }}
+                style={{ 
+                  width: '300px', 
+                  flexShrink: 0, 
+                  padding: '0.8rem', 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  borderRadius: '32px' 
+                }}
               >
                 <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '24px', aspectRatio: '1/1', marginBottom: '1.2rem' }}>
                   <img 
@@ -163,22 +171,6 @@ const Team = () => {
       </section>
 
       <style>{`
-        .team-grid-system {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1rem;
-        }
-        @media (min-width: 768px) {
-          .team-grid-system {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-          }
-        }
-        @media (min-width: 1024px) {
-          .team-grid-system {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
         .team-social-btn:hover {
           background: var(--primary) !important;
           color: #fff !important;

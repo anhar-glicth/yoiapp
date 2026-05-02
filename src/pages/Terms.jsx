@@ -89,5 +89,4 @@ const Terms = () => {
   )
 }
 
-import { AlertCircle } from 'lucide-react'
 export default Terms

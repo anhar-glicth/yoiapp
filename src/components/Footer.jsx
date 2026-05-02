@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Heart, Instagram, Mail, Globe, MapPin, ArrowRight, Send } from 'lucide-react'
+import { Heart, Globe, Mail, MapPin, ArrowRight, Send } from 'lucide-react'
 
 const Footer = () => {
   return (
@@ -35,7 +35,7 @@ const Footer = () => {
             </p>
             <div style={{ display: 'flex', gap: '1rem' }}>
               {[
-                { icon: <Instagram size={20} />, url: '#' },
+                { icon: <Globe size={20} />, url: '#' },
                 { icon: <Globe size={20} />, url: '#' },
                 { icon: <Mail size={20} />, url: 'mailto:halo@yoi.id' }
               ].map((social, i) => (
