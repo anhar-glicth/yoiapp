@@ -110,7 +110,7 @@ const ModuleDetail = () => {
               </div>
 
               {/* Learning Outcomes - COMPACT VERSION */}
-              <div className="glass-card" style={{ padding: '2rem' }}>
+              <div className="glass-card" style={{ padding: '1.5rem', maxWidth: '600px' }}>
                 <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: '800' }}>Yang Akan Anda Pelajari</h3>
                 <div className="grid grid-2" style={{ gap: '1rem 2rem' }}>
                   {data.outcomes.map((item, i) => (
@@ -135,16 +135,16 @@ const ModuleDetail = () => {
                       <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{data.instructor.role}</div>
                     </div>
                   </div>
-                  <a 
-                    href="https://wa.me/6287816431029" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-outline" 
-                    style={{ 
-                      width: '100%', 
-                      marginTop: '1.5rem', 
-                      padding: '0.8rem', 
-                      borderRadius: '12px', 
+                  <a
+                    href="https://wa.me/6287816431029"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline"
+                    style={{
+                      width: '100%',
+                      marginTop: '1.5rem',
+                      padding: '0.8rem',
+                      borderRadius: '12px',
                       fontSize: '0.85rem',
                       display: 'flex',
                       alignItems: 'center',
