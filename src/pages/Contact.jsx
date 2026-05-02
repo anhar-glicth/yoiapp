@@ -48,7 +48,7 @@ const Contact = () => {
               <div className="grid grid-2" style={{ gap: '1.5rem' }}>
                 {[
                   { icon: <Mail size={24} />, title: 'Email Resmi', value: 'halo@yoi.or.id', color: 'var(--primary)' },
-                  { icon: <MessageSquare size={24} />, title: 'WhatsApp', value: '+62 812-3456-7890', color: '#25D366' }
+                  { icon: <MessageSquare size={24} />, title: 'WhatsApp', value: '0878-1643-1029', color: '#25D366' }
                 ].map((item, i) => (
                   <div key={i} className="glass-card" style={{ padding: '2rem' }}>
                     <div style={{ color: item.color, marginBottom: '1rem' }}>{item.icon}</div>
