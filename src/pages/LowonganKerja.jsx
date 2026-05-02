@@ -56,11 +56,11 @@ const LowonganKerja = () => {
     >
       {/* Hero Job Board */}
       <section style={{ 
-        paddingTop: '10rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden',
+        paddingTop: '10rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden',
         background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%)'
       }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -72,18 +72,18 @@ const LowonganKerja = () => {
             >
               <Sparkles size={16} style={{ marginRight: '0.6rem' }} /> KARIR INKLUSIF
             </motion.div>
-            <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: '900', lineHeight: 1.1, marginBottom: '2rem' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: '900', lineHeight: 1.1, marginBottom: '2rem' }}>
               Temukan <br /><span style={{ color: 'var(--primary)' }}>Karier Impian Anda</span>
             </h1>
             
             {/* Search Bar Premium */}
             <div style={{ 
               maxWidth: '700px', margin: '0 auto', background: 'var(--bg-card)', 
-              borderRadius: '24px', padding: '0.8rem', display: 'flex', gap: '0.5rem',
+              borderRadius: '24px', padding: '0.6rem', display: 'flex', gap: '0.5rem',
               border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', flex: 1, paddingLeft: '1rem' }}>
-                <Search size={22} color="var(--text-muted)" />
+                <Search size={20} color="var(--text-muted)" />
                 <input 
                   type="text" 
                   placeholder="Cari posisi atau perusahaan..."
@@ -91,39 +91,33 @@ const LowonganKerja = () => {
                   onChange={(e) => setSearch(e.target.value)}
                   style={{ 
                     width: '100%', background: 'transparent', border: 'none', 
-                    padding: '1rem', color: '#fff', fontSize: '1rem', outline: 'none' 
+                    padding: '0.8rem', color: 'var(--text-main)', fontSize: '1rem', outline: 'none' 
                   }}
                 />
               </div>
-              <button className="btn btn-primary" style={{ padding: '0 2.5rem', borderRadius: '16px' }}>Cari</button>
+              <button className="btn btn-primary" style={{ padding: '0 2rem', borderRadius: '16px' }}>Cari</button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="section">
+      <section className="section" style={{ paddingTop: '2rem' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }} className="job-layout">
+          <div className="job-layout">
             
-            {/* Filter Sidebar */}
-            <aside style={{ position: 'sticky', top: '100px', height: 'fit-content' }}>
-              <div className="glass-card" style={{ padding: '2rem' }}>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                  <Filter size={18} /> Tipe Pekerjaan
+            {/* Filter Sidebar / Top Bar on Mobile */}
+            <aside className="job-filter-sidebar">
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: '800', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }} className="hide-on-mobile">
+                  <Filter size={18} /> Filter Lowongan
                 </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <div className="filter-button-group">
                   {jobTypes.map(type => (
                     <button 
                       key={type}
                       onClick={() => setActiveType(type)}
-                      style={{
-                        padding: '1rem 1.2rem', borderRadius: '12px', border: 'none',
-                        background: activeType === type ? 'var(--primary)' : 'transparent',
-                        color: activeType === type ? '#fff' : 'var(--text-muted)',
-                        fontWeight: '700', textAlign: 'left', cursor: 'pointer',
-                        transition: 'all 0.3s'
-                      }}
+                      className={`filter-tab-btn ${activeType === type ? 'active' : ''}`}
                     >
                       {type}
                     </button>
@@ -142,50 +136,47 @@ const LowonganKerja = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   className="glass-card job-card-premium"
-                  style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                  style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
                 >
-                  <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                     <div style={{ 
-                      width: '64px', height: '64px', borderRadius: '20px', background: `${job.color}15`, 
-                      color: job.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' 
+                      width: '56px', height: '56px', borderRadius: '16px', background: `${job.color}15`, 
+                      color: job.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem' 
                     }}>
                       {job.icon}
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginBottom: '0.5rem' }}>{job.title}</h3>
+                    <div style={{ flex: 1, minWidth: '200px' }}>
+                      <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.4rem' }}>{job.title}</h3>
                       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-                        <span style={{ color: 'var(--primary)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                          <Building2 size={16} /> {job.company}
+                        <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                          <Building2 size={14} /> {job.company}
                         </span>
-                        <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                          <MapPin size={16} /> {job.location}
-                        </span>
-                        <span style={{ background: 'var(--bg-dark)', padding: '0.3rem 0.8rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: '800', color: 'var(--text-muted)' }}>
-                          {job.type}
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                          <MapPin size={14} /> {job.location}
                         </span>
                       </div>
                     </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--text-main)' }}>{job.salary}</div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Gaji Bulanan</div>
+                    <div className="job-salary-box">
+                      <div style={{ fontSize: '1.1rem', fontWeight: '900', color: 'var(--text-main)' }}>{job.salary}</div>
+                      <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: '700' }}>GAJI / BLN</div>
                     </div>
                   </div>
 
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7 }}>{job.desc}</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>{job.desc}</p>
 
-                  <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
                     {job.tags.map(tag => (
-                      <span key={tag} style={{ background: 'var(--bg-dark)', padding: '0.4rem 1rem', borderRadius: '10px', fontSize: '0.8rem', color: 'var(--text-muted)', border: '1px solid var(--glass-border)' }}>
+                      <span key={tag} style={{ background: 'var(--bg-dark)', padding: '0.3rem 0.8rem', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--text-muted)', border: '1px solid var(--glass-border)', fontWeight: '700' }}>
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#059669', fontSize: '0.85rem', fontWeight: '700' }}>
-                      <CheckCircle2 size={16} /> Perusahaan Terverifikasi
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.2rem', borderTop: '1px solid var(--glass-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#059669', fontSize: '0.8rem', fontWeight: '800' }}>
+                      <CheckCircle2 size={14} /> VERIFIED
                     </div>
-                    <button className="btn btn-primary" style={{ padding: '0.8rem 2.5rem', borderRadius: '12px' }}>Lamar Sekarang</button>
+                    <button className="btn btn-primary" style={{ padding: '0.7rem 2rem', borderRadius: '10px', fontSize: '0.85rem' }}>Lamar Sekarang</button>
                   </div>
                 </motion.div>
               ))}
@@ -194,36 +185,109 @@ const LowonganKerja = () => {
         </div>
       </section>
 
-      {/* Market Trends */}
-      <section className="section">
+      {/* Market Trends - FIXED GRID */}
+      <section className="section" style={{ background: 'var(--bg-card)', borderTop: '1px solid var(--glass-border)' }}>
         <div className="container">
-          <div className="glass-card" style={{ padding: '4rem', background: 'var(--bg-card)', textAlign: 'center' }}>
-            <h2 style={{ marginBottom: '3rem', fontWeight: '800' }}>Statistik Karir Yo'i</h2>
-            <div className="grid grid-4" style={{ gap: '2rem' }}>
-              {[
-                { value: '150+', label: 'Lowongan Aktif', color: 'var(--primary)' },
-                { value: '60+', label: 'Mitra Perusahaan', color: 'var(--secondary)' },
-                { value: '500+', label: 'Talenta Terhubung', color: '#059669' },
-                { value: '92%', label: 'Tingkat Penempatan', color: '#8b5cf6' }
-              ].map((s, i) => (
-                <div key={i}>
-                  <div style={{ fontSize: '2.5rem', fontWeight: '900', color: s.color, fontFamily: "'Outfit', sans-serif" }}>{s.value}</div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '700' }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '900', marginBottom: '1rem' }}>Statistik Karir Yo'i</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Data terkini pertumbuhan talenta inklusif kami.</p>
+          </div>
+          
+          {/* Using grid-stats for 2-column mobile, 4-column desktop */}
+          <div className="grid grid-4 grid-stats" style={{ gap: '1.5rem' }}>
+            {[
+              { value: '150+', label: 'Lowongan Aktif', color: 'var(--primary)' },
+              { value: '60+', label: 'Mitra Bisnis', color: 'var(--secondary)' },
+              { value: '500+', label: 'Pencari Kerja', color: '#059669' },
+              { value: '92%', label: 'Placement', color: '#8b5cf6' }
+            ].map((s, i) => (
+              <motion.div 
+                key={i} 
+                className="glass-card" 
+                style={{ padding: '2rem 1rem', textAlign: 'center' }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div style={{ fontSize: '2.2rem', fontWeight: '900', color: s.color, marginBottom: '0.5rem', fontFamily: "'Outfit', sans-serif" }}>{s.value}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>{s.label}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       <style>{`
+        .job-layout {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
         @media (min-width: 1024px) {
-          .job-layout { grid-template-columns: 280px 1fr !important; }
+          .job-layout {
+            grid-template-columns: 280px 1fr;
+          }
+        }
+        .filter-button-group {
+          display: flex;
+          flex-direction: row;
+          overflow-x: auto;
+          gap: 0.5rem;
+          padding-bottom: 0.5rem;
+        }
+        @media (min-width: 1024px) {
+          .filter-button-group {
+            flex-direction: column;
+            overflow-x: visible;
+          }
+        }
+        .filter-tab-btn {
+          padding: 0.8rem 1.2rem;
+          border-radius: 12px;
+          border: 1px solid var(--glass-border);
+          background: transparent;
+          color: var(--text-muted);
+          font-weight: 700;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: all 0.3s;
+        }
+        .filter-tab-btn.active {
+          background: var(--primary);
+          color: #fff;
+          border-color: var(--primary);
+          box-shadow: 0 4px 12px var(--primary-glow);
+        }
+        @media (max-width: 1023px) {
+          .hide-on-mobile { display: none; }
+          .filter-button-group::-webkit-scrollbar { display: none; }
+          .job-filter-sidebar {
+            position: sticky;
+            top: 70px;
+            z-index: 10;
+            background: var(--bg-dark);
+            margin: 0 -1.25rem;
+            padding: 0 1.25rem;
+          }
+          .job-filter-sidebar .glass-card {
+            border: none;
+            background: transparent;
+            padding: 1rem 0;
+            box-shadow: none;
+          }
+        }
+        .job-salary-box {
+          text-align: right;
+        }
+        @media (max-width: 640px) {
+          .job-salary-box {
+            text-align: left;
+            width: 100%;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--glass-border);
+          }
         }
         .job-card-premium:hover {
           border-color: var(--primary);
-          transform: scale(1.01);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+          transform: translateY(-5px);
         }
       `}</style>
     </motion.div>

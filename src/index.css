@@ -594,8 +594,14 @@ h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); }
 @media (min-width: 768px) {
   .scroll-x {
     display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Fallback to prevent 1-column stack */
     overflow: visible !important;
     margin: 0 !important;
     padding: 0 !important;
   }
+  
+  /* Ensure specific grid classes override the scroll-x fallback */
+  .scroll-x.grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .scroll-x.grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  .scroll-x.grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
 }
