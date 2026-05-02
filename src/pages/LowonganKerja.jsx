@@ -96,7 +96,7 @@ const LowonganKerja = () => {
         <div className="container">
           <div className="grid grid-4">
             {stats.map((s, i) => (
-              <motion.div key={i} className="glass-card" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+              <motion.div key={i} className="glass-card" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ textAlign: 'center', padding: '1.2rem 0.8rem' }}>
                 <div style={{ color: s.color, marginBottom: '0.8rem', display: 'flex', justifyContent: 'center' }}>{s.icon}</div>
                 <div style={{ fontSize: '2.2rem', fontWeight: '800', color: 'var(--text-main)', fontFamily: "'Outfit', sans-serif" }}>{s.value}</div>
                 <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.3rem' }}>{s.label}</div>
