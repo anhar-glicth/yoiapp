@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Briefcase, Clock, DollarSign, ChevronRight, Search, Building2, Users, TrendingUp, Sparkles, Filter, CheckCircle2 } from 'lucide-react'
 
-const jobTypes = ['Semua', 'Full-time', 'Part-time', 'Magang', 'Freelance', 'Remote']
+const jobTypes = ['Semua', 'Disabilitas', 'Full-time', 'Part-time', 'Magang', 'Freelance']
 
 const jobs = [
   {
@@ -12,10 +12,22 @@ const jobs = [
     desc: 'Kami mencari Frontend Developer berpengalaman untuk bergabung dalam tim pengembangan produk digital kami.',
   },
   {
+    id: 6, title: 'Data Entry (Inklusi)', company: 'Global Admin Center', location: 'Remote',
+    type: 'Disabilitas', salary: '4 - 6 Juta', posted: 'Terbaru', color: '#059669', icon: '⌨️',
+    tags: ['Tuli-Friendly', 'Excel', 'Remote'],
+    desc: 'Posisi khusus untuk rekan disabilitas. Fokus pada akurasi data dan manajemen dokumen secara digital.',
+  },
+  {
     id: 2, title: 'Graphic Designer', company: 'Kreatif Studio', location: 'Bandung',
     type: 'Full-time', salary: '6 - 10 Juta', posted: '3 hari lalu', color: '#8b5cf6', icon: '🎨',
     tags: ['Figma', 'Adobe XD', 'Illustrator'],
     desc: 'Bergabunglah sebagai Graphic Designer kreatif untuk merancang konten visual yang menarik dan berdampak.',
+  },
+  {
+    id: 7, title: 'Social Media Admin', company: 'Inclusive Media', location: 'Jakarta',
+    type: 'Disabilitas', salary: '5 - 8 Juta', posted: '1 hari lalu', color: '#ec4899', icon: '📱',
+    tags: ['Tuli-Friendly', 'Inklusi', 'Creative'],
+    desc: 'Mengelola interaksi audiens di media sosial. Lingkungan kerja yang sangat mendukung keberagaman dan inklusi.',
   },
   {
     id: 3, title: 'Digital Marketing', company: 'GrowthHack ID', location: 'Remote',
