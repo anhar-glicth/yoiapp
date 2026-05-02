@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Target, Eye, ShieldCheck, Heart } from 'lucide-react'
+import { Target, Eye, ShieldCheck, Heart, Sparkles, Zap, Users, Globe } from 'lucide-react'
 
 const About = () => {
   return (
@@ -8,117 +8,141 @@ const About = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="section"
-      style={{ paddingTop: '8rem' }}
+      style={{ background: 'var(--bg-dark)', paddingBottom: '10rem' }}
     >
-      <div className="container">
-        {/* Story Section */}
-        <div className="grid grid-2" style={{ alignItems: 'center', marginBottom: '6rem', gap: '3rem' }}>
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <span style={{ 
-              color: 'var(--primary)', 
-              fontWeight: '800', 
-              fontSize: '0.85rem', 
-              marginBottom: '1rem', 
-              display: 'block',
-              textTransform: 'uppercase',
-              letterSpacing: '2px'
-            }}>Kisah Kami</span>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', marginBottom: '1.5rem', fontWeight: '800' }}>
-              Membangun Dunia Tanpa <span style={{ color: 'var(--primary)' }} className="glow-text">Hambatan</span>
-            </h1>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              Yo'i lahir dari sebuah kegelisahan akan sulitnya akses pendidikan bagi teman-teman disabilitas, terutama dalam hal komunikasi bahasa isyarat. 
-              Kami percaya bahwa setiap individu memiliki hak yang sama untuk berkembang.
-            </p>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.8 }}>
-              Melalui perpaduan teknologi terkini dan metode pendidikan yang empatik, kami berkomitmen untuk menciptakan ekosistem inklusif yang memberdayakan semua orang.
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            className="glass-card" 
-            style={{ padding: '0.8rem', borderRadius: '32px', overflow: 'hidden' }}
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" 
-              alt="Team working together" 
-              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px' }}
-            />
-          </motion.div>
-        </div>
+      {/* Hero About */}
+      <section style={{ 
+        paddingTop: '10rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden'
+      }}>
+        <div className="container">
+          <div className="grid grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+            <motion.div
+              initial={{ x: -30, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div style={{ 
+                display: 'inline-flex', padding: '0.6rem 1.2rem', background: 'var(--primary-glow)',
+                borderRadius: '100px', color: 'var(--primary)', fontSize: '0.85rem',
+                fontWeight: '800', marginBottom: '1.5rem'
+              }}>Kisah Kami</div>
+              <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.2rem)', fontWeight: '900', lineHeight: 1.1, marginBottom: '2rem' }}>
+                Membangun Dunia <br /><span style={{ color: 'var(--primary)' }}>Tanpa Hambatan</span>
+              </h1>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
+                Yo'i lahir dari sebuah kegelisahan akan sulitnya akses pendidikan bagi teman-teman disabilitas, terutama dalam hal komunikasi bahasa isyarat. Kami percaya bahwa setiap individu memiliki hak yang sama untuk berkembang.
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: 1.8 }}>
+                Melalui perpaduan teknologi terkini dan metode pendidikan yang empatik, kami berkomitmen untuk menciptakan ekosistem inklusif yang memberdayakan semua orang.
+              </p>
+            </motion.div>
 
-        {/* Vision & Mission */}
-        <div className="grid grid-2" style={{ gap: '2rem', marginBottom: '6rem' }}>
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="glass-card" 
-            style={{ position: 'relative', padding: '3rem 2rem 2.5rem' }}
-          >
-            <div style={{ position: 'absolute', top: '-25px', left: '2rem', background: 'var(--primary)', width: '56px', height: '56px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px var(--primary-glow)' }}>
-              <Eye color="#fff" size={28} />
-            </div>
-            <h2 style={{ marginBottom: '1.2rem', fontSize: '1.8rem', fontWeight: '800' }}>Visi Kami</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7 }}>
-              Menjadi platform global terdepan dalam mewujudkan masyarakat inklusif di mana perbedaan kemampuan bukan lagi menjadi penghalang untuk kemajuan bersama.
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="glass-card" 
-            style={{ position: 'relative', padding: '3rem 2rem 2.5rem' }}
-          >
-            <div style={{ position: 'absolute', top: '-25px', left: '2rem', background: 'var(--secondary)', width: '56px', height: '56px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(255, 109, 0, 0.3)' }}>
-              <Target color="#fff" size={28} />
-            </div>
-            <h2 style={{ marginBottom: '1.2rem', fontSize: '1.8rem', fontWeight: '800' }}>Misi Kami</h2>
-            <ul style={{ color: 'var(--text-muted)', paddingLeft: '1.2rem', lineHeight: 1.7, fontSize: '0.95rem' }}>
-              <li style={{ marginBottom: '0.8rem' }}>Menyediakan akses pendidikan bahasa isyarat berkualitas secara gratis.</li>
-              <li style={{ marginBottom: '0.8rem' }}>Membangun teknologi asistif yang memudahkan aktivitas sehari-hari.</li>
-              <li>Meningkatkan kesadaran masyarakat akan pentingnya inklusivitas digital.</li>
-            </ul>
-          </motion.div>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="glass-card" 
+              style={{ padding: '0.8rem', borderRadius: '40px', background: 'var(--bg-card)' }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" 
+                alt="Empowerment" 
+                style={{ width: '100%', borderRadius: '32px', display: 'block' }} 
+              />
+            </motion.div>
+          </div>
         </div>
+      </section>
 
-        {/* Stats Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="glass-card" 
-          style={{ textAlign: 'center', padding: '4rem 2rem', background: 'var(--bg-card)' }}
-        >
-          <h2 style={{ marginBottom: '3.5rem', fontSize: '2rem', fontWeight: '800' }}>Dampak Yang Telah Kita Buat</h2>
-          <div className="grid grid-stats grid-3">
-            <div>
-              <h3 style={{ fontSize: '2.8rem', color: 'var(--primary)', marginBottom: '0.5rem', fontWeight: '800', fontFamily: "'Outfit', sans-serif" }}>10K+</h3>
-              <p style={{ color: 'var(--text-muted)', fontWeight: '600' }}>Pelajar Aktif</p>
-            </div>
-            <div>
-              <h3 style={{ fontSize: '2.8rem', color: 'var(--primary)', marginBottom: '0.5rem', fontWeight: '800', fontFamily: "'Outfit', sans-serif" }}>50+</h3>
-              <p style={{ color: 'var(--text-muted)', fontWeight: '600' }}>Komunitas Mitra</p>
-            </div>
-            <div>
-              <h3 style={{ fontSize: '2.8rem', color: 'var(--primary)', marginBottom: '0.5rem', fontWeight: '800', fontFamily: "'Outfit', sans-serif" }}>100+</h3>
-              <p style={{ color: 'var(--text-muted)', fontWeight: '600' }}>Proyek Sosial</p>
+      {/* Vision & Mission */}
+      <section className="section">
+        <div className="container">
+          <div className="grid grid-2" style={{ gap: '2rem' }}>
+            <motion.div 
+              whileHover={{ y: -10 }}
+              className="glass-card" 
+              style={{ padding: '4rem 3rem', borderTop: '4px solid var(--primary)' }}
+            >
+              <div style={{ width: '64px', height: '64px', background: 'var(--primary-glow)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '2rem' }}>
+                <Eye size={32} />
+              </div>
+              <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem' }}>Visi Kami</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8 }}>
+                Menjadi platform global terdepan dalam mewujudkan masyarakat inklusif di mana perbedaan kemampuan bukan lagi menjadi penghalang untuk kemajuan bersama.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ y: -10 }}
+              className="glass-card" 
+              style={{ padding: '4rem 3rem', borderTop: '4px solid var(--secondary)' }}
+            >
+              <div style={{ width: '64px', height: '64px', background: 'rgba(255,109,0,0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--secondary)', marginBottom: '2rem' }}>
+                <Target size={32} />
+              </div>
+              <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem' }}>Misi Kami</h2>
+              <ul style={{ color: 'var(--text-muted)', paddingLeft: '1.2rem', lineHeight: 2, fontSize: '1.1rem' }}>
+                <li>Menyediakan akses pendidikan isyarat gratis.</li>
+                <li>Membangun teknologi asistif modern.</li>
+                <li>Meningkatkan kesadaran inklusivitas digital.</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="section">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '800' }}>Nilai Inti Kami</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Prinsip yang membimbing setiap langkah kami.</p>
+          </div>
+          
+          <div className="scroll-x">
+            {[
+              { icon: <Heart size={24} />, title: 'Empati', desc: 'Memahami kebutuhan dari perspektif pengguna.', color: '#ef4444' },
+              { icon: <Sparkles size={24} />, title: 'Inovasi', desc: 'Terus menciptakan solusi teknologi terbaru.', color: 'var(--primary)' },
+              { icon: <ShieldCheck size={24} />, title: 'Integritas', desc: 'Menjaga kepercayaan komunitas dan mitra.', color: '#059669' },
+              { icon: <Zap size={24} />, title: 'Aksi Nyata', desc: 'Berfokus pada hasil yang berdampak langsung.', color: 'var(--secondary)' }
+            ].map((v, i) => (
+              <motion.div key={i} className="glass-card" style={{ padding: '2.5rem', textAlign: 'center', minWidth: '260px' }}>
+                <div style={{ 
+                  width: '60px', height: '60px', borderRadius: '50%', background: `${v.color}15`, 
+                  color: v.color, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  margin: '0 auto 1.5rem'
+                }}>
+                  {v.icon}
+                </div>
+                <h3 style={{ fontWeight: '800', marginBottom: '1rem' }}>{v.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{v.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partners/Stats */}
+      <section className="section">
+        <div className="container">
+          <div className="glass-card" style={{ padding: '5rem 2rem', background: 'var(--bg-card)', textAlign: 'center' }}>
+            <h2 style={{ marginBottom: '4rem', fontWeight: '800' }}>Dampak Sosial Yo'i</h2>
+            <div className="grid grid-3" style={{ gap: '3rem' }}>
+              <div>
+                <div style={{ fontSize: '3rem', fontWeight: '900', color: 'var(--primary)', fontFamily: "'Outfit', sans-serif" }}>10K+</div>
+                <div style={{ color: 'var(--text-muted)', fontWeight: '700' }}>Pelajar Aktif</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '3rem', fontWeight: '900', color: 'var(--primary)', fontFamily: "'Outfit', sans-serif" }}>50+</div>
+                <div style={{ color: 'var(--text-muted)', fontWeight: '700' }}>Komunitas Mitra</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '3rem', fontWeight: '900', color: 'var(--primary)', fontFamily: "'Outfit', sans-serif" }}>100+</div>
+                <div style={{ color: 'var(--text-muted)', fontWeight: '700' }}>Proyek Sosial</div>
+              </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
     </motion.div>
   )
 }

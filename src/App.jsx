@@ -15,11 +15,32 @@ import ModuleDetail from './pages/ModuleDetail'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
-import { motion, AnimatePresence } from 'framer-motion'
+import NotFound from './pages/NotFound'
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 
 function App() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
     <Router>
+      <motion.div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '4px',
+          background: 'var(--primary)',
+          transformOrigin: '0%',
+          zIndex: 9999
+        }}
+        style={{ scaleX }}
+      />
       <Navbar />
       <main>
         <AnimatePresence mode="wait">
@@ -36,6 +57,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
       </main>
