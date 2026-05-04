@@ -71,8 +71,8 @@ const Navbar = () => {
     { name: 'Home', path: '/', icon: <Home size={22} /> },
     { name: 'Akademi', path: '/learning', icon: <GraduationCap size={22} /> },
     { name: 'Karir', path: '/lowongan', icon: <Briefcase size={22} /> },
-    { name: 'Inovasi', path: '/inovasi', icon: <Sparkles size={22} /> },
-    { name: 'Menu', path: '#', icon: <MoreHorizontal size={22} />, action: () => setIsOpen(true) },
+    { name: 'Layanan', path: '/services', icon: <Hospital size={22} /> },
+    { name: '', path: '#', icon: <MoreHorizontal size={22} />, action: () => setIsOpen(true) },
   ]
 
   return (
@@ -193,12 +193,12 @@ const Navbar = () => {
             item.action ? (
               <button key={idx} onClick={item.action} className={`mobile-nav-btn ${isOpen ? 'active' : ''}`}>
                 <div className="icon-wrap">{item.icon}</div>
-                <span>{item.name}</span>
+                {item.name && <span>{item.name}</span>}
               </button>
             ) : (
               <Link key={idx} to={item.path} className={`mobile-nav-btn ${isActive(item.path) ? 'active' : ''}`}>
                 <div className="icon-wrap">{item.icon}</div>
-                <span>{item.name}</span>
+                {item.name && <span>{item.name}</span>}
               </Link>
             )
           ))}
