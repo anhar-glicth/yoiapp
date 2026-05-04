@@ -7,6 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
   const [layananOpen, setLayananOpen] = useState(false)
+  const [mobileLayananOpen, setMobileLayananOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const layananRef = useRef(null)
@@ -232,7 +233,43 @@ const Navbar = () => {
 
               <div className="drawer-content">
                 <div className="drawer-links-grid">
-                  {allLinks.map((link) => (
+                  <Link to="/" className={`drawer-link-card ${isActive('/') ? 'active' : ''}`}>
+                    <div className="link-icon">🏠</div>
+                    <div className="link-text">Beranda</div>
+                  </Link>
+                  
+                  {/* Collapsible Layanan for Mobile */}
+                  <div className={`drawer-link-card collapsible ${mobileLayananOpen ? 'expanded' : ''}`} onClick={() => setMobileLayananOpen(!mobileLayananOpen)}>
+                    <div className="link-icon"><Sparkles size={20} /></div>
+                    <div className="link-text" style={{ flex: 1 }}>Layanan</div>
+                    <ChevronDown size={18} style={{ transform: mobileLayananOpen ? 'rotate(180deg)' : 'none', transition: '0.3s' }} />
+                  </div>
+                  
+                  <AnimatePresence>
+                    {mobileLayananOpen && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        style={{ overflow: 'hidden', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+                      >
+                        {layananLinks.map((link) => (
+                          <Link key={link.name} to={link.path} className="drawer-sub-link">
+                            {link.icon} {link.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {primaryLinks.map((link) => (
+                    <Link key={link.path} to={link.path} className={`drawer-link-card ${isActive(link.path) ? 'active' : ''}`}>
+                      <div className="link-icon">{link.name === 'Pendidikan' ? <GraduationCap size={20} /> : <Sparkles size={20} />}</div>
+                      <div className="link-text">{link.name}</div>
+                    </Link>
+                  ))}
+                  
+                  {moreLinks.map((link) => (
                     <Link key={link.path} to={link.path} className={`drawer-link-card ${isActive(link.path) ? 'active' : ''}`}>
                       <div className="link-icon">{link.icon}</div>
                       <div className="link-text">{link.name}</div>
@@ -371,6 +408,25 @@ const Navbar = () => {
           background: var(--primary-glow); border-color: var(--primary);
         }
         .drawer-link-card.active .link-text { color: var(--primary); }
+        .drawer-sub-link {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0.8rem 1.2rem;
+          color: var(--text-main);
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 0.95rem;
+          border-radius: 12px;
+          transition: 0.2s;
+        }
+        .drawer-sub-link:hover {
+          background: var(--primary-glow);
+          color: var(--primary);
+        }
+        .drawer-sub-link svg {
+          color: var(--primary);
+        }
         .drawer-footer {
           padding: 1.5rem;
           border-top: 1px solid var(--glass-border);
