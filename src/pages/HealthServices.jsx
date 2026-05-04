@@ -249,38 +249,42 @@ const HealthServices = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                 <h1 style={{ fontSize: '2.4rem', fontWeight: '900', margin: 0, color: '#fff', lineHeight: 1 }}>{mainCategory === 'Kesehatan' ? 'Jadwal Dokter' : mainCategory}</h1>
-                
-                <div className="category-dropdown-yoi">
-                  <select 
-                    value={mainCategory} 
-                    onChange={(e) => setMainCategory(e.target.value)}
-                    style={{
-                      background: 'rgba(255,255,255,0.1)',
-                      border: '1px solid rgba(255,255,255,0.2)',
-                      color: '#fff',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '12px',
-                      fontWeight: '800',
-                      outline: 'none',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    <option style={{color: '#000'}}>Kesehatan</option>
-                    <option style={{color: '#000'}}>Layanan Hukum</option>
-                    <option style={{color: '#000'}}>Layanan Kepolisian</option>
-                    <option style={{color: '#000'}}>Dukcapil</option>
-                    <option style={{color: '#000'}}>Perbankan</option>
-                    <option style={{color: '#000'}}>Transportasi</option>
-                    <option style={{color: '#000'}}>Pariwisata</option>
-                    <option style={{color: '#000'}}>Keagamaan</option>
-                    <option style={{color: '#000'}}>Pendidikan</option>
-                  </select>
-                </div>
               </div>
             </div>
           </div>
           
           <div className="header-contacts-yoi">
+            <div className="category-dropdown-yoi">
+              <select 
+                value={mainCategory} 
+                onChange={(e) => setMainCategory(e.target.value)}
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  padding: '0.6rem 1rem',
+                  borderRadius: '16px',
+                  fontWeight: '800',
+                  outline: 'none',
+                  cursor: 'pointer',
+                  height: '52px',
+                  width: '100%',
+                  backdropFilter: 'blur(10px)',
+                  appearance: 'none',
+                  WebkitAppearance: 'none'
+                }}
+              >
+                <option style={{color: '#000'}}>Kesehatan</option>
+                <option style={{color: '#000'}}>Layanan Hukum</option>
+                <option style={{color: '#000'}}>Layanan Kepolisian</option>
+                <option style={{color: '#000'}}>Dukcapil</option>
+                <option style={{color: '#000'}}>Perbankan</option>
+                <option style={{color: '#000'}}>Transportasi</option>
+                <option style={{color: '#000'}}>Pariwisata</option>
+                <option style={{color: '#000'}}>Keagamaan</option>
+                <option style={{color: '#000'}}>Pendidikan</option>
+              </select>
+            </div>
             <a 
               href="https://wa.me/6287816431029?text=Halo%20Admin%20Yo'i%20Foundation,%20saya%20ingin%20bertanya%20mengenai%20layanan%20Portal%20Inklusif..." 
               target="_blank" 
@@ -309,10 +313,6 @@ const HealthServices = () => {
       </header>
 
       <div className="container" style={{ marginTop: '-2.5rem', position: 'relative', zIndex: 10 }}>
-        {/* Breadcrumb / Back */}
-        <Link to="/services" className="back-link-yoi">
-          <ChevronLeft size={18} /> Kembali ke Layanan
-        </Link>
 
         {mainCategory === 'Kesehatan' ? (
           <>
