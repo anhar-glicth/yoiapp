@@ -838,11 +838,24 @@ const HealthServices = () => {
           color: var(--secondary);
         }
 
+        @media (max-width: 900px) {
+          .header-content-yoi { flex-direction: column; text-align: center; gap: 2rem; }
+          .header-contacts-yoi { width: 100%; justify-content: center; }
+          .category-dropdown-yoi { margin-top: 1rem; width: 100%; }
+          .category-dropdown-yoi select { width: 100%; }
+        }
+
         @media (max-width: 768px) {
           .doctor-grid-yoi { grid-template-columns: 1fr; }
+          .public-services-grid-yoi { grid-template-columns: 1fr; }
           .filter-grid-yoi { grid-template-columns: 1fr; }
           .filter-btns-yoi { flex-direction: column; }
           .btn-yoi-primary { width: 100%; }
+          .accessibility-info-yoi { padding: 1.5rem; }
+          .info-grid-yoi { grid-template-columns: 1fr; }
+          .doc-top-yoi { flex-direction: column; text-align: center; }
+          .doc-actions-yoi { flex-direction: column; }
+          .meta-item-yoi { padding: 0.5rem; font-size: 0.75rem; }
         }
       `}</style>
     </motion.div>
