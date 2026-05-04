@@ -254,7 +254,7 @@ const HealthServices = () => {
           </div>
           
           <div className="header-contacts-yoi">
-            <div className="category-dropdown-yoi">
+            <div className="category-dropdown-yoi" style={{ position: 'relative' }}>
               <select 
                 value={mainCategory} 
                 onChange={(e) => setMainCategory(e.target.value)}
@@ -262,7 +262,7 @@ const HealthServices = () => {
                   background: 'rgba(255,255,255,0.1)',
                   border: '1px solid rgba(255,255,255,0.2)',
                   color: '#fff',
-                  padding: '0.6rem 1rem',
+                  padding: '0.6rem 2.5rem 0.6rem 1rem',
                   borderRadius: '16px',
                   fontWeight: '800',
                   outline: 'none',
@@ -284,6 +284,17 @@ const HealthServices = () => {
                 <option style={{color: '#000'}}>Keagamaan</option>
                 <option style={{color: '#000'}}>Pendidikan</option>
               </select>
+              <ChevronDown 
+                size={18} 
+                style={{ 
+                  position: 'absolute', 
+                  right: '1rem', 
+                  top: '50%', 
+                  transform: 'translateY(-50%)', 
+                  pointerEvents: 'none',
+                  opacity: 0.8
+                }} 
+              />
             </div>
             <a 
               href="https://wa.me/6287816431029?text=Halo%20Admin%20Yo'i%20Foundation,%20saya%20ingin%20bertanya%20mengenai%20layanan%20Portal%20Inklusif..." 
