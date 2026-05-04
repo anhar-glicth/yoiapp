@@ -25,6 +25,7 @@ import {
   Navigation,
   BookOpen,
   Globe2,
+  MessageCircle,
   Scale,
   Shield,
   Fingerprint,
@@ -280,20 +281,24 @@ const HealthServices = () => {
           </div>
           
           <div className="header-contacts-yoi">
-            <div className="contact-card-yoi">
-              <PhoneCall size={18} />
+            <a href="https://wa.me/6281775165995" target="_blank" rel="noreferrer" className="contact-card-yoi wa">
+              <div className="contact-icon-bg-yoi wa">
+                <MessageCircle size={18} fill="currentColor" />
+              </div>
               <div>
-                <p>Call Center</p>
+                <p>Admin WA</p>
                 <strong>0817-7516-5995</strong>
               </div>
-            </div>
-            <div className="contact-card-yoi highlight">
-              <PhoneCall size={18} />
+            </a>
+            <a href="tel:08113864443" className="contact-card-yoi emergency">
+              <div className="contact-icon-bg-yoi emergency">
+                <PhoneCall size={18} fill="currentColor" />
+              </div>
               <div>
                 <p>Emergency 24h</p>
                 <strong>0811-3864-443</strong>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </header>
@@ -690,19 +695,42 @@ const HealthServices = () => {
         .info-card-yoi h4 { margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
         .info-card-yoi p { margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; font-weight: 600; }
 
-        .header-contacts-yoi { display: flex; gap: 1rem; }
+        .header-contacts-yoi { display: flex; gap: 0.8rem; flex-wrap: wrap; }
         .contact-card-yoi {
           background: rgba(255,255,255,0.1);
-          padding: 0.6rem 1.2rem;
-          border-radius: 14px;
+          padding: 0.6rem 1rem;
+          border-radius: 16px;
           display: flex;
           align-items: center;
-          gap: 1rem;
-          border: 1px solid rgba(255,255,255,0.2);
+          gap: 0.8rem;
+          border: 1px solid rgba(255,255,255,0.15);
+          text-decoration: none;
+          color: #fff;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          backdrop-filter: blur(10px);
+          min-width: 170px;
         }
-        .contact-card-yoi.highlight { background: var(--secondary); border: none; }
-        .contact-card-yoi p { margin: 0; font-size: 0.7rem; opacity: 0.8; font-weight: 700; }
-        .contact-card-yoi strong { font-size: 0.9rem; }
+        .contact-card-yoi:hover {
+          transform: translateY(-3px);
+          background: rgba(255,255,255,0.2);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+          border-color: rgba(255,255,255,0.4);
+        }
+        
+        .contact-icon-bg-yoi {
+          width: 34px;
+          height: 34px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .contact-icon-bg-yoi.wa { background: #25D366; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        .contact-icon-bg-yoi.emergency { background: #FF3D00; box-shadow: 0 4px 10px rgba(255, 61, 0, 0.3); }
+        
+        .contact-card-yoi p { margin: 0; font-size: 0.65rem; opacity: 0.7; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .contact-card-yoi strong { font-size: 0.85rem; font-weight: 900; display: block; margin-top: 2px; }
 
         .doctor-grid-yoi {
           display: grid;
