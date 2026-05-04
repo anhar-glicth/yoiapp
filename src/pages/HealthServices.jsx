@@ -695,42 +695,46 @@ const HealthServices = () => {
         .info-card-yoi h4 { margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
         .info-card-yoi p { margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; font-weight: 600; }
 
-        .header-contacts-yoi { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .header-contacts-yoi { 
+          display: flex; 
+          gap: 0.6rem; 
+          width: 100%;
+          margin-top: 1rem;
+        }
         .contact-card-yoi {
-          background: rgba(255,255,255,0.1);
-          padding: 0.6rem 1rem;
-          border-radius: 16px;
+          flex: 1;
+          background: rgba(255,255,255,0.08);
+          padding: 0.5rem 0.8rem;
+          border-radius: 14px;
           display: flex;
           align-items: center;
-          gap: 0.8rem;
-          border: 1px solid rgba(255,255,255,0.15);
+          gap: 0.6rem;
+          border: 1px solid rgba(255,255,255,0.1);
           text-decoration: none;
           color: #fff;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          backdrop-filter: blur(10px);
-          min-width: 170px;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(8px);
+          min-width: 140px;
         }
         .contact-card-yoi:hover {
-          transform: translateY(-3px);
-          background: rgba(255,255,255,0.2);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-          border-color: rgba(255,255,255,0.4);
+          background: rgba(255,255,255,0.15);
+          transform: translateY(-2px);
         }
         
         .contact-icon-bg-yoi {
-          width: 34px;
-          height: 34px;
-          border-radius: 10px;
+          width: 30px;
+          height: 30px;
+          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
         }
-        .contact-icon-bg-yoi.wa { background: #25D366; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
-        .contact-icon-bg-yoi.emergency { background: #FF3D00; box-shadow: 0 4px 10px rgba(255, 61, 0, 0.3); }
+        .contact-icon-bg-yoi.wa { background: #25D366; }
+        .contact-icon-bg-yoi.emergency { background: #FF3D00; }
         
-        .contact-card-yoi p { margin: 0; font-size: 0.65rem; opacity: 0.7; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .contact-card-yoi strong { font-size: 0.85rem; font-weight: 900; display: block; margin-top: 2px; }
+        .contact-card-yoi p { margin: 0; font-size: 0.55rem; opacity: 0.8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; }
+        .contact-card-yoi strong { font-size: 0.75rem; font-weight: 900; display: block; white-space: nowrap; }
 
         .doctor-grid-yoi {
           display: grid;
