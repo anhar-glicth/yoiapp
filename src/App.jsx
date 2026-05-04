@@ -12,6 +12,8 @@ import Donation from './pages/Donation'
 import Inovasi from './pages/Inovasi'
 import Pelatihan from './pages/Pelatihan'
 import LowonganKerja from './pages/LowonganKerja'
+import Services from './pages/Services'
+import HealthServices from './pages/HealthServices'
 import ModuleDetail from './pages/ModuleDetail'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
@@ -63,6 +65,8 @@ function App() {
             <Route path="/donation" element={<Donation />} />
             <Route path="/inovasi" element={<Inovasi />} />
             <Route path="/pelatihan" element={<Pelatihan />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/health-services" element={<HealthServices />} />
             <Route path="/lowongan" element={<LowonganKerja />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />

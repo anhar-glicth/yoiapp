@@ -54,6 +54,7 @@ const Footer = () => {
           <div>
             <h4 style={{ marginBottom: '2rem', fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-main)' }}>Platform</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '1.2rem' }}><Link to="/services" className="footer-link">Layanan Profesional</Link></li>
               <li style={{ marginBottom: '1.2rem' }}><Link to="/learning" className="footer-link">Akademi Isyarat</Link></li>
               <li style={{ marginBottom: '1.2rem' }}><Link to="/pelatihan" className="footer-link">Program Siap Kerja</Link></li>
               <li style={{ marginBottom: '1.2rem' }}><Link to="/inovasi" className="footer-link">Laboratorium Inovasi</Link></li>

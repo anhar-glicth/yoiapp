@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Menu, X, Moon, Sun, User, ChevronDown, Home, GraduationCap, Briefcase, Search, MoreHorizontal, Sparkles, Globe, Users, Mail } from 'lucide-react'
+import { Heart, Menu, X, Moon, Sun, User, ChevronDown, Home, GraduationCap, Briefcase, Search, MoreHorizontal, Sparkles, Globe, Users, Mail, Hospital, Scale, Shield, Fingerprint, Landmark, Palmtree, Church, Navigation } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
+  const [layananOpen, setLayananOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const layananRef = useRef(null)
   const moreRef = useRef(null)
   const location = useLocation()
 
@@ -25,12 +27,13 @@ const Navbar = () => {
   useEffect(() => {
     const handler = (e) => {
       if (moreRef.current && !moreRef.current.contains(e.target)) setMoreOpen(false)
+      if (layananRef.current && !layananRef.current.contains(e.target)) setLayananOpen(false)
     }
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
-  useEffect(() => { setIsOpen(false); setMoreOpen(false) }, [location])
+  useEffect(() => { setIsOpen(false); setMoreOpen(false); setLayananOpen(false) }, [location])
 
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
 
@@ -39,6 +42,18 @@ const Navbar = () => {
     { name: 'Siap Kerja', path: '/pelatihan' },
     { name: 'Lowongan', path: '/lowongan' },
     { name: 'Inovasi', path: '/inovasi' },
+  ]
+
+  const layananLinks = [
+    { name: 'Kesehatan', path: '/health-services', icon: <Hospital size={18} /> },
+    { name: 'Layanan Hukum', path: '/health-services?cat=Layanan Hukum', icon: <Scale size={18} /> },
+    { name: 'Layanan Kepolisian', path: '/health-services?cat=Layanan Kepolisian', icon: <Shield size={18} /> },
+    { name: 'Dukcapil', path: '/health-services?cat=Dukcapil', icon: <Fingerprint size={18} /> },
+    { name: 'Perbankan', path: '/health-services?cat=Perbankan', icon: <Landmark size={18} /> },
+    { name: 'Transportasi', path: '/health-services?cat=Transportasi', icon: <Navigation size={18} /> },
+    { name: 'Pariwisata', path: '/health-services?cat=Pariwisata', icon: <Palmtree size={18} /> },
+    { name: 'Keagamaan', path: '/health-services?cat=Keagamaan', icon: <Church size={18} /> },
+    { name: 'Semua Layanan', path: '/services', icon: <Sparkles size={18} /> },
   ]
 
   const moreLinks = [
@@ -84,6 +99,34 @@ const Navbar = () => {
         </Link>
 
         <ul className="nav-links" style={{ gap: '0.5rem' }}>
+          <li ref={layananRef} style={{ position: 'relative' }}>
+            <button
+              onClick={() => setLayananOpen(p => !p)}
+              className={`nav-link-item ${layananOpen ? 'active' : ''}`}
+              style={{ border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+            >
+              Layanan <ChevronDown size={14} style={{ transform: layananOpen ? 'rotate(180deg)' : 'none', transition: '0.3s' }} />
+            </button>
+
+            <AnimatePresence>
+              {layananOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                  className="dropdown-menu"
+                >
+                  {layananLinks.map((link) => (
+                    <Link key={link.name} to={link.path} className="dropdown-item">
+                      <span style={{ fontSize: '1.1rem' }}>{link.icon}</span>
+                      {link.name}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </li>
+
           {primaryLinks.map((link) => (
             <li key={link.path}>
               <Link

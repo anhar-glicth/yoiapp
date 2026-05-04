@@ -152,6 +152,13 @@ const Home = () => {
                 color: 'var(--secondary)'
               },
               {
+                title: 'Yo\'i Services',
+                img: 'https://images.unsplash.com/photo-1573163231162-8011be30cc4a?auto=format&fit=crop&q=80&w=600',
+                link: '/services',
+                desc: 'Layanan profesional mulai dari interpreter isyarat hingga audit aksesibilitas digital.',
+                color: '#0ea5e9'
+              },
+              {
                 title: 'Yo\'i Inovasi',
                 img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600',
                 link: '/inovasi',
@@ -229,6 +236,17 @@ const Home = () => {
         @media (max-width: 1024px) {
           #home-hero-grid { grid-template-columns: 1fr; gap: 3rem; }
           .hide-on-mobile { display: none; }
+        }
+        .ecosystem-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 2rem;
+        }
+        @media (min-width: 640px) {
+          .ecosystem-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+          .ecosystem-grid { grid-template-columns: repeat(4, 1fr); }
         }
       `}</style>
     </motion.div>
