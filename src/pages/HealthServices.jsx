@@ -281,20 +281,25 @@ const HealthServices = () => {
           </div>
           
           <div className="header-contacts-yoi">
-            <a href="https://wa.me/6281775165995" target="_blank" rel="noreferrer" className="contact-card-yoi wa">
+            <a 
+              href="https://wa.me/6287816431029?text=Halo%20Admin%20Yo'i%20Foundation,%20saya%20ingin%20bertanya%20mengenai%20layanan%20Portal%20Inklusif..." 
+              target="_blank" 
+              rel="noreferrer" 
+              className="contact-card-yoi wa"
+            >
               <div className="contact-icon-bg-yoi wa">
                 <MessageCircle size={18} fill="currentColor" />
               </div>
-              <div>
+              <div className="contact-text-yoi">
                 <p>Admin WA</p>
-                <strong>0817-7516-5995</strong>
+                <strong>0878-1643-1029</strong>
               </div>
             </a>
             <a href="tel:08113864443" className="contact-card-yoi emergency">
               <div className="contact-icon-bg-yoi emergency">
                 <PhoneCall size={18} fill="currentColor" />
               </div>
-              <div>
+              <div className="contact-text-yoi">
                 <p>Emergency 24h</p>
                 <strong>0811-3864-443</strong>
               </div>
@@ -697,34 +702,34 @@ const HealthServices = () => {
 
         .header-contacts-yoi { 
           display: flex; 
-          gap: 0.6rem; 
-          width: 100%;
-          margin-top: 1rem;
+          gap: 0.8rem; 
+          justify-content: flex-end;
+          flex-wrap: wrap;
         }
         .contact-card-yoi {
-          flex: 1;
+          flex: 0 1 220px; /* Limit stretching on desktop */
           background: rgba(255,255,255,0.08);
-          padding: 0.5rem 0.8rem;
-          border-radius: 14px;
+          padding: 0.6rem 1rem;
+          border-radius: 16px;
           display: flex;
           align-items: center;
-          gap: 0.6rem;
+          gap: 0.8rem;
           border: 1px solid rgba(255,255,255,0.1);
           text-decoration: none;
           color: #fff;
           transition: all 0.3s ease;
           backdrop-filter: blur(8px);
-          min-width: 140px;
         }
         .contact-card-yoi:hover {
           background: rgba(255,255,255,0.15);
           transform: translateY(-2px);
+          border-color: rgba(255,255,255,0.3);
         }
         
         .contact-icon-bg-yoi {
-          width: 30px;
-          height: 30px;
-          border-radius: 8px;
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -733,8 +738,18 @@ const HealthServices = () => {
         .contact-icon-bg-yoi.wa { background: #25D366; }
         .contact-icon-bg-yoi.emergency { background: #FF3D00; }
         
-        .contact-card-yoi p { margin: 0; font-size: 0.55rem; opacity: 0.8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; }
-        .contact-card-yoi strong { font-size: 0.75rem; font-weight: 900; display: block; white-space: nowrap; }
+        .contact-text-yoi { overflow: hidden; }
+        .contact-card-yoi p { margin: 0; font-size: 0.6rem; opacity: 0.8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .contact-card-yoi strong { font-size: 0.85rem; font-weight: 900; display: block; white-space: nowrap; }
+
+        @media (max-width: 900px) {
+          .header-contacts-yoi { justify-content: center; width: 100%; margin-top: 1rem; }
+          .contact-card-yoi { flex: 1; min-width: 160px; }
+        }
+
+        @media (max-width: 500px) {
+          .contact-card-yoi { min-width: 100%; } /* Stack on very small phones for cleanliness */
+        }
 
         .doctor-grid-yoi {
           display: grid;
