@@ -256,6 +256,7 @@ h1, h2, h3, h4 {
     line-height: 1.4 !important;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -296,6 +297,7 @@ h1, h2, h3, h4 {
 .text-gradient {
   background: linear-gradient(to bottom, #fff, var(--text-muted));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
