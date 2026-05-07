@@ -1,39 +1,99 @@
 export const doctorSchedules = [
-  { 
-    id: 1, 
-    name: 'dr. Sarah Wijaya, Sp.A', 
-    specialty: 'Spesialis Anak', 
-    hospital: 'RS Inklusi Medika', 
-    location: 'Jakarta Selatan', 
-    day: 'SENIN', 
-    time: '09:00 - 12:00',
+  {
+    day: 'SENIN',
+    name: 'Dr. drg. Ida Ayu Arnawati, Sp.Ort.',
+    time: '08:00 - 10:00',
+    specialty: 'Ortodontist',
+    type: 'Umum + BPJS',
+    image: 'https://i.pravatar.cc/150?u=1',
+    deafFriendly: true,
+    hospital: 'RS Medika Utama',
     distance: '1.2 km',
-    isDeafFriendly: true,
-    avatar: 'https://images.unsplash.com/photo-1559839734-2b71f15367ef?auto=format&fit=crop&q=80&w=200'
+    mapUrl: 'https://goo.gl/maps/example1'
   },
-  { 
-    id: 2, 
-    name: 'dr. Ahmad Zulkarnain, Sp.PD', 
-    specialty: 'Penyakit Dalam', 
-    hospital: 'Puskesmas Ramah Isyarat', 
-    location: 'Jakarta Pusat', 
-    day: 'SELASA', 
-    time: '13:00 - 16:00',
-    distance: '3.5 km',
-    isDeafFriendly: true,
-    avatar: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200'
+  {
+    day: 'SENIN',
+    name: 'dr. Akhada Maulana, Sp.U., Mars.',
+    time: '08:00 - 10:00',
+    specialty: 'Urologi',
+    type: 'BPJS',
+    image: 'https://i.pravatar.cc/150?u=2',
+    deafFriendly: false,
+    hospital: 'RS Sehat Sejahtera',
+    distance: '2.5 km',
+    mapUrl: 'https://goo.gl/maps/example2'
   },
-  { 
-    id: 3, 
-    name: 'dr. Linda Kusuma, Sp.OG', 
-    specialty: 'Kandungan', 
-    hospital: 'Klinik Harapan Inklusif', 
-    location: 'Jakarta Barat', 
-    day: 'RABU', 
-    time: '08:00 - 11:00',
-    distance: '5.1 km',
-    isDeafFriendly: false,
-    avatar: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=200'
+  {
+    day: 'SELASA',
+    name: 'Dr. drg. Ida Ayu Arnawati, Sp.Ort.',
+    time: '08:00 - 10:00',
+    specialty: 'Ortodontist',
+    type: 'Umum + BPJS',
+    image: 'https://i.pravatar.cc/150?u=1',
+    deafFriendly: true,
+    hospital: 'RS Medika Utama',
+    distance: '1.2 km',
+    mapUrl: 'https://goo.gl/maps/example1'
+  },
+  {
+    day: 'RABU',
+    name: 'dr. Sarah Amelia, Sp.THT',
+    time: '09:00 - 12:00',
+    specialty: 'THT',
+    type: 'Umum + BPJS',
+    image: 'https://i.pravatar.cc/150?u=3',
+    deafFriendly: true,
+    hospital: 'Puskesmas Tebet',
+    distance: '0.8 km',
+    mapUrl: 'https://goo.gl/maps/example3'
+  },
+  {
+    day: 'KAMIS',
+    name: 'dr. Kevin Wijaya, Sp.PD',
+    time: '10:00 - 14:00',
+    specialty: 'Penyakit Dalam',
+    type: 'Umum + BPJS',
+    image: 'https://i.pravatar.cc/150?u=4',
+    deafFriendly: true,
+    hospital: 'RS Pondok Indah',
+    distance: '4.1 km',
+    mapUrl: 'https://goo.gl/maps/example4'
+  },
+  {
+    day: 'JUMAT',
+    name: 'dr. Ahmad Fauzi, Sp.JP',
+    time: '08:00 - 11:30',
+    specialty: 'Jantung',
+    type: 'Umum',
+    image: 'https://i.pravatar.cc/150?u=6',
+    deafFriendly: true,
+    hospital: 'RS Siloam',
+    distance: '3.3 km',
+    mapUrl: 'https://goo.gl/maps/example5'
+  },
+  {
+    day: 'SABTU',
+    name: 'dr. Maria Ulfa, Sp.OG',
+    time: '09:00 - 15:00',
+    specialty: 'Kandungan',
+    type: 'Umum + BPJS',
+    image: 'https://i.pravatar.cc/150?u=7',
+    deafFriendly: true,
+    hospital: 'RSIA Bunda',
+    distance: '2.9 km',
+    mapUrl: 'https://goo.gl/maps/example6'
+  },
+  {
+    day: 'AHAD',
+    name: 'Dokter Jaga IGD',
+    time: '24 Jam',
+    specialty: 'Umum & Darurat',
+    type: 'Semua Layanan',
+    image: 'https://i.pravatar.cc/150?u=8',
+    deafFriendly: true,
+    hospital: 'RS Pelni',
+    distance: '5.0 km',
+    mapUrl: 'https://goo.gl/maps/example7'
   }
 ]
 
